@@ -219,6 +219,119 @@ tfoot td{
 .checkpoint p{margin:0;font-size:14.5px;color:var(--ink-muted);}
 .checkpoint p b{color:var(--ink);font-weight:600;}
 
+/* stat allocation */
+.statgrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:12px;
+}
+.statcard{
+  background:var(--surface);
+  border:1px solid var(--rule);
+  border-top:3px solid var(--rule-accent, var(--gold));
+  border-radius:0 0 3px 3px;
+  padding:16px 18px;
+  box-shadow:var(--shadow);
+}
+.statcard.skip{border-top-color:var(--ink-muted);}
+.statcard .stat-name{
+  font-family:'Cinzel',Georgia,serif;
+  font-weight:600;
+  font-size:15px;
+  margin-bottom:6px;
+}
+.statcard .stat-verdict{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:8px;
+  display:block;
+}
+.statcard.skip .stat-verdict{color:var(--ink-muted);}
+.statcard p{font-size:13.5px;color:var(--ink-muted);margin:0;}
+
+/* controller layout */
+.padgrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:10px;
+}
+.padkey{
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+  background:var(--surface);
+  border:1px solid var(--rule);
+  border-radius:3px;
+  padding:12px 14px;
+  box-shadow:var(--shadow);
+}
+.padkey .btn{
+  font-family:'JetBrains Mono',monospace;
+  font-weight:600;
+  font-size:13px;
+  color:var(--bg);
+  background:var(--gold);
+  border-radius:50%;
+  width:34px;height:34px;
+  flex:none;
+  display:flex;align-items:center;justify-content:center;
+}
+.padkey.util .btn{background:var(--ink-muted);border-radius:4px;width:auto;padding:0 8px;font-size:11px;}
+.padkey .skillname{font-weight:600;font-size:14.5px;}
+.padkey .skilldesc{font-size:13px;color:var(--ink-muted);margin-top:2px;}
+
+/* runewords */
+.rwgrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:14px;
+}
+.rwcard{
+  background:var(--surface);
+  border:1px solid var(--rule);
+  border-radius:4px;
+  padding:18px 20px;
+  box-shadow:var(--shadow);
+}
+.rwcard .rwhead{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:10px;
+  margin-bottom:2px;
+}
+.rwcard .rwname{
+  font-family:'Cinzel',Georgia,serif;
+  font-weight:600;
+  font-size:16px;
+}
+.rwcard .rwlvl{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  color:var(--ink-muted);
+  white-space:nowrap;
+}
+.rwcard .rwrunes{
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;
+  color:var(--gold);
+  margin-bottom:10px;
+}
+.rwcard .rwrow{font-size:13.5px;margin-bottom:6px;}
+.rwcard .rwrow b{color:var(--ink-muted);font-weight:600;font-size:11px;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:2px;}
+.rwcard .rwrow span{color:var(--ink-muted);}
+
+/* breakpoints */
+.bp-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:8px;}
+tr.bp-hit td{background:var(--cold-soft);}
+tr.bp-hit td:first-child{position:relative;}
+tr.bp-hit td:first-child::before{content:"reached";font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--cold);display:block;margin-bottom:1px;}
+.gap-flag{border-left-color:var(--warn);}
+.gap-flag .mark{color:var(--warn);}
+
 /* verdict card */
 .verdict{
   background:var(--surface);
@@ -272,7 +385,7 @@ footer{
   <div class="masthead">
     <div class="eyebrow">Sorceress · Fire Ball → Frozen Orb</div>
     <h1>Skill Point Ledger</h1>
-    <p class="subtitle">Every point you'll earn to level 99, checked against every point the build plan spends — leveling, the Nightmare respec, and the endgame priority list.</p>
+    <p class="subtitle">Ordered by how often you'll actually reach for it: skill points and stats every level-up, then buttons, gear, and the deeper math behind them.</p>
   </div>
 
   <div class="section">
@@ -366,6 +479,201 @@ footer{
     <div class="checkpoint">
       <span class="mark">surplus</span>
       <p><b>38</b> (Phase 2 baseline) + <b>58&ndash;63</b> (Phase 3) = <b>96&ndash;101</b> points spent by clvl 99, against <b>110</b> available. You're carrying a <b>9&ndash;14 point surplus</b> even after maxing Fire Ball, Ice Bolt, and Fire Mastery and pushing Cold Mastery to 15 — room for a point or two in Static Field, extra Warmth, or Energy Shield if you want it. The build was never at risk of running out; the real question is what order to spend the last chunk in.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>Stat allocation</h2>
+      <span class="section-note">every level-up</span>
+    </div>
+    <div class="statgrid">
+      <div class="statcard">
+        <div class="stat-verdict">Gear minimum</div>
+        <div class="stat-name">Strength</div>
+        <p>Only what your gear requires. Check requirements before each respec or upgrade — Spirit (sword/shield) and Stealth (armor) are all fairly low-req, so this should stay cheap.</p>
+      </div>
+      <div class="statcard skip">
+        <div class="stat-verdict">Skip</div>
+        <div class="stat-name">Dexterity</div>
+        <p>Base only. Blocking isn't worth the investment on a caster — let Vitality do the survivability work instead.</p>
+      </div>
+      <div class="statcard">
+        <div class="stat-verdict">Everything else</div>
+        <div class="stat-name">Vitality</div>
+        <p>Your main survivability stat. Prioritize it every level-up once Strength's gear minimum is covered.</p>
+      </div>
+      <div class="statcard skip">
+        <div class="stat-verdict">Skip</div>
+        <div class="stat-name">Energy</div>
+        <p>Gear (Spirit, Stealth) and Warmth cover mana needs far more efficiently than points spent here.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>Controller layout</h2>
+      <span class="section-note">Xbox</span>
+    </div>
+    <p class="lede">Main skills on face buttons, utilities on triggers, emergency escapes always reachable.</p>
+    <div class="padgrid">
+      <div class="padkey"><div class="btn">A</div><div><div class="skillname">Unmapped</div><div class="skilldesc">Interact / Throw — don't bind an active spell here or you'll cast it constantly while looting.</div></div></div>
+      <div class="padkey"><div class="btn">X</div><div><div class="skillname">Frozen Orb</div><div class="skilldesc">Primary AoE opener.</div></div></div>
+      <div class="padkey"><div class="btn">Y</div><div><div class="skillname">Fire Ball</div><div class="skilldesc">Spammable single-target / cold-immune killer.</div></div></div>
+      <div class="padkey"><div class="btn">B</div><div><div class="skillname">Glacial Spike / Ice Blast</div><div class="skilldesc">Freeze a charging enemy in place.</div></div></div>
+      <div class="padkey util"><div class="btn">RT</div><div><div class="skillname">Teleport</div><div class="skilldesc">Hold for continuous map traversal.</div></div></div>
+      <div class="padkey util"><div class="btn">LT+A</div><div><div class="skillname">Frozen Armor</div><div class="skilldesc">Recast every few minutes.</div></div></div>
+      <div class="padkey util"><div class="btn">LT+X</div><div><div class="skillname">Warmth</div><div class="skilldesc">Passive — mapped mainly for reference.</div></div></div>
+      <div class="padkey util"><div class="btn">RS</div><div><div class="skillname">Town Portal</div><div class="skilldesc">Quick emergency exit.</div></div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>Runeword targets</h2>
+      <span class="section-note">farm via The Countess, Act 1</span>
+    </div>
+    <p class="lede">Low-level runes drop from The Countess in both Normal and Nightmare — all four of these are reachable well before you'd otherwise afford the equivalent rare gear.</p>
+    <div class="rwgrid">
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Leaf</span><span class="rwlvl">clvl 19</span></div>
+        <div class="rwrunes">Tir + Ral · 2-socket Staff</div>
+        <div class="rwrow"><b>Why</b><span>+3 to Fire Skills — turns early Fire Ball into a nuke, breaks Normal wide open.</span></div>
+        <div class="rwrow"><b>Where</b><span>2-socket short staff from Akara. Must be gray/white base, not "Magic".</span></div>
+      </div>
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Stealth</span><span class="rwlvl">clvl 17</span></div>
+        <div class="rwrunes">Tal + Eth · 2-socket Body Armor</div>
+        <div class="rwrow"><b>Why</b><span>25% Faster Cast Rate, 25% Faster Run/Walk, mana regen. Wear from Act 2 Normal through Nightmare.</span></div>
+        <div class="rwrow"><b>Where</b><span>Any 2-socket light armor (Quilted/Leather) from Charsi or Fara.</span></div>
+      </div>
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Lore</span><span class="rwlvl">clvl 27</span></div>
+        <div class="rwrunes">Ort + Sol · 2-socket Helm</div>
+        <div class="rwrow"><b>Why</b><span>+1 All Skills, plus Lightning Resist — boosts both your elements at once.</span></div>
+        <div class="rwrow"><b>Where</b><span>Any 2-socket gray helm.</span></div>
+      </div>
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Spirit</span><span class="rwlvl">clvl 25</span></div>
+        <div class="rwrunes">Tal + Thul + Ort + Amn · Sword & Shield</div>
+        <div class="rwrow"><b>Why</b><span>+2 All Skills, up to 35% FCR, a big mana boost.</span></div>
+        <div class="rwrow"><b>Where</b><span>Make first in a 4-socket sword (Broad/Crystal, Act 4/5 Normal or Countess Cow Level) as your main weapon. Later in Hell, a 4-socket Monarch Shield gives a second Spirit off-hand.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>Cast rate &amp; hit recovery breakpoints</h2>
+      <span class="section-note">Sorceress-specific</span>
+    </div>
+    <p class="lede">FCR and FHR don't scale smoothly &mdash; every percent between breakpoints is wasted until you cross the next threshold. These are the Sorceress's actual frame counts, not the generic class-average tables.</p>
+    <div class="bp-cols">
+      <div class="tblwrap">
+        <table>
+          <thead><tr><th>FCR</th><th class="num">Frames / cast</th></tr></thead>
+          <tbody>
+            <tr><td>0%</td><td class="num">23</td></tr>
+            <tr><td>9%</td><td class="num">22</td></tr>
+            <tr><td>20%</td><td class="num">21</td></tr>
+            <tr class="bp-hit"><td>37%</td><td class="num">20</td></tr>
+            <tr><td>63%</td><td class="num">19</td></tr>
+            <tr><td>105%</td><td class="num">18</td></tr>
+            <tr><td>200%</td><td class="num">17</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tblwrap">
+        <table>
+          <thead><tr><th>FHR</th><th class="num">Frames to recover</th></tr></thead>
+          <tbody>
+            <tr><td>0%</td><td class="num">15</td></tr>
+            <tr><td>5%</td><td class="num">14</td></tr>
+            <tr><td>9%</td><td class="num">13</td></tr>
+            <tr><td>14%</td><td class="num">12</td></tr>
+            <tr><td>20%</td><td class="num">11</td></tr>
+            <tr><td>30%</td><td class="num">10</td></tr>
+            <tr><td>42%</td><td class="num">9</td></tr>
+            <tr><td>60%</td><td class="num">8</td></tr>
+            <tr><td>86%</td><td class="num">7</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">where your gear lands</span>
+      <p>Stealth (25% FCR) plus one Spirit sword (20&ndash;35% FCR, roll-dependent) already totals <b>45&ndash;60% FCR</b> &mdash; comfortably past the <b>37%</b> breakpoint (20 frames), a real jump from the 23-frame base. It falls short of <b>63%</b> (19 frames) on its own. The note's own plan for a second Spirit in the shield slot (Hell) pushes total FCR to roughly <b>65&ndash;95%</b>, clearing 63% reliably. The top breakpoint, 105% (18 frames), needs dedicated FCR gear beyond what's in the runeword list &mdash; treat it as a later, optional target rather than something to plan around now.</p>
+    </div>
+    <div class="checkpoint gap-flag">
+      <span class="mark">gap</span>
+      <p>Nothing in the current runeword plan touches <b>FHR</b>. Stealth and Spirit both skip it entirely, so without a dedicated boots slot you're stuck at the 15-frame base. A boot with 20&ndash;30% FHR (Infernostride, Silkweave, or a rare/magic pair) clears the 20% breakpoint (11 frames) and is worth adding to the gear list &mdash; getting chain-stunned while your cooldowns are up is the actual cause of most caster deaths, not raw damage taken.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>Resistances &amp; the Hell penalty</h2>
+      <span class="section-note">per resist type</span>
+    </div>
+    <p class="lede">Each difficulty applies a flat penalty to all four resistances (fire, cold, lightning, poison), subtracted from whatever your gear and quest rewards actually total. The 75% cap doesn't move &mdash; what moves is how much raw resistance you need to reach it.</p>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>Difficulty</th><th class="num">Penalty</th><th class="num">Resist cap</th><th class="num">Raw resist needed</th></tr></thead>
+        <tbody>
+          <tr><td>Normal</td><td class="num">0%</td><td class="num">75%</td><td class="num">75%</td></tr>
+          <tr><td>Nightmare</td><td class="num">&minus;40%</td><td class="num">75%</td><td class="num">115%</td></tr>
+          <tr><td>Hell</td><td class="num">&minus;100%</td><td class="num">75%</td><td class="num">175%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">built-in help</span>
+      <p>Malah's <b>Prison of Ice</b> quest (Act 5) hands you a scroll worth <b>+10% to all resistances</b> &mdash; permanent, once per difficulty. Clear it in Normal, Nightmare, and Hell and you're carrying <b>+30%</b> baked in before gear even enters the picture, cutting the Hell requirement from 175% down to roughly 145% from skills and items.</p>
+    </div>
+    <div class="checkpoint gap-flag">
+      <span class="mark">gap</span>
+      <p>The Sorceress has no defensive resist skill of her own &mdash; Cold Mastery and Fire Mastery lower <i>enemy</i> resistance, they don't raise yours. Of the four runewords on the list, only Lore contributes (a flat Lightning Resist bonus); Leaf, Stealth, and Spirit give none. Resist-all needs to be tracked as its own gear category &mdash; rings, amulet, and charms are the usual places to close the gap, and this is worth pricing out before you hit Hell rather than after.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>Mercenary plan</h2>
+      <span class="section-note">not in the original note</span>
+    </div>
+    <p class="lede">Sorceresses have no minion or defensive skill of their own, so the merc isn't a convenience &mdash; it's the build's only source of physical damage and melee aggro. Hire from Act 2 <b>Nightmare</b>, not Normal: a merc's aura level and stats lock in at whatever difficulty you hired them from, and a Nightmare hire scales through Hell fine, while a Normal one doesn't.</p>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>Type</th><th>Normal</th><th class="skill">Nightmare</th><th>Hell</th></tr></thead>
+        <tbody>
+          <tr><td>Defensive</td><td>Defiance</td><td class="skill">Holy Freeze</td><td>Defiance</td></tr>
+          <tr class="bp-hit"><td>Offensive</td><td>Blessed Aim</td><td class="skill">Might</td><td>Blessed Aim</td></tr>
+          <tr><td>Combat</td><td>Prayer</td><td class="skill">Thorns</td><td>Prayer</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">pick offensive / might</span>
+      <p>An item's granted aura (from a runeword like Infinity, below) runs <i>alongside</i> the merc's own class aura, not instead of it &mdash; so the Offensive merc's <b>Might</b> (physical damage boost) stacks with whatever aura his weapon grants. That's the whole reason to hire Offensive over Holy Freeze or Prayer.</p>
+    </div>
+    <div class="rwgrid">
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Insight</span><span class="rwlvl">clvl 27</span></div>
+        <div class="rwrunes">Ral + Tir + Tal + Sol &middot; 4-socket Polearm</div>
+        <div class="rwrow"><b>Why</b><span>Grants a Meditation aura &mdash; effectively infinite mana regen for you, not just the merc. The budget/early answer to a caster's mana problem.</span></div>
+        <div class="rwrow"><b>Where</b><span>Hand-me-down from your own Fire Ball leveling gear search, or a cheap trade buy &mdash; components are common.</span></div>
+      </div>
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Infinity</span><span class="rwlvl">clvl 63</span></div>
+        <div class="rwrunes">Ber + Mal + Ber + Ist &middot; 4-socket Polearm</div>
+        <div class="rwrow"><b>Why</b><span>Grants level 12 Conviction &mdash; up to &minus;85% enemy resistance. This is what actually makes Hell work: without it, a meaningful slice of Hell monsters are cold- or fire-immune and simply can't be killed by either of your two elements.</span></div>
+        <div class="rwrow"><b>Where</b><span>Endgame target, not a leveling item &mdash; the runes alone (two Ber, a Mal, an Ist) are a mid-to-late Hell farming goal. Run Insight until you can afford the swap.</span></div>
+      </div>
+    </div>
+    <div class="checkpoint gap-flag">
+      <span class="mark">gap</span>
+      <p>Merc survivability isn't covered anywhere else in this plan. A geared merc tanks hits your Sorceress can't afford to take; a naked one dies on repeat in Hell and stops contributing Might or Conviction when you need it most. Budget for a helm (Vampire Gaze is the classic cheap-ish pick) and a defensive armor (Duriel's Shell or a Treachery runeword) alongside the weapon progression &mdash; treat this as its own line item, not something that falls out of your own gear farming.</p>
     </div>
   </div>
 
