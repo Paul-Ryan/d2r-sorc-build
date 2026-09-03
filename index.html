@@ -628,7 +628,7 @@ footer .wrap{
     <div class="tablist" role="tablist" aria-label="Build sections">
       <button class="tab" role="tab" id="tab-points"  aria-controls="panel-points"  aria-selected="true"><span class="idx">01</span>Skill Point Ledger</button>
       <button class="tab" role="tab" id="tab-stats"   aria-controls="panel-stats"   aria-selected="false" tabindex="-1"><span class="idx">02</span>Stats &amp; Keys</button>
-      <button class="tab" role="tab" id="tab-gear"    aria-controls="panel-gear"    aria-selected="false" tabindex="-1"><span class="idx">03</span>Runewords</button>
+      <button class="tab" role="tab" id="tab-gear"    aria-controls="panel-gear"    aria-selected="false" tabindex="-1"><span class="idx">03</span>Gear</button>
       <button class="tab" role="tab" id="tab-numbers" aria-controls="panel-numbers" aria-selected="false" tabindex="-1"><span class="idx">04</span>Breakpoints &amp; Resists</button>
       <button class="tab" role="tab" id="tab-merc"    aria-controls="panel-merc"    aria-selected="false" tabindex="-1"><span class="idx">05</span>Mercenary</button>
     </div>
@@ -829,26 +829,79 @@ footer .wrap{
       <div class="rwcard">
         <div class="rwhead"><span class="rwname">Leaf</span><span class="rwlvl">clvl 19</span></div>
         <div class="rwrunes">Tir + Ral &middot; 2-socket Staff</div>
-        <div class="rwrow"><b>Why</b><span>+3 to Fire Skills — turns early Fire Ball into a nuke, breaks Normal wide open.</span></div>
+        <div class="rwrow"><b>Why</b><span>+3 to Fire Skills — turns early Fire Ball into a nuke, breaks Normal wide open. Also carries Cold Resist +33%.</span></div>
         <div class="rwrow"><b>Where</b><span>2-socket short staff from Akara. Must be gray/white base, not "Magic".</span></div>
       </div>
       <div class="rwcard">
         <div class="rwhead"><span class="rwname">Stealth</span><span class="rwlvl">clvl 17</span></div>
         <div class="rwrunes">Tal + Eth &middot; 2-socket Body Armor</div>
-        <div class="rwrow"><b>Why</b><span>25% Faster Cast Rate, 25% Faster Run/Walk, mana regen. Wear from Act 2 Normal through Nightmare.</span></div>
+        <div class="rwrow"><b>Why</b><span>25% Faster Cast Rate, <b>25% Faster Hit Recovery</b>, 25% Faster Run/Walk, mana regen, Poison Resist +30%. Wear from Act 2 Normal through Nightmare.</span></div>
         <div class="rwrow"><b>Where</b><span>Any 2-socket light armor (Quilted/Leather) from Charsi or Fara.</span></div>
       </div>
       <div class="rwcard">
         <div class="rwhead"><span class="rwname">Lore</span><span class="rwlvl">clvl 27</span></div>
         <div class="rwrunes">Ort + Sol &middot; 2-socket Helm</div>
-        <div class="rwrow"><b>Why</b><span>+1 All Skills, plus Lightning Resist — boosts both your elements at once.</span></div>
+        <div class="rwrow"><b>Why</b><span>+1 All Skills, Lightning Resist +30%, +10 Energy, Damage Reduced by 7. The cheapest +1 skills in the helm slot.</span></div>
         <div class="rwrow"><b>Where</b><span>Any 2-socket gray helm.</span></div>
       </div>
       <div class="rwcard">
         <div class="rwhead"><span class="rwname">Spirit</span><span class="rwlvl">clvl 25</span></div>
         <div class="rwrunes">Tal + Thul + Ort + Amn &middot; Sword &amp; Shield</div>
-        <div class="rwrow"><b>Why</b><span>+2 All Skills, up to 35% FCR, a big mana boost.</span></div>
+        <div class="rwrow"><b>Why</b><span>+2 All Skills, 25&ndash;35% FCR, <b>55% Faster Hit Recovery</b>, +22 Vitality, ~+100 mana. The shield version adds Cold / Lightning / Poison Resist +35% each; the sword version carries no resists.</span></div>
         <div class="rwrow"><b>Where</b><span>Make first in a 4-socket sword (Broad/Crystal, Act 4/5 Normal or Countess Cow Level) as your main weapon. Later in Hell, a 4-socket Monarch Shield gives a second Spirit off-hand.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>Gear by slot</h2>
+      <span class="section-note">stats, not item names</span>
+    </div>
+    <p class="lede">Four runewords fill four slots. The other six are open, and they're where every remaining number has to come from — the FCR you're short of, and all of the resistance. Chase stats here, not specific uniques: a rare with the right three affixes beats a famous item with the wrong ones.</p>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>Slot</th><th class="skill">What you're looking for, in order</th><th>Filled by</th><th class="num">From clvl</th></tr></thead>
+        <tbody>
+          <tr class="bp-hit"><td>Weapon</td><td class="skill">FCR, +skills</td><td>Leaf, then Spirit sword <span class="tag fire">covered</span></td><td class="num">19</td></tr>
+          <tr class="bp-hit"><td>Armor</td><td class="skill">FCR, FHR, life</td><td>Stealth <span class="tag fire">covered</span></td><td class="num">17</td></tr>
+          <tr class="bp-hit"><td>Helm</td><td class="skill">+skills, then life and resists</td><td>Lore <span class="tag fire">covered</span></td><td class="num">27</td></tr>
+          <tr class="bp-hit"><td>Shield</td><td class="skill">FCR, +skills, resist all</td><td>Second Spirit <span class="tag cold">Hell</span></td><td class="num">25</td></tr>
+          <tr><td>Amulet</td><td class="skill">+2 Sorceress skills, resist all, 10% FCR</td><td>open — biggest single upgrade left</td><td class="num">Nightmare</td></tr>
+          <tr><td>Rings &times;2</td><td class="skill">Resist all, 10% FCR each, life / mana</td><td>open — two slots, two chances at FCR</td><td class="num">Nightmare</td></tr>
+          <tr><td>Gloves</td><td class="skill">20% FCR, +fire skills, resist all</td><td>open — the cheapest 20% FCR in the game</td><td class="num">Nightmare</td></tr>
+          <tr><td>Belt</td><td class="skill">Life, resist all, potion rows</td><td>open — FCR only from Arachnid Mesh</td><td class="num">Nightmare</td></tr>
+          <tr><td>Boots</td><td class="skill">Resist all, faster run/walk, life</td><td>open — do <i>not</i> chase FHR here</td><td class="num">Nightmare</td></tr>
+          <tr><td>Charms</td><td class="skill">Resist all, life, +skills</td><td>open — where the last 100%+ resist comes from</td><td class="num">Hell</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">read the open rows as one budget</span>
+      <p>Amulet, two rings, gloves, belt, boots and charms are the only slots left, and they're carrying two jobs at once: the <b>45% FCR</b> that gets you from 60% to the 105% breakpoint, and <b>every point of fire resistance in the build</b>. Those compete for the same affixes. Resist wins — an uncapped resist in Hell kills you, a missed cast breakpoint just makes you slower.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>What to chase, by difficulty</h2>
+      <span class="section-note">the shopping order</span>
+    </div>
+    <div class="statgrid">
+      <div class="statcard">
+        <span class="stat-verdict">clvl 1&ndash;40</span>
+        <div class="stat-name">Normal</div>
+        <p>Runewords only. Buy white 2-socket bases from Akara, Charsi, and Fara and save every rune the Countess drops. Resists don't matter yet — the penalty is 0% — so spend nothing on them. Chase <b>+skills and FCR</b>, and don't get distracted by rares.</p>
+      </div>
+      <div class="statcard">
+        <span class="stat-verdict">clvl 40&ndash;60</span>
+        <div class="stat-name">Nightmare</div>
+        <p>The &minus;40% penalty lands, and 115% raw is suddenly the target. This is when the six open slots start mattering. Fill amulet, rings, gloves, belt, and boots with <b>resist all first, FCR second</b>. Take Malah's scroll in every difficulty. Hire the Act 2 Offensive merc here, not in Normal.</p>
+      </div>
+      <div class="statcard">
+        <span class="stat-verdict">clvl 60+</span>
+        <div class="stat-name">Hell</div>
+        <p>&minus;100% penalty, 175% raw needed, and fire resistance is starting from zero. Second Spirit into a 4-socket Monarch. Charms carry whatever gear can't. Merc gear stops being optional. Only once resists are capped should you spend anything on reaching <b>105% FCR</b>.</p>
       </div>
     </div>
   </div>
@@ -898,11 +951,11 @@ footer .wrap{
     </div>
     <div class="checkpoint">
       <span class="mark">where your gear lands</span>
-      <p>Stealth (25% FCR) plus one Spirit sword (20&ndash;35% FCR, roll-dependent) already totals <b>45&ndash;60% FCR</b> — comfortably past the <b>37%</b> breakpoint (20 frames), a real jump from the 23-frame base. It falls short of <b>63%</b> (19 frames) on its own. The note's own plan for a second Spirit in the shield slot (Hell) pushes total FCR to roughly <b>65&ndash;95%</b>, clearing 63% reliably. The top breakpoint, 105% (18 frames), needs dedicated FCR gear beyond what's in the runeword list — treat it as a later, optional target rather than something to plan around now.</p>
+      <p>Stealth (25%) plus one Spirit sword (25&ndash;35%, roll-dependent) totals <b>50&ndash;60% FCR</b> — comfortably past the <b>37%</b> breakpoint (20 frames), a real jump from the 23-frame base, but short of <b>63%</b> (19 frames) on its own. A second Spirit in the shield slot (Hell) brings the total to <b>75&ndash;95%</b>, clearing 63% reliably. The top breakpoint, 105% (18 frames), needs dedicated FCR gear beyond the runeword list — 10% from each ring, 10&ndash;20% from the amulet, 20% from gloves — so treat it as a later target rather than something to plan around now.</p>
     </div>
-    <div class="checkpoint gap-flag">
-      <span class="mark">gap</span>
-      <p>Nothing in the current runeword plan touches <b>FHR</b>. Stealth and Spirit both skip it entirely, so without a dedicated boots slot you're stuck at the 15-frame base. A boot with 20&ndash;30% FHR (Infernostride, Silkweave, or a rare/magic pair) clears the 20% breakpoint (11 frames) and is worth adding to the gear list — getting chain-stunned while your cooldowns are up is the actual cause of most caster deaths, not raw damage taken.</p>
+    <div class="checkpoint">
+      <span class="mark">FHR is already solved</span>
+      <p>Stealth carries <b>25% FHR</b> and Spirit carries <b>55%</b> — together <b>80%</b>, which clears the <b>60%</b> breakpoint and drops you to <b>8 frames</b> from a 15-frame base. Add the second Spirit in Hell and you're at <b>135%</b>, past the final <b>86%</b> breakpoint at <b>7 frames</b>, the fastest the Sorceress can recover. Don't spend a gear slot chasing FHR — the runeword plan maxes it for free. Note this cuts the other way too: <b>drop Spirit for a non-runeword weapon and you lose 55% FHR</b> along with the skills and cast rate.</p>
     </div>
   </div>
 
@@ -929,8 +982,8 @@ footer .wrap{
       </div>
     </div>
     <div class="checkpoint gap-flag">
-      <span class="mark">gap</span>
-      <p>The Sorceress has no defensive resist skill of her own — Cold Mastery and Fire Mastery lower <i>enemy</i> resistance, they don't raise yours. Of the four runewords on the list, only Lore contributes (a flat Lightning Resist bonus); Leaf, Stealth, and Spirit give none. Resist-all needs to be tracked as its own gear category — rings, amulet, and charms are the usual places to close the gap, and this is worth pricing out before you hit Hell rather than after.</p>
+      <span class="mark">gap &mdash; fire resistance specifically</span>
+      <p>The Sorceress has no defensive resist skill of her own — Cold Mastery and Fire Mastery lower <i>enemy</i> resistance, they don't raise yours. The runewords do contribute, but unevenly. Running Lore + Stealth + both Spirits in Hell, and counting three Scrolls of Resistance, you land at roughly <b>fire 30%</b>, cold 65%, lightning 95%, poison 95% raw — against the <b>175%</b> Hell needs for a capped 75%. Every element is short, but <b>fire is the hole</b>: not one item in the plan grants a point of it. Rings, amulet, and charms have to close a ~145% fire gap and ~110% cold gap, and that's worth pricing out before Hell rather than after.</p>
     </div>
   </div>
 

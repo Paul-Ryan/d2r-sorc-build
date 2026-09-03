@@ -3,7 +3,7 @@
 Fire Ball → Frozen Orb hybrid Sorceress build reference for Diablo II: Resurrected.
 
 Single-file static site (`index.html`, no build step). Content is split across five
-tabs — Skill Point Ledger, Stats & Keys, Runewords, Breakpoints & Resists, Mercenary —
+tabs — Skill Point Ledger, Stats & Keys, Gear, Breakpoints & Resists, Mercenary —
 each linkable by hash (`#points`, `#stats`, `#gear`, `#numbers`, `#merc`).
 Light/dark themes follow the OS by default; the toggle in the header overrides and
 persists. Printing flattens every tab onto one page.
