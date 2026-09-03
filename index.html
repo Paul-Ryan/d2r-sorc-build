@@ -1,0 +1,390 @@
+<title>Skill Point Ledger</title>
+<style>
+:root{
+  --bg:#f4ecd8;
+  --surface:#fffdf6;
+  --surface-2:#ece1c6;
+  --ink:#2b2116;
+  --ink-muted:#6b5d47;
+  --rule:#d8c9a3;
+  --fire:#b8501c;
+  --fire-soft:#e9c9ac;
+  --cold:#256e82;
+  --cold-soft:#c7e2e7;
+  --gold:#9c7a1e;
+  --ok:#3f6b2f;
+  --warn:#a13a2c;
+  --shadow: 0 1px 0 rgba(43,33,22,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#17130e;
+    --surface:#1f1a13;
+    --surface-2:#241e15;
+    --ink:#e9dfc7;
+    --ink-muted:#a5977a;
+    --rule:#3a3122;
+    --fire:#e2884a;
+    --fire-soft:#3a271a;
+    --cold:#7ec2d6;
+    --cold-soft:#1b3138;
+    --gold:#d3ac4c;
+    --ok:#8fb87c;
+    --warn:#e08a78;
+    --shadow: 0 1px 0 rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#17130e;
+  --surface:#1f1a13;
+  --surface-2:#241e15;
+  --ink:#e9dfc7;
+  --ink-muted:#a5977a;
+  --rule:#3a3122;
+  --fire:#e2884a;
+  --fire-soft:#3a271a;
+  --cold:#7ec2d6;
+  --cold-soft:#1b3138;
+  --gold:#d3ac4c;
+  --ok:#8fb87c;
+  --warn:#e08a78;
+  --shadow: 0 1px 0 rgba(0,0,0,.4);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap');
+
+*{box-sizing:border-box;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Spectral',Georgia,'Times New Roman',serif;
+  font-size:16px;
+  line-height:1.55;
+  padding:0 24px 96px;
+}
+.wrap{max-width:760px;margin:0 auto;}
+
+.masthead{
+  padding:56px 0 28px;
+  border-bottom:1px solid var(--rule);
+  margin-bottom:40px;
+}
+.eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--gold);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:14px;
+}
+.eyebrow::before{
+  content:"";
+  width:18px;height:1px;background:var(--gold);display:inline-block;
+}
+h1{
+  font-family:'Cinzel',Georgia,serif;
+  font-weight:700;
+  font-size:clamp(28px,5vw,40px);
+  letter-spacing:.01em;
+  margin:0 0 10px;
+  text-wrap:balance;
+}
+.subtitle{
+  color:var(--ink-muted);
+  font-size:16px;
+  font-style:italic;
+  max-width:52ch;
+}
+
+h2{
+  font-family:'Cinzel',Georgia,serif;
+  font-weight:600;
+  font-size:20px;
+  letter-spacing:.02em;
+  margin:0 0 4px;
+  text-wrap:balance;
+}
+.section{margin-bottom:52px;}
+.section-head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:18px;
+  flex-wrap:wrap;
+}
+.section-note{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  color:var(--ink-muted);
+}
+
+p{margin:0 0 14px;max-width:66ch;}
+.lede{color:var(--ink-muted);}
+
+/* stat tiles */
+.tiles{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:12px;
+  margin-bottom:8px;
+}
+.tile{
+  background:var(--surface);
+  border:1px solid var(--rule);
+  border-radius:3px;
+  padding:16px 16px 14px;
+  box-shadow:var(--shadow);
+}
+.tile .num{
+  font-family:'JetBrains Mono',monospace;
+  font-weight:600;
+  font-size:26px;
+  font-variant-numeric:tabular-nums;
+  color:var(--ink);
+}
+.tile .num small{font-size:13px;font-weight:400;color:var(--ink-muted);}
+.tile .label{
+  font-size:12px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--ink-muted);
+  margin-top:4px;
+}
+.tile.accent-fire .num{color:var(--fire);}
+.tile.accent-cold .num{color:var(--cold);}
+
+/* tables */
+.tblwrap{overflow-x:auto;border:1px solid var(--rule);border-radius:3px;background:var(--surface);}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14.5px;}
+th,td{
+  text-align:left;
+  padding:10px 14px;
+  border-bottom:1px solid var(--rule);
+  vertical-align:top;
+}
+th{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--ink-muted);
+  font-weight:600;
+  background:var(--surface-2);
+}
+tr:last-child td{border-bottom:none;}
+td.num, th.num{font-family:'JetBrains Mono',monospace;font-variant-numeric:tabular-nums;text-align:right;}
+td.skill{white-space:nowrap;}
+tfoot td{
+  font-weight:600;
+  background:var(--surface-2);
+  border-top:2px solid var(--rule);
+  border-bottom:none;
+}
+.tag{
+  display:inline-block;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10.5px;
+  letter-spacing:.04em;
+  padding:1px 6px;
+  border-radius:2px;
+  margin-left:6px;
+}
+.tag.fire{background:var(--fire-soft);color:var(--fire);}
+.tag.cold{background:var(--cold-soft);color:var(--cold);}
+
+/* checkpoint callouts */
+.checkpoint{
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+  padding:14px 16px;
+  border-left:3px solid var(--gold);
+  background:var(--surface);
+  border-radius:0 3px 3px 0;
+  margin:18px 0;
+}
+.checkpoint .mark{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  color:var(--ok);
+  font-weight:600;
+  white-space:nowrap;
+  padding-top:2px;
+}
+.checkpoint.tight .mark{color:var(--warn);}
+.checkpoint p{margin:0;font-size:14.5px;color:var(--ink-muted);}
+.checkpoint p b{color:var(--ink);font-weight:600;}
+
+/* verdict card */
+.verdict{
+  background:var(--surface);
+  border:1px solid var(--rule);
+  border-radius:4px;
+  padding:24px 26px;
+}
+.verdict .q{
+  font-family:'Cinzel',Georgia,serif;
+  font-size:15px;
+  color:var(--ink-muted);
+  margin-bottom:10px;
+}
+.verdict .a{
+  font-size:17px;
+  margin-bottom:16px;
+}
+.verdict .a b{color:var(--fire);}
+.verdict .a b.cold-b{color:var(--cold);}
+.reasoning{margin:0;padding-left:0;list-style:none;}
+.reasoning li{
+  position:relative;
+  padding-left:20px;
+  margin-bottom:8px;
+  font-size:14.5px;
+  color:var(--ink-muted);
+}
+.reasoning li::before{
+  content:"—";
+  position:absolute;left:0;color:var(--gold);
+}
+.reasoning li b{color:var(--ink);font-weight:600;}
+
+footer{
+  margin-top:60px;
+  padding-top:20px;
+  border-top:1px solid var(--rule);
+  font-family:'JetBrains Mono',monospace;
+  font-size:11.5px;
+  color:var(--ink-muted);
+  letter-spacing:.02em;
+}
+
+@media (max-width:520px){
+  .section-head{flex-direction:column;gap:4px;}
+}
+</style>
+
+<div class="wrap">
+
+  <div class="masthead">
+    <div class="eyebrow">Sorceress · Fire Ball → Frozen Orb</div>
+    <h1>Skill Point Ledger</h1>
+    <p class="subtitle">Every point you'll earn to level 99, checked against every point the build plan spends — leveling, the Nightmare respec, and the endgame priority list.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>Points earned by level 99</h2>
+      <span class="section-note">quest math</span>
+    </div>
+    <div class="tiles">
+      <div class="tile">
+        <div class="num">98</div>
+        <div class="label">From leveling (2&ndash;99)</div>
+      </div>
+      <div class="tile">
+        <div class="num">12</div>
+        <div class="label">Quest rewards, all 3 difficulties</div>
+      </div>
+      <div class="tile accent-fire">
+        <div class="num">110</div>
+        <div class="label">Total available at clvl 99</div>
+      </div>
+    </div>
+    <p class="lede">Quest points come from three repeatable rewards — <b>Den of Evil</b> (+1, Act 1), <b>Radament's Lair</b> (+1, Act 2), and <b>The Fallen Angel / Izual</b> (+2, Act 4) — each paid out once per difficulty. All three are quick, low-risk quests almost every character finishes on the way through, so the plan below assumes you take them.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>Phase 1 &mdash; Normal, levels 2&ndash;29</h2>
+      <span class="section-note">no respec yet</span>
+    </div>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>Levels</th><th class="skill">Points go to</th><th class="num">Spent</th><th class="num">Running total</th></tr></thead>
+        <tbody>
+          <tr><td>2&ndash;5</td><td class="skill">Fire Bolt ×3, Warmth ×1</td><td class="num">4</td><td class="num">4</td></tr>
+          <tr><td>6</td><td class="skill">Frozen Armor ×1</td><td class="num">1</td><td class="num">5</td></tr>
+          <tr><td>7&ndash;11</td><td class="skill">Fire Bolt ×5</td><td class="num">5</td><td class="num">10</td></tr>
+          <tr><td>12</td><td class="skill">Fire Ball ×1, Telekinesis ×1</td><td class="num">2</td><td class="num">12</td></tr>
+          <tr><td>13&ndash;17</td><td class="skill">Fire Ball ×5</td><td class="num">5</td><td class="num">17</td></tr>
+          <tr><td>18</td><td class="skill">Teleport ×1</td><td class="num">1</td><td class="num">18</td></tr>
+          <tr><td>19&ndash;29</td><td class="skill">Fire Ball (to max), overflow&nbsp;→ Fire Bolt</td><td class="num">11</td><td class="num">29</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="2">Total spent, end of Phase 1</td><td class="num">29</td><td class="num">29</td></tr></tfoot>
+      </table>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">balances</span>
+      <p><b>28</b> points come from leveling alone by clvl 29. The plan needs <b>29</b> — it works exactly because Den of Evil's +1 lands well before level 12, which almost every leveling route hits early. If you also clear Radament's Lair before 29 (common, since Act 2 usually finishes around there), you'll bank a spare point rather than come up short.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>Phase 2 &mdash; Nightmare respec, level 30&ndash;35</h2>
+      <span class="section-note">full reset via Akara</span>
+    </div>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th class="skill">Allocation</th><th class="num">Points</th></tr></thead>
+        <tbody>
+          <tr><td class="skill">Prereqs — Ice Bolt, Glacial Spike, Fire Bolt, Telekinesis, Teleport, Warmth, Frozen Armor <span class="tag cold">1 pt each</span></td><td class="num">7</td></tr>
+          <tr><td class="skill">Frozen Orb ×20 <span class="tag cold">core</span></td><td class="num">20</td></tr>
+          <tr><td class="skill">Cold Mastery ×1</td><td class="num">1</td></tr>
+          <tr><td class="skill">Fire Ball <span class="tag fire">remainder</span></td><td class="num">10*</td></tr>
+        </tbody>
+        <tfoot><tr><td>Total needed for prereqs + Frozen Orb + Cold Mastery</td><td class="num">28</td></tr></tfoot>
+      </table>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">on budget</span>
+      <p>At clvl 35 you've earned roughly <b>38</b> points (34 from leveling + 4 from Normal's Den of Evil, Radament, and Izual). That covers the 28-point core with <b>~10</b> left for Fire Ball — the * above. Respec any earlier than 35 and that Fire Ball remainder shrinks fast: at clvl 30 you're carrying only ~33 points, leaving just 5 for Fire Ball. Nothing here goes negative either way, but 33&ndash;35 gives Fire Ball a healthier chunk to reopen with.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>Phase 3 &mdash; endgame priority, level 35&ndash;99</h2>
+      <span class="section-note">final targets</span>
+    </div>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th class="skill">Skill</th><th class="num">From (post-respec)</th><th class="num">To</th><th class="num">Points needed</th></tr></thead>
+        <tbody>
+          <tr><td class="skill">Fire Ball <span class="tag fire">max</span></td><td class="num">10</td><td class="num">20</td><td class="num">10</td></tr>
+          <tr><td class="skill">Cold Mastery</td><td class="num">1</td><td class="num">10&ndash;15</td><td class="num">9&ndash;14</td></tr>
+          <tr><td class="skill">Ice Bolt <span class="tag cold">synergy</span></td><td class="num">1</td><td class="num">20</td><td class="num">19</td></tr>
+          <tr><td class="skill">Fire Mastery</td><td class="num">0</td><td class="num">20</td><td class="num">20</td></tr>
+        </tbody>
+        <tfoot><tr><td>Phase 3 total</td><td colspan="2"></td><td class="num">58&ndash;63</td></tr></tfoot>
+      </table>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">surplus</span>
+      <p><b>38</b> (Phase 2 baseline) + <b>58&ndash;63</b> (Phase 3) = <b>96&ndash;101</b> points spent by clvl 99, against <b>110</b> available. You're carrying a <b>9&ndash;14 point surplus</b> even after maxing Fire Ball, Ice Bolt, and Fire Mastery and pushing Cold Mastery to 15 — room for a point or two in Static Field, extra Warmth, or Energy Shield if you want it. The build was never at risk of running out; the real question is what order to spend the last chunk in.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>Open question: Ice Bolt vs. Fire Mastery order</h2>
+    </div>
+    <div class="verdict">
+      <div class="q">Which should you max first after Fire Ball, at level 35+?</div>
+      <div class="a">Take <b class="cold-b">Ice Bolt</b> before <b>Fire Mastery</b>.</div>
+      <ul class="reasoning">
+        <li><b>The surplus removes the tradeoff.</b> With 9&ndash;14 spare points by clvl 99, this isn't "can I afford both" — it's purely about which lands sooner. You max both either way.</li>
+        <li><b>Ice Bolt buffs your primary skill.</b> It's Frozen Orb's synergy, and Frozen Orb is mapped to your opener (X). Fire Mastery only helps Fire Ball, which the note already frames as the cold-immune / single-target backup on Y.</li>
+        <li><b>Earlier Ice Bolt points compound sooner.</b> Every point invested while leveling from 35&rarr;70ish is buffing the skill you're actually opening every pack with, versus a flat multiplier sitting on your secondary skill until you get around to it.</li>
+        <li><b>Nothing is lost by going Ice Bolt first.</b> Since both hit 20/20 by end-game under either order, there's no final-build cost — only a smoother mid-level clear speed curve.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>Source: Diablo 2: Resurrected — Sorceress Build (Apple Notes) · totals per current live-game skill-point mechanics</footer>
+
+</div>
