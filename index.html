@@ -515,7 +515,9 @@ tr.bp-hit td:first-child::before{
 }
 .rwrow{font-size:15.5px;margin-bottom:14px;line-height:1.65;}
 .rwrow:last-child{margin-bottom:0;}
-.rwrow b{
+/* the label is a DIRECT child; bold inside the description must not
+   inherit the uppercase mono chip styling */
+.rwrow > b{
   display:block;
   font-family:'JetBrains Mono',ui-monospace,monospace;
   color:var(--ink-faint);
@@ -526,6 +528,7 @@ tr.bp-hit td:first-child::before{
   margin-bottom:3px;
 }
 .rwrow span{color:var(--ink-muted);}
+.rwrow span b{color:var(--ink);font-weight:600;}
 
 /* ---------- verdict ---------- */
 .bp-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;align-items:start;}
