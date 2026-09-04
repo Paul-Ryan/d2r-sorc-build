@@ -528,7 +528,7 @@ tr.bp-hit td:first-child::before{
 .rwrow span{color:var(--ink-muted);}
 
 /* ---------- verdict ---------- */
-.bp-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+.bp-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;align-items:start;}
 .verdict{
   background:
     radial-gradient(60ch 200px at 100% 0%, var(--cold-bg), transparent 70%),
@@ -740,12 +740,51 @@ footer .wrap{
       </div>
       <div class="checkpoint">
         <span class="mark">surplus</span>
-        <p><b>38</b> (everything spent by Phase 2) + <b>61&ndash;66</b> (Phase 3) = <b>99&ndash;104</b> points spent by clvl 99, against <b>110</b> available. You end with a <b>6&ndash;11 point surplus</b> after maxing Fire Ball, Ice Bolt, and Fire Mastery and pushing Cold Mastery to 15 — enough for Static Field, a little extra Warmth, or Energy Shield. The build never runs out of points, but the margin is thinner than it looks, and the callout below is what it's competing with.</p>
+        <p><b>38</b> (everything spent by Phase 2) + <b>61&ndash;66</b> (Phase 3) = <b>99&ndash;104</b> points spent by clvl 99, against <b>110</b> available. You end with a <b>6&ndash;11 point surplus</b> after maxing Fire Ball, Ice Bolt, and Fire Mastery and pushing Cold Mastery to 15 — and Static Field only wants <b>one</b> of them (see below). That leaves 5&ndash;10 points with nowhere obvious to go — the callout below is what they should probably buy.</p>
       </div>
     </div>
     <div class="checkpoint gap-flag">
       <span class="mark">gap &mdash; Fire Bolt is Fire Ball's synergy</span>
-      <p>Fire Bolt grants Fire Ball <b>+14% fire damage per level</b>, the single largest multiplier available to your fire side — and the plan leaves it at the 1-point prereq forever. Taking it 1&rarr;20 costs <b>19</b> points and adds roughly <b>+266%</b> to Fire Ball, on top of Fire Mastery. The <b>6&ndash;11 point surplus doesn't cover it</b>: you'd have to hold Cold Mastery at 10 and still come up short by several points. This is the real tradeoff in the build — Fire Ball is your answer to cold-immune packs in Hell, and right now it's running at a fraction of its ceiling. Worth deciding on purpose rather than by omission.</p>
+      <p>Fire Bolt grants Fire Ball <b>+14% fire damage per level</b>, the single largest multiplier available to your fire side — and the plan leaves it at the 1-point prereq forever. Taking it 1&rarr;20 costs <b>19</b> points and adds roughly <b>+266%</b> to Fire Ball, on top of Fire Mastery. The surplus <b>can't max it</b> — but it buys a lot of it. Hold Cold Mastery at 10 and you have <b>11 points</b>, taking Fire Bolt to 12 for roughly <b>+154%</b>; push Cold Mastery to 15 and you have <b>6</b>, taking it to 7 for about <b>+84%</b>. Either beats the alternatives, since Static Field wants exactly one point and Warmth and Energy Shield want none. Fire Ball is your answer to cold-immune packs in Hell, and it's currently running at a fraction of its ceiling. Nothing has to be decided now — the Monarch respec reopens the tree anyway.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>Static Field</h2>
+      <span class="section-note">exactly one point</span>
+    </div>
+    <p class="lede">The surplus above kept listing Static Field as somewhere to put spare points. It isn't — it's a one-point skill, and knowing why settles what the surplus is actually competing for. Lightning tree, clvl 6, <b>no prerequisites</b>, 9 mana flat at every level.</p>
+    <div class="bp-cols">
+      <div class="tblwrap">
+        <table>
+          <thead><tr><th>Skill level</th><th class="num">Radius</th><th class="num">Damage / cast</th></tr></thead>
+          <tbody>
+            <tr><td>1 (base)</td><td class="num">3.3 yd</td><td class="num">25%</td></tr>
+            <tr class="bp-hit"><td>~8 (1 pt + gear)</td><td class="num">~8 yd</td><td class="num">25%</td></tr>
+            <tr><td>20 (maxed)</td><td class="num">16 yd</td><td class="num">25%</td></tr>
+          </tbody>
+          <tfoot><tr><td>19 points buy</td><td class="num">+12.7 yd</td><td class="num">nothing</td></tr></tfoot>
+        </table>
+      </div>
+      <div class="tblwrap">
+        <table>
+          <thead><tr><th>Difficulty</th><th class="num">Won't drop below</th><th class="num">Casts to floor</th></tr></thead>
+          <tbody>
+            <tr><td>Normal</td><td class="num">&mdash;</td><td class="num">&mdash;</td></tr>
+            <tr><td>Nightmare</td><td class="num">33%</td><td class="num">4</td></tr>
+            <tr class="bp-hit"><td>Hell</td><td class="num">50%</td><td class="num">3</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">one point, and let gear grow it</span>
+      <p>Damage is <b>25% of a monster's current life at every skill level</b> — points buy radius and nothing else, at about 0.67 yards each. Meanwhile the plan already carries <b>+5 to skills</b> from Lore and two Spirits, and a +2 Sorceress amulet makes it +7, which runs a single-point Static Field at around <b>8 yards</b> for free. That's the whole case: one point, and the gear you were buying anyway does the rest. In Hell it takes roughly <b>three casts and 27 mana</b> to walk a boss down to the 50% floor, and then Frozen Orb or Fire Ball finishes the job.</p>
+    </div>
+    <div class="checkpoint gap-flag">
+      <span class="mark">caveat &mdash; Infinity does not fix this one</span>
+      <p>Static Field is <b>lightning damage</b>, scaled by the target's lightning resistance, so it does less than 25% against resistant monsters and <b>nothing at all against lightning immunes</b>. The part that catches people: <b>Conviction from Infinity does not help</b> — resistance debuffs are ignored for Static Field's calculation, so the item carrying your whole Hell plan can't open this door. Treat Static as a tool for bosses and tough uniques that happen not to be lightning immune, not as a universal opener.</p>
     </div>
   </div>
 
@@ -833,6 +872,7 @@ footer .wrap{
       <div class="padkey util"><div class="btn">RT</div><div><div class="skillname">Teleport</div><div class="skilldesc">Hold for continuous map traversal.</div></div></div>
       <div class="padkey util"><div class="btn">LT+A</div><div><div class="skillname">Frozen Armor</div><div class="skilldesc">Recast every few minutes.</div></div></div>
       <div class="padkey util"><div class="btn">LT+X</div><div><div class="skillname">Warmth</div><div class="skilldesc">Passive — mapped mainly for reference.</div></div></div>
+      <div class="padkey util"><div class="btn">LT+B</div><div><div class="skillname">Static Field</div><div class="skilldesc">Boss opener — three casts drops a Hell boss to 50%. Useless on lightning immunes.</div></div></div>
       <div class="padkey util"><div class="btn">RS</div><div><div class="skillname">Town Portal</div><div class="skilldesc">Quick emergency exit.</div></div></div>
     </div>
   </div>
