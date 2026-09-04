@@ -776,7 +776,7 @@ footer .wrap{
       <div class="statcard">
         <span class="stat-verdict">Gear minimum</span>
         <div class="stat-name">Strength</div>
-        <p>Only what your gear requires. Check requirements before each respec or upgrade — Spirit (sword/shield) and Stealth (armor) are all fairly low-req, so this should stay cheap.</p>
+        <p>Only what your gear requires — which stays cheap right up until it doesn't. Stealth and a Broad Sword Spirit want <b>48</b> strength total. The second Spirit in Hell wants a <b>Monarch: 156 strength</b>, and that is not a rounding error. Decide before Hell whether you're paying for it in stat points or covering it with +strength gear and charms.</p>
       </div>
       <div class="statcard skip">
         <span class="stat-verdict">Skip</span>
@@ -850,6 +850,65 @@ footer .wrap{
         <div class="rwrow"><b>Why</b><span>+2 All Skills, 25&ndash;35% FCR, <b>55% Faster Hit Recovery</b>, +22 Vitality, ~+100 mana. The shield version adds Cold / Lightning / Poison Resist +35% each; the sword version carries no resists.</span></div>
         <div class="rwrow"><b>Where</b><span>Make first in a 4-socket sword (Broad/Crystal, Act 4/5 Normal or Countess Cow Level) as your main weapon. Later in Hell, a 4-socket Monarch Shield gives a second Spirit off-hand.</span></div>
       </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>Getting the sockets</h2>
+      <span class="section-note">Larzuk, vendors, the Cube</span>
+    </div>
+    <p class="lede">Runes are the easy half. Every runeword also needs a base with exactly the right number of sockets, and the page above quietly assumes you have one. The first three you can buy outright; the four-socket bases are the real bottleneck.</p>
+    <div class="split">
+      <div class="tblwrap">
+        <table>
+          <thead><tr><th>Runeword</th><th class="skill">Base you need</th><th class="num">Sockets</th><th>How</th></tr></thead>
+          <tbody>
+            <tr><td>Stealth</td><td class="skill">Light armor (Quilted / Leather)</td><td class="num">2</td><td>Vendor <span class="tag cold">free</span></td></tr>
+            <tr><td>Lore</td><td class="skill">Any gray helm</td><td class="num">2</td><td>Vendor <span class="tag cold">free</span></td></tr>
+            <tr><td>Leaf</td><td class="skill">Short staff</td><td class="num">2</td><td>Vendor <span class="tag cold">free</span></td></tr>
+            <tr class="bp-hit"><td>Spirit <span class="tag fire">main</span></td><td class="skill">Broad Sword &mdash; 48 str</td><td class="num">4</td><td>Larzuk / Cube</td></tr>
+            <tr class="bp-hit"><td>Insight</td><td class="skill">Any polearm (merc carries it)</td><td class="num">4</td><td>Larzuk / Cube</td></tr>
+            <tr class="bp-hit"><td>Spirit <span class="tag cold">off-hand</span></td><td class="skill">Monarch &mdash; 156 str, clvl 54</td><td class="num">4</td><td>Larzuk / Cube</td></tr>
+            <tr class="bp-hit"><td>Infinity</td><td class="skill">Any polearm (merc carries it)</td><td class="num">4</td><td>Larzuk / Cube</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="checkpoint gap-flag">
+        <span class="mark">three charges, four wants</span>
+        <p>Larzuk sockets one item per difficulty — <b>three for the character's entire life</b>, and the plan has <b>four</b> items that need a 4-socket base. Something has to come from the Cube. Spend Larzuk on the two you'll carry longest — the <b>Spirit sword</b> in Normal and the <b>Monarch</b> in Hell — and cube the polearms, since the merc's weapon gets replaced anyway when Insight becomes Infinity.</p>
+      </div>
+    </div>
+    <div class="checkpoint gap-flag">
+      <span class="mark">trap &mdash; don't hand Larzuk a Crystal Sword</span>
+      <p>Larzuk gives the <i>maximum</i> sockets a base can hold, and that cuts against you here. A Crystal Sword above ilvl 40 maxes at <b>six</b>, so Larzuk hands back a 6-socket sword that <b>cannot hold Spirit</b> — the reward is wasted and the quest doesn't come back. A <b>Broad Sword caps at 4 no matter what</b>, which makes it the safe base: 5 more strength for a guaranteed result. Use a Crystal Sword only if you know it's ilvl 26&ndash;40.</p>
+    </div>
+    <div class="bp-cols">
+      <div class="tblwrap">
+        <table>
+          <thead><tr><th>Give Larzuk&hellip;</th><th class="skill">and you get</th></tr></thead>
+          <tbody>
+            <tr class="bp-hit"><td>White / gray</td><td class="skill">Maximum the base allows <span class="tag cold">always use these</span></td></tr>
+            <tr><td>Magic (blue)</td><td class="skill">1 or 2 sockets, 50/50</td></tr>
+            <tr><td>Rare, set, unique</td><td class="skill">Exactly 1, always</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tblwrap">
+        <table>
+          <thead><tr><th>Cube recipe</th><th class="skill">Runes + gem</th></tr></thead>
+          <tbody>
+            <tr><td>Weapon</td><td class="skill">Ral + Amn + Perfect Amethyst</td></tr>
+            <tr><td>Body armor</td><td class="skill">Tal + Thul + Perfect Topaz</td></tr>
+            <tr><td>Helm</td><td class="skill">Ral + Thul + Perfect Sapphire</td></tr>
+            <tr><td>Shield</td><td class="skill">Tal + Amn + Perfect Ruby</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">the Cube is unlimited but random</span>
+      <p>Recipes work on <b>normal (white/gray) items only</b> and give a <b>random</b> socket count from 1 up to the base's maximum — not the max. You can retry as often as you like, but each attempt burns two runes and a perfect gem, and it destroys nothing but the item you put in. On a Broad Sword, whose ceiling is 4, the odds are decent. Note the shield recipe wants an <b>Amn</b> — the same rune Spirit needs — so don't cube away your runeword.</p>
     </div>
   </div>
 
