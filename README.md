@@ -2,13 +2,34 @@
 
 Fire Ball → Frozen Orb hybrid Sorceress build reference for Diablo II: Resurrected.
 
-Single-file static site (`index.html`, no build step). Content is split across five
-tabs — Skill Point Ledger, Stats & Keys, Gear, Breakpoints & Resists, Mercenary —
-each linkable by hash (`#points`, `#stats`, `#gear`, `#numbers`, `#merc`).
-Light/dark themes follow the OS by default; the toggle in the header overrides and
-persists. Printing flattens every tab onto one page.
+**Live:** https://www.paul-ryan.online/d2r-sorc-build/
 
-Deployed automatically to GitHub Pages on every push to `main`.
+Single-file static site (`index.html`, no build step, no dependencies). Deployed
+automatically to GitHub Pages on every push to `main`.
+
+## Layout
+
+Content is split across five tabs, each linkable by hash:
+
+| Tab | Hash | Covers |
+| --- | --- | --- |
+| Skill Point Ledger | `#points` | Quest math, Phases 1–3, Static Field, the Ice Bolt verdict |
+| Stats & Keys | `#stats` | Stat budget and allocation, controller layout |
+| Gear | `#gear` | Runewords, getting sockets, gear by slot, shopping order by difficulty |
+| Breakpoints & Resists | `#numbers` | FCR/FHR tables, the Hell resist penalty |
+| Mercenary | `#merc` | Aura choice, Insight → Infinity, merc gear |
+
+Light and dark themes follow the OS by default; the header toggle overrides and
+persists to `localStorage`. Printing flattens every tab onto one page.
+
+## Open decision
+
+**Fire Bolt.** It is Fire Ball's synergy at +14% fire damage per level and currently
+sits at the 1-point prerequisite. The 6–11 point surplus cannot max it, but can take
+it to level 7–12 for roughly +84% to +154% — the best remaining use of those points,
+since Static Field wants exactly one and Warmth and Energy Shield want none. The
+tradeoff is holding Cold Mastery at 10 instead of 15. Deliberately unresolved: the
+Monarch respec reopens the whole skill tree, so it can be settled then.
 
 ## Local preview
 
