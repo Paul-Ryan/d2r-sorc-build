@@ -629,11 +629,11 @@ footer .wrap{
 <div class="tabbar">
   <div class="wrap">
     <div class="tablist" role="tablist" aria-label="Build sections">
-      <button class="tab" role="tab" id="tab-points"  aria-controls="panel-points"  aria-selected="true"><span class="idx">01</span>Skill Point Ledger</button>
-      <button class="tab" role="tab" id="tab-stats"   aria-controls="panel-stats"   aria-selected="false" tabindex="-1"><span class="idx">02</span>Stats &amp; Keys</button>
-      <button class="tab" role="tab" id="tab-gear"    aria-controls="panel-gear"    aria-selected="false" tabindex="-1"><span class="idx">03</span>Gear</button>
-      <button class="tab" role="tab" id="tab-numbers" aria-controls="panel-numbers" aria-selected="false" tabindex="-1"><span class="idx">04</span>Breakpoints &amp; Resists</button>
-      <button class="tab" role="tab" id="tab-merc"    aria-controls="panel-merc"    aria-selected="false" tabindex="-1"><span class="idx">05</span>Mercenary</button>
+      <button class="tab" role="tab" id="tab-points"  aria-controls="panel-points"  aria-selected="true"><span class="idx">01</span>Skill Points</button>
+      <button class="tab" role="tab" id="tab-gear"    aria-controls="panel-gear"    aria-selected="false" tabindex="-1"><span class="idx">02</span>Gear</button>
+      <button class="tab" role="tab" id="tab-stats"   aria-controls="panel-stats"   aria-selected="false" tabindex="-1"><span class="idx">03</span>Stats &amp; Keys</button>
+      <button class="tab" role="tab" id="tab-merc"    aria-controls="panel-merc"    aria-selected="false" tabindex="-1"><span class="idx">04</span>Mercenary</button>
+      <button class="tab" role="tab" id="tab-numbers" aria-controls="panel-numbers" aria-selected="false" tabindex="-1"><span class="idx">05</span>Breakpoints &amp; Resists</button>
     </div>
   </div>
 </div>
@@ -810,78 +810,7 @@ footer .wrap{
 
 </section>
 
-<!-- =================== 02 STATS & KEYS =================== -->
-<section role="tabpanel" id="panel-stats" aria-labelledby="tab-stats" tabindex="-1" hidden>
-
-  <div class="section">
-    <div class="section-head">
-      <h2>Stat allocation</h2>
-      <span class="section-note">every level-up</span>
-    </div>
-    <div class="tiles">
-      <div class="tile">
-        <div class="num">490</div>
-        <div class="label">From leveling (2&ndash;99), 5 per level</div>
-      </div>
-      <div class="tile">
-        <div class="num">15</div>
-        <div class="label">Lam Esen's Tome, all 3 difficulties</div>
-      </div>
-      <div class="tile accent-cold">
-        <div class="num">505</div>
-        <div class="label">Total stat points at level 99</div>
-      </div>
-    </div>
-    <p class="lede">You start with 10 strength, 25 dexterity, 10 vitality, 35 energy. Everything below is about where the other 505 go — and unlike skill points, there is no surplus here. Vitality wants all of it, and anything strength takes is life you don't get.</p>
-    <div class="statgrid">
-      <div class="statcard">
-        <span class="stat-verdict">Gear minimum</span>
-        <div class="stat-name">Strength</div>
-        <p>Only what your gear requires, and no more. Stealth plus a Spirit sword needs <b>48</b> on a Broad Sword base or <b>43</b> on a Crystal Sword — cheap either way. The Hell off-hand Spirit is the exception, and it's a big one; see below.</p>
-      </div>
-      <div class="statcard skip">
-        <span class="stat-verdict">Skip</span>
-        <div class="stat-name">Dexterity</div>
-        <p>Base only. Blocking isn't worth the investment on a caster — let Vitality do the survivability work instead.</p>
-      </div>
-      <div class="statcard">
-        <span class="stat-verdict">Everything else</span>
-        <div class="stat-name">Vitality</div>
-        <p>Your main survivability stat. Prioritize it every level-up once Strength's gear minimum is covered.</p>
-      </div>
-      <div class="statcard skip">
-        <span class="stat-verdict">Skip</span>
-        <div class="stat-name">Energy</div>
-        <p>Gear (Spirit, Stealth) and Warmth cover mana needs far more efficiently than points spent here.</p>
-      </div>
-    </div>
-    <div class="checkpoint">
-      <span class="mark">the Monarch decision, deferred</span>
-      <p>The Hell off-hand Spirit goes in a <b>Monarch: 156 strength</b>, and that is not a rounding error — <b>146 points</b> over your base 10, roughly <b>29% of the lifetime stat budget</b>, permanent from the moment you equip it. Don't pre-pay it. Carry only what your sword asks for (43&ndash;48), put everything else in Vitality, and <b>respec into the Monarch once you actually hold one</b> — you get a free reset per difficulty and the plan only spends one. Charms and +all-stat gear (Annihilus, Hellfire Torch) claw back 20&ndash;40 of the cost. And Monarch is the floor here, not a preference: it's the lowest-strength 4-socket non-class shield in the game, so there's no cheaper base to find.</p>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-head">
-      <h2>Controller layout</h2>
-      <span class="section-note">Xbox</span>
-    </div>
-    <p class="lede">Main skills on face buttons, utilities on triggers, emergency escapes always reachable. <b>Warmth, Fire Mastery, and Cold Mastery are passives</b> — the game won't offer them in the skill selector and there'd be no point binding them if it did. They run constantly once you've spent the points, so they're absent below by design, not by oversight.</p>
-    <div class="padgrid">
-      <div class="padkey off"><div class="btn">A</div><div><div class="skillname">Unmapped</div><div class="skilldesc">Interact / Throw — don't bind an active spell here or you'll cast it constantly while looting.</div></div></div>
-      <div class="padkey"><div class="btn">X</div><div><div class="skillname">Frozen Orb</div><div class="skilldesc">Primary AoE opener.</div></div></div>
-      <div class="padkey"><div class="btn">Y</div><div><div class="skillname">Fire Ball</div><div class="skilldesc">Spammable single-target / cold-immune killer.</div></div></div>
-      <div class="padkey"><div class="btn">B</div><div><div class="skillname">Glacial Spike / Ice Blast</div><div class="skilldesc">Freeze a charging enemy in place.</div></div></div>
-      <div class="padkey util"><div class="btn">RT</div><div><div class="skillname">Teleport</div><div class="skilldesc">Hold for continuous map traversal.</div></div></div>
-      <div class="padkey util"><div class="btn">LT+A</div><div><div class="skillname">Frozen Armor</div><div class="skilldesc">Recast every few minutes.</div></div></div>
-      <div class="padkey util"><div class="btn">LT+B</div><div><div class="skillname">Static Field</div><div class="skilldesc">Boss opener — three casts drops a Hell boss to 50%. Useless on lightning immunes.</div></div></div>
-      <div class="padkey util"><div class="btn">RS</div><div><div class="skillname">Town Portal</div><div class="skilldesc">Quick emergency exit.</div></div></div>
-    </div>
-  </div>
-
-</section>
-
-<!-- =================== 03 RUNEWORDS =================== -->
+<!-- =================== 02 GEAR =================== -->
 <section role="tabpanel" id="panel-gear" aria-labelledby="tab-gear" tabindex="-1" hidden>
 
   <div class="section">
@@ -1032,7 +961,132 @@ footer .wrap{
 
 </section>
 
-<!-- =================== 04 BREAKPOINTS & RESISTS =================== -->
+<!-- =================== 03 STATS & KEYS =================== -->
+<section role="tabpanel" id="panel-stats" aria-labelledby="tab-stats" tabindex="-1" hidden>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>Stat allocation</h2>
+      <span class="section-note">every level-up</span>
+    </div>
+    <div class="tiles">
+      <div class="tile">
+        <div class="num">490</div>
+        <div class="label">From leveling (2&ndash;99), 5 per level</div>
+      </div>
+      <div class="tile">
+        <div class="num">15</div>
+        <div class="label">Lam Esen's Tome, all 3 difficulties</div>
+      </div>
+      <div class="tile accent-cold">
+        <div class="num">505</div>
+        <div class="label">Total stat points at level 99</div>
+      </div>
+    </div>
+    <p class="lede">You start with 10 strength, 25 dexterity, 10 vitality, 35 energy. Everything below is about where the other 505 go — and unlike skill points, there is no surplus here. Vitality wants all of it, and anything strength takes is life you don't get.</p>
+    <div class="statgrid">
+      <div class="statcard">
+        <span class="stat-verdict">Gear minimum</span>
+        <div class="stat-name">Strength</div>
+        <p>Only what your gear requires, and no more. Stealth plus a Spirit sword needs <b>48</b> on a Broad Sword base or <b>43</b> on a Crystal Sword — cheap either way. The Hell off-hand Spirit is the exception, and it's a big one; see below.</p>
+      </div>
+      <div class="statcard skip">
+        <span class="stat-verdict">Skip</span>
+        <div class="stat-name">Dexterity</div>
+        <p>Base only. Blocking isn't worth the investment on a caster — let Vitality do the survivability work instead.</p>
+      </div>
+      <div class="statcard">
+        <span class="stat-verdict">Everything else</span>
+        <div class="stat-name">Vitality</div>
+        <p>Your main survivability stat. Prioritize it every level-up once Strength's gear minimum is covered.</p>
+      </div>
+      <div class="statcard skip">
+        <span class="stat-verdict">Skip</span>
+        <div class="stat-name">Energy</div>
+        <p>Gear (Spirit, Stealth) and Warmth cover mana needs far more efficiently than points spent here.</p>
+      </div>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">the Monarch decision, deferred</span>
+      <p>The Hell off-hand Spirit goes in a <b>Monarch: 156 strength</b>, and that is not a rounding error — <b>146 points</b> over your base 10, roughly <b>29% of the lifetime stat budget</b>, permanent from the moment you equip it. Don't pre-pay it. Carry only what your sword asks for (43&ndash;48), put everything else in Vitality, and <b>respec into the Monarch once you actually hold one</b> — you get a free reset per difficulty and the plan only spends one. Charms and +all-stat gear (Annihilus, Hellfire Torch) claw back 20&ndash;40 of the cost. And Monarch is the floor here, not a preference: it's the lowest-strength 4-socket non-class shield in the game, so there's no cheaper base to find.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>Controller layout</h2>
+      <span class="section-note">Xbox</span>
+    </div>
+    <p class="lede">Main skills on face buttons, utilities on triggers, emergency escapes always reachable. <b>Warmth, Fire Mastery, and Cold Mastery are passives</b> — the game won't offer them in the skill selector and there'd be no point binding them if it did. They run constantly once you've spent the points, so they're absent below by design, not by oversight.</p>
+    <div class="padgrid">
+      <div class="padkey off"><div class="btn">A</div><div><div class="skillname">Unmapped</div><div class="skilldesc">Interact / Throw — don't bind an active spell here or you'll cast it constantly while looting.</div></div></div>
+      <div class="padkey"><div class="btn">X</div><div><div class="skillname">Frozen Orb</div><div class="skilldesc">Primary AoE opener.</div></div></div>
+      <div class="padkey"><div class="btn">Y</div><div><div class="skillname">Fire Ball</div><div class="skilldesc">Spammable single-target / cold-immune killer.</div></div></div>
+      <div class="padkey"><div class="btn">B</div><div><div class="skillname">Glacial Spike / Ice Blast</div><div class="skilldesc">Freeze a charging enemy in place.</div></div></div>
+      <div class="padkey util"><div class="btn">RT</div><div><div class="skillname">Teleport</div><div class="skilldesc">Hold for continuous map traversal.</div></div></div>
+      <div class="padkey util"><div class="btn">LT+A</div><div><div class="skillname">Frozen Armor</div><div class="skilldesc">Recast every few minutes.</div></div></div>
+      <div class="padkey util"><div class="btn">LT+B</div><div><div class="skillname">Static Field</div><div class="skilldesc">Boss opener — three casts drops a Hell boss to 50%. Useless on lightning immunes.</div></div></div>
+      <div class="padkey util"><div class="btn">RS</div><div><div class="skillname">Town Portal</div><div class="skilldesc">Quick emergency exit.</div></div></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- =================== 04 MERCENARY =================== -->
+<section role="tabpanel" id="panel-merc" aria-labelledby="tab-merc" tabindex="-1" hidden>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>Mercenary plan</h2>
+      <span class="section-note">not in the original note</span>
+    </div>
+    <p class="lede">Sorceresses have no minion or defensive skill of their own, so the merc isn't a convenience — it's the build's only source of physical damage and melee aggro. Hire from Act 2 <b>Nightmare</b>, not Normal: a merc's aura level and stats lock in at whatever difficulty you hired them from, and a Nightmare hire scales through Hell fine, while a Normal one doesn't.</p>
+    <div class="split">
+      <div class="tblwrap">
+        <table>
+          <thead><tr><th>Type</th><th>Normal</th><th class="skill">Nightmare</th><th>Hell</th></tr></thead>
+          <tbody>
+            <tr><td>Defensive</td><td>Defiance</td><td class="skill">Holy Freeze</td><td>Defiance</td></tr>
+            <tr class="bp-hit"><td>Offensive</td><td>Blessed Aim</td><td class="skill">Might</td><td>Blessed Aim</td></tr>
+            <tr><td>Combat</td><td>Prayer</td><td class="skill">Thorns</td><td>Prayer</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="checkpoint">
+        <span class="mark">pick offensive / might</span>
+        <p>An item's granted aura (from a runeword like Infinity, below) runs <i>alongside</i> the merc's own class aura, not instead of it — so the Offensive merc's <b>Might</b> (physical damage boost) stacks with whatever aura his weapon grants. That's the whole reason to hire Offensive over Holy Freeze or Prayer.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>Mercenary weapon progression</h2>
+      <span class="section-note">polearms</span>
+    </div>
+    <div class="rwgrid">
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Insight</span><span class="rwlvl">req. level 27</span></div>
+        <div class="rwrunes">Ral + Tir + Tal + Sol &middot; 4-socket Polearm</div>
+        <div class="rwrow"><b>Why</b><span>Grants a Meditation aura — effectively infinite mana regen for you, not just the merc. The budget/early answer to a caster's mana problem.</span></div>
+        <div class="rwrow"><b>Where</b><span>Hand-me-down from your own Fire Ball leveling gear search, or a cheap trade buy — components are common.</span></div>
+      </div>
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Infinity</span><span class="rwlvl">req. level 63</span></div>
+        <div class="rwrunes">Ber + Mal + Ber + Ist &middot; 4-socket Polearm</div>
+        <div class="rwrow"><b>Why</b><span>Grants level 12 Conviction — up to &minus;85% enemy resistance. This is what actually makes Hell work: without it, a meaningful slice of Hell monsters are cold- or fire-immune and simply can't be killed by either of your two elements.</span></div>
+        <div class="rwrow"><b>Where</b><span>Endgame target, not a leveling item — the runes alone (two Ber, a Mal, an Ist) are a mid-to-late Hell farming goal. Run Insight until you can afford the swap.</span></div>
+      </div>
+    </div>
+    <div class="checkpoint gap-flag">
+      <span class="mark">gap</span>
+      <p>Merc survivability isn't covered anywhere else in this plan. A geared merc tanks hits your Sorceress can't afford to take; a naked one dies on repeat in Hell and stops contributing Might or Conviction when you need it most. Budget for a helm (Vampire Gaze is the classic cheap-ish pick) and a defensive armor (Duriel's Shell or a Treachery runeword) alongside the weapon progression — treat this as its own line item, not something that falls out of your own gear farming.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- =================== 05 BREAKPOINTS & RESISTS =================== -->
 <section role="tabpanel" id="panel-numbers" aria-labelledby="tab-numbers" tabindex="-1" hidden>
 
   <div class="section">
@@ -1108,60 +1162,6 @@ footer .wrap{
     <div class="checkpoint gap-flag">
       <span class="mark">gap &mdash; fire resistance specifically</span>
       <p>The Sorceress has no defensive resist skill of her own — Cold Mastery and Fire Mastery lower <i>enemy</i> resistance, they don't raise yours. The runewords do contribute, but unevenly. Running Lore + Stealth + both Spirits in Hell, and counting three Scrolls of Resistance, you land at roughly <b>fire 30%</b>, cold 65%, lightning 95%, poison 95% raw — against the <b>175%</b> Hell needs for a capped 75%. Every element is short, but <b>fire is the hole</b>: not one item in the plan grants a point of it. Rings, amulet, and charms have to close a ~145% fire gap and ~110% cold gap, and that's worth pricing out before Hell rather than after.</p>
-    </div>
-  </div>
-
-</section>
-
-<!-- =================== 05 MERCENARY =================== -->
-<section role="tabpanel" id="panel-merc" aria-labelledby="tab-merc" tabindex="-1" hidden>
-
-  <div class="section">
-    <div class="section-head">
-      <h2>Mercenary plan</h2>
-      <span class="section-note">not in the original note</span>
-    </div>
-    <p class="lede">Sorceresses have no minion or defensive skill of their own, so the merc isn't a convenience — it's the build's only source of physical damage and melee aggro. Hire from Act 2 <b>Nightmare</b>, not Normal: a merc's aura level and stats lock in at whatever difficulty you hired them from, and a Nightmare hire scales through Hell fine, while a Normal one doesn't.</p>
-    <div class="split">
-      <div class="tblwrap">
-        <table>
-          <thead><tr><th>Type</th><th>Normal</th><th class="skill">Nightmare</th><th>Hell</th></tr></thead>
-          <tbody>
-            <tr><td>Defensive</td><td>Defiance</td><td class="skill">Holy Freeze</td><td>Defiance</td></tr>
-            <tr class="bp-hit"><td>Offensive</td><td>Blessed Aim</td><td class="skill">Might</td><td>Blessed Aim</td></tr>
-            <tr><td>Combat</td><td>Prayer</td><td class="skill">Thorns</td><td>Prayer</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="checkpoint">
-        <span class="mark">pick offensive / might</span>
-        <p>An item's granted aura (from a runeword like Infinity, below) runs <i>alongside</i> the merc's own class aura, not instead of it — so the Offensive merc's <b>Might</b> (physical damage boost) stacks with whatever aura his weapon grants. That's the whole reason to hire Offensive over Holy Freeze or Prayer.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-head">
-      <h2>Mercenary weapon progression</h2>
-      <span class="section-note">polearms</span>
-    </div>
-    <div class="rwgrid">
-      <div class="rwcard">
-        <div class="rwhead"><span class="rwname">Insight</span><span class="rwlvl">req. level 27</span></div>
-        <div class="rwrunes">Ral + Tir + Tal + Sol &middot; 4-socket Polearm</div>
-        <div class="rwrow"><b>Why</b><span>Grants a Meditation aura — effectively infinite mana regen for you, not just the merc. The budget/early answer to a caster's mana problem.</span></div>
-        <div class="rwrow"><b>Where</b><span>Hand-me-down from your own Fire Ball leveling gear search, or a cheap trade buy — components are common.</span></div>
-      </div>
-      <div class="rwcard">
-        <div class="rwhead"><span class="rwname">Infinity</span><span class="rwlvl">req. level 63</span></div>
-        <div class="rwrunes">Ber + Mal + Ber + Ist &middot; 4-socket Polearm</div>
-        <div class="rwrow"><b>Why</b><span>Grants level 12 Conviction — up to &minus;85% enemy resistance. This is what actually makes Hell work: without it, a meaningful slice of Hell monsters are cold- or fire-immune and simply can't be killed by either of your two elements.</span></div>
-        <div class="rwrow"><b>Where</b><span>Endgame target, not a leveling item — the runes alone (two Ber, a Mal, an Ist) are a mid-to-late Hell farming goal. Run Insight until you can afford the swap.</span></div>
-      </div>
-    </div>
-    <div class="checkpoint gap-flag">
-      <span class="mark">gap</span>
-      <p>Merc survivability isn't covered anywhere else in this plan. A geared merc tanks hits your Sorceress can't afford to take; a naked one dies on repeat in Hell and stops contributing Might or Conviction when you need it most. Budget for a helm (Vampire Gaze is the classic cheap-ish pick) and a defensive armor (Duriel's Shell or a Treachery runeword) alongside the weapon progression — treat this as its own line item, not something that falls out of your own gear farming.</p>
     </div>
   </div>
 
