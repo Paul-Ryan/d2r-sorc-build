@@ -540,6 +540,62 @@ tr.bp-hit td:first-child::before{
 .rwrow span{color:var(--ink-muted);}
 .rwrow span b{color:var(--ink);font-weight:600;}
 
+.rwstats{
+  margin:2px 0 14px 0;
+  padding:12px 14px;
+  background:var(--surface-2);
+  border-radius:10px;
+}
+.rwstats-label{
+  font-family:'JetBrains Mono',ui-monospace,monospace;
+  color:var(--ink-faint);
+  font-weight:600;
+  font-size:10px;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+.rwstat{
+  font-size:14px;
+  line-height:1.6;
+  color:var(--ink-muted);
+  padding:2px 0;
+  display:flex;
+  gap:8px;
+  align-items:baseline;
+}
+.rwstat b{color:var(--ink);font-weight:600;}
+.rwstat.roll{
+  background:var(--gold-bg);
+  color:var(--gold);
+  border-radius:6px;
+  padding:3px 8px;
+  margin:1px 0;
+  font-weight:600;
+}
+.rwstat.roll b{color:var(--gold);}
+.rwstat .rolltag{
+  font-family:'JetBrains Mono',ui-monospace,monospace;
+  font-size:9px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  background:var(--gold);
+  color:var(--surface);
+  border-radius:99px;
+  padding:1px 7px;
+  white-space:nowrap;
+  flex:none;
+}
+.rwstat .hittag{
+  font-family:'JetBrains Mono',ui-monospace,monospace;
+  font-size:9px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  white-space:nowrap;
+  flex:none;
+}
+
 /* ---------- verdict ---------- */
 .bp-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;align-items:start;}
 .verdict{
@@ -884,16 +940,42 @@ footer .wrap{
       <span class="section-note">goal: Leaf &amp; Stealth</span>
     </div>
     <p class="lede">Runewords only, and nothing else. The resist penalty is 0% here, so spend nothing chasing it &mdash; every rune the Countess drops and every spare gold piece goes toward these two.</p>
+    <div class="checkpoint">
+      <span class="mark">reading the stat blocks below</span>
+      <p>Every runeword's full stats are listed under its card. Most lines are <b>fixed</b> &mdash; every copy of that runeword rolls identically, so there's nothing to chase. A few lines are <b>highlighted gold and tagged "rolled once"</b> &mdash; those are randomized <i>when the runeword is created</i> and then locked to that specific item forever. The only way to change one is to break the item down (or start over in a fresh base) and remake the runeword, hoping for a better roll. Plain min&ndash;max damage lines (tagged "per hit") aren't part of this &mdash; that's normal per-swing variance every weapon has, not something remaking changes.</p>
+    </div>
     <div class="rwgrid">
       <div class="rwcard">
         <div class="rwhead"><span class="rwname">Leaf</span><span class="rwlvl">req. level 19</span></div>
         <div class="rwrunes">Tir + Ral &middot; 2-socket Staff</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats</div>
+          <div class="rwstat"><span>+3 to Fire Skills</span></div>
+          <div class="rwstat"><span>Adds 5&ndash;30 Fire Damage</span><span class="hittag">per hit</span></div>
+          <div class="rwstat"><span>+3 to Inferno <i>(Sorceress only)</i></span></div>
+          <div class="rwstat"><span>+3 to Fire Bolt <i>(Sorceress only)</i></span></div>
+          <div class="rwstat"><span>+3 to Warmth <i>(Sorceress only)</i></span></div>
+          <div class="rwstat"><span>+2 to Defense per character level</span><span class="hittag">scales w/ level</span></div>
+          <div class="rwstat"><span>Cold Resist +33%</span></div>
+          <div class="rwstat"><span>+2 to Mana after each Kill</span></div>
+        </div>
         <div class="rwrow"><b>Why</b><span>+3 to Fire Skills — turns early Fire Ball into a nuke, breaks Normal wide open. Also carries Cold Resist +33%.</span></div>
         <div class="rwrow"><b>Where</b><span>2-socket short staff from Akara. Must be gray/white base, not "Magic".</span></div>
       </div>
       <div class="rwcard">
         <div class="rwhead"><span class="rwname">Stealth</span><span class="rwlvl">req. level 17</span></div>
         <div class="rwrunes">Tal + Eth &middot; 2-socket Body Armor</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats &mdash; no random rolls, every copy is identical</div>
+          <div class="rwstat"><span>+25% Faster Run/Walk</span></div>
+          <div class="rwstat"><span>+25% Faster Cast Rate</span></div>
+          <div class="rwstat"><span>+25% Faster Hit Recovery</span></div>
+          <div class="rwstat"><span>+6 to Dexterity</span></div>
+          <div class="rwstat"><span>Regenerate Mana 15%</span></div>
+          <div class="rwstat"><span>+15 to Maximum Stamina</span></div>
+          <div class="rwstat"><span>Poison Resist +30%</span></div>
+          <div class="rwstat"><span>Magic Damage Reduced by 3</span></div>
+        </div>
         <div class="rwrow"><b>Why</b><span>25% Faster Cast Rate, <b>25% Faster Hit Recovery</b>, 25% Faster Run/Walk, mana regen, Poison Resist +30%. Wear from Act 2 Normal through Nightmare.</span></div>
         <div class="rwrow"><b>Where</b><span>Any 2-socket light armor (Quilted/Leather) from Charsi or Fara.</span></div>
       </div>
@@ -918,19 +1000,56 @@ footer .wrap{
       <div class="rwcard">
         <div class="rwhead"><span class="rwname">Spirit</span><span class="rwlvl">req. level 25</span></div>
         <div class="rwrunes">Tal + Thul + Ort + Amn &middot; Sword</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats &mdash; sword half</div>
+          <div class="rwstat"><span>+2 to All Skills</span></div>
+          <div class="rwstat roll"><span>Faster Cast Rate 25&ndash;35%</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat"><span>+55% Faster Hit Recovery</span></div>
+          <div class="rwstat"><span>+250 Defense vs. Missile</span></div>
+          <div class="rwstat"><span>+22 to Vitality</span></div>
+          <div class="rwstat roll"><span>+89&ndash;112 to Mana</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat roll"><span>Magic Damage Absorb 3&ndash;8%</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat"><span>Adds 75 Poison Damage over 5 Seconds</span></div>
+          <div class="rwstat"><span>Adds 3&ndash;14 Cold Damage</span><span class="hittag">per hit</span></div>
+          <div class="rwstat"><span>Adds 1&ndash;50 Lightning Damage</span><span class="hittag">per hit</span></div>
+          <div class="rwstat"><span>7% Life Stolen per Hit</span></div>
+        </div>
         <div class="rwrow"><b>Why</b><span>+2 All Skills, 25&ndash;35% FCR, <b>55% Faster Hit Recovery</b>, +22 Vitality, ~+100 mana. This half carries no resists &mdash; that's the shield's job, in Hell.</span></div>
         <div class="rwrow"><b>Where</b><span>Make it in a 4-socket sword &mdash; <b>Broad or Crystal, whichever you find first</b> &mdash; from Act 4/5 Normal or Countess Cow Level, as your main weapon.</span></div>
       </div>
       <div class="rwcard">
         <div class="rwhead"><span class="rwname">Lore</span><span class="rwlvl">req. level 27</span></div>
         <div class="rwrunes">Ort + Sol &middot; 2-socket Helm</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats &mdash; no random rolls, every copy is identical</div>
+          <div class="rwstat"><span>+1 to All Skills</span></div>
+          <div class="rwstat"><span>+10 to Energy</span></div>
+          <div class="rwstat"><span>Lightning Resist +30%</span></div>
+          <div class="rwstat"><span>Damage Reduced by 7</span></div>
+          <div class="rwstat"><span>+2 to Mana after each Kill</span></div>
+          <div class="rwstat"><span>+2 to Light Radius</span></div>
+        </div>
         <div class="rwrow"><b>Why</b><span>+1 All Skills, Lightning Resist +30%, +10 Energy, Damage Reduced by 7. The cheapest +1 skills in the helm slot.</span></div>
         <div class="rwrow"><b>Where</b><span>Any 2-socket gray helm &mdash; and since you're already farming Nightmare Countess for Spirit's Thul and Amn, Ort and Sol drop alongside them for free.</span></div>
       </div>
       <div class="rwcard">
         <div class="rwhead"><span class="rwname">Insight</span><span class="rwlvl">req. level 27 &middot; merc</span></div>
         <div class="rwrunes">Ral + Tir + Tal + Sol &middot; 4-socket Polearm</div>
-        <div class="rwrow"><b>Why</b><span>Meditation aura &mdash; effectively infinite mana for you, not just the merc.</span></div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats</div>
+          <div class="rwstat roll"><span>Meditation Aura, Level 12&ndash;17</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat"><span>+35% Faster Cast Rate</span></div>
+          <div class="rwstat"><span>+9 to Minimum Damage</span></div>
+          <div class="rwstat roll"><span>Bonus to Attack Rating 180&ndash;250%</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat"><span>Adds 5&ndash;30 Fire Damage</span><span class="hittag">per hit</span></div>
+          <div class="rwstat"><span>Adds 75 Poison Damage over 5 Seconds</span></div>
+          <div class="rwstat roll"><span>+1&ndash;6 to Critical Strike</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat"><span>+5 to All Attributes</span></div>
+          <div class="rwstat"><span>+2 to Mana after each Kill</span></div>
+          <div class="rwstat"><span>23% Better Chance of Getting Magic Items</span></div>
+          <div class="rwstat roll"><span>+200&ndash;260% Enhanced Damage</span><span class="rolltag">rolled once</span></div>
+        </div>
+        <div class="rwrow"><b>Why</b><span>Meditation aura &mdash; effectively infinite mana for you, not just the merc. Worth remaking if it lands below level 15 &mdash; the aura range is the roll that matters most here.</span></div>
         <div class="rwrow"><b>Where</b><span>Merc's weapon slot; cube the base rather than spending a Larzuk charge. Full detail in the Mercenary tab.</span></div>
       </div>
     </div>
@@ -950,13 +1069,40 @@ footer .wrap{
       <div class="rwcard">
         <div class="rwhead"><span class="rwname">Spirit</span><span class="rwlvl">shield half</span></div>
         <div class="rwrunes">Tal + Thul + Ort + Amn &middot; Shield</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats &mdash; shield half</div>
+          <div class="rwstat"><span>+2 to All Skills</span></div>
+          <div class="rwstat roll"><span>Faster Cast Rate 25&ndash;35%</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat"><span>+55% Faster Hit Recovery</span></div>
+          <div class="rwstat"><span>+250 Defense vs. Missile</span></div>
+          <div class="rwstat"><span>+22 to Vitality</span></div>
+          <div class="rwstat roll"><span>+89&ndash;112 to Mana</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat roll"><span>Magic Damage Absorb 3&ndash;8%</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat"><span>Poison Resist +35%</span></div>
+          <div class="rwstat"><span>Cold Resist +35%</span></div>
+          <div class="rwstat"><span>Lightning Resist +35%</span></div>
+          <div class="rwstat"><span>Attacker Takes Damage of 14</span></div>
+        </div>
         <div class="rwrow"><b>Why</b><span>The same +2 skills / FCR / FHR / mana as the sword half, plus <b>Cold, Lightning, and Poison Resist +35% each</b> &mdash; the resists the sword half doesn't carry.</span></div>
         <div class="rwrow"><b>Where</b><span>A 4-socket <b>Monarch</b> &mdash; 156 strength, level 54. Don't pre-pay that strength: carry only what your sword needs until you actually hold one, then respec into it (see <i>Stats &amp; Keys</i>) and spend your last Larzuk charge here.</span></div>
       </div>
       <div class="rwcard">
         <div class="rwhead"><span class="rwname">Infinity</span><span class="rwlvl">req. level 63 &middot; merc</span></div>
         <div class="rwrunes">Ber + Mal + Ber + Ist &middot; 4-socket Polearm</div>
-        <div class="rwrow"><b>Why</b><span>Level 12 Conviction, up to &minus;85% enemy resistance &mdash; what actually makes Hell farmable once cold- or fire-immune packs show up.</span></div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats</div>
+          <div class="rwstat"><span>50% Chance to cast level 20 Chain Lightning on Kill</span></div>
+          <div class="rwstat"><span>Level 12 Conviction Aura when Equipped</span></div>
+          <div class="rwstat"><span>+35% Faster Run/Walk</span></div>
+          <div class="rwstat roll"><span>&minus;45 to &minus;55% to Enemy Lightning Resistance</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat"><span>40% Chance of Crushing Blow</span></div>
+          <div class="rwstat"><span>Prevent Monster Heal</span></div>
+          <div class="rwstat"><span>+0.5 to Vitality per character level</span><span class="hittag">scales w/ level</span></div>
+          <div class="rwstat"><span>30% Better Chance of Getting Magic Items</span></div>
+          <div class="rwstat"><span>Level 21 Cyclone Armor (30/30 Charges)</span></div>
+          <div class="rwstat roll"><span>+255&ndash;325% Enhanced Damage</span><span class="rolltag">rolled once</span></div>
+        </div>
+        <div class="rwrow"><b>Why</b><span>Level 12 Conviction, up to &minus;85% enemy resistance &mdash; what actually makes Hell farmable once cold- or fire-immune packs show up. The aura level and Run/Walk are fixed, so there's nothing to reroll for those; the only stat worth a remake is the enemy-lightning-resist roll, and only if you're relying on lightning to break immunes.</span></div>
         <div class="rwrow"><b>Where</b><span>Replaces Insight on the merc's weapon. Mal and one Ist still come from Hell Countess; the two Ber runes need Lower Kurast chests, Travincal, or Cow Level &mdash; see the farming-order note above. Full detail in the Mercenary tab.</span></div>
       </div>
     </div>
@@ -1103,12 +1249,14 @@ footer .wrap{
         <div class="rwrunes">Ral + Tir + Tal + Sol &middot; 4-socket Polearm</div>
         <div class="rwrow"><b>Why</b><span>Grants a Meditation aura — effectively infinite mana regen for you, not just the merc. The budget/early answer to a caster's mana problem.</span></div>
         <div class="rwrow"><b>Where</b><span>Hand-me-down from your own Fire Ball leveling gear search, or a cheap trade buy — components are common.</span></div>
+        <div class="rwrow"><b>Full stats</b><span>See the Insight card in the <i>Gear</i> tab (Nightmare section) &mdash; aura level, attack rating bonus, crit, and enhanced damage all roll as ranges worth remaking for.</span></div>
       </div>
       <div class="rwcard">
         <div class="rwhead"><span class="rwname">Infinity</span><span class="rwlvl">req. level 63</span></div>
         <div class="rwrunes">Ber + Mal + Ber + Ist &middot; 4-socket Polearm</div>
         <div class="rwrow"><b>Why</b><span>Grants level 12 Conviction — up to &minus;85% enemy resistance. This is what actually makes Hell work: without it, a meaningful slice of Hell monsters are cold- or fire-immune and simply can't be killed by either of your two elements.</span></div>
         <div class="rwrow"><b>Where</b><span>Endgame target, not a leveling item — the runes alone (two Ber, a Mal, an Ist) are a mid-to-late Hell farming goal. Run Insight until you can afford the swap.</span></div>
+        <div class="rwrow"><b>Full stats</b><span>See the Infinity card in the <i>Gear</i> tab (Hell section) &mdash; only the enemy-lightning-resist and enhanced-damage lines are randomized, everything else is fixed.</span></div>
       </div>
     </div>
     <div class="checkpoint gap-flag">
