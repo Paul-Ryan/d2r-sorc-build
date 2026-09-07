@@ -288,6 +288,16 @@ h2{
   color:var(--ink-faint);
 }
 .lede{color:var(--ink-muted);font-size:1.06em;line-height:1.65;margin-bottom:22px;}
+.totals-aside{
+  font-size:13.5px;
+  line-height:1.6;
+  color:var(--ink-faint);
+  max-width:72ch;
+  margin:0 0 clamp(32px,5vw,52px);
+  padding-bottom:clamp(20px,3vw,32px);
+  border-bottom:1px solid var(--rule);
+}
+.totals-aside b.mono, .totals-aside span.mono{color:var(--ink-muted);font-weight:600;}
 
 /* table + its note, side by side on wide screens */
 .split{display:grid;gap:20px;align-items:start;}
@@ -643,27 +653,7 @@ footer .wrap{
 <!-- =================== 01 SKILL POINTS =================== -->
 <section role="tabpanel" id="panel-points" aria-labelledby="tab-points" tabindex="-1">
 
-  <div class="section">
-    <div class="section-head">
-      <h2>Points earned by level 99</h2>
-      <span class="section-note">quest math</span>
-    </div>
-    <div class="tiles">
-      <div class="tile">
-        <div class="num">98</div>
-        <div class="label">From leveling (2&ndash;99)</div>
-      </div>
-      <div class="tile">
-        <div class="num">12</div>
-        <div class="label">Quest rewards, all 3 difficulties</div>
-      </div>
-      <div class="tile accent-fire">
-        <div class="num">110</div>
-        <div class="label">Total available at level 99</div>
-      </div>
-    </div>
-    <p class="lede">Quest points come from three repeatable rewards — <b>Den of Evil</b> (+1, Act 1), <b>Radament's Lair</b> (+1, Act 2), and <b>The Fallen Angel / Izual</b> (+2, Act 4) — each paid out once per difficulty. All three are quick, low-risk quests almost every character finishes on the way through, so the plan below assumes you take them.</p>
-  </div>
+  <p class="totals-aside"><b class="mono">110</b> skill points total by level 99 &mdash; <span class="mono">98</span> from leveling, <span class="mono">12</span> from quest rewards (Den of Evil, Radament's Lair, The Fallen Angel/Izual &mdash; once per difficulty each, all low-risk quests almost every character finishes anyway). Assumed throughout below.</p>
 
   <div class="section">
     <div class="section-head">
