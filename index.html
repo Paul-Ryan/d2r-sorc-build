@@ -385,6 +385,22 @@ tfoot td{
   border-bottom:none;
 }
 tfoot tr:hover td{background:var(--surface-2);}
+tr.fillbreak td{
+  background:var(--gold-bg);
+  color:var(--gold);
+  font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:11.5px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  font-weight:600;
+  text-align:center;
+}
+td.runes{
+  font-family:'JetBrains Mono',ui-monospace,monospace;
+  font-size:13.5px;
+  color:var(--gold);
+  white-space:nowrap;
+}
 .tag{
   display:inline-block;
   font-family:'JetBrains Mono',ui-monospace,monospace;
@@ -400,8 +416,9 @@ tfoot tr:hover td{background:var(--surface-2);}
 .tag.fire{background:var(--fire-bg);color:var(--fire);}
 .tag.cold{background:var(--cold-bg);color:var(--cold);}
 
-/* rows the build actually reaches */
-tr.bp-hit td{background:var(--cold-bg)!important;}
+/* row-mark highlights a row worth looking at; bp-hit adds the "reached"
+   label, and is only for thresholds the build genuinely lands on */
+tr.bp-hit td, tr.row-mark td{background:var(--cold-bg)!important;}
 tr.bp-hit td:first-child::before{
   content:"reached";
   font-family:'JetBrains Mono',ui-monospace,monospace;
@@ -640,6 +657,64 @@ tr.bp-hit td:first-child::before{
 .reasoning li::before{content:"";position:absolute;left:0;top:.65em;width:10px;height:1px;background:var(--gold);}
 .reasoning li b{color:var(--ink);}
 
+/* ---------- skill-point rail: gates are the only levels that matter ---------- */
+.railstage{
+  border:1px solid var(--rule);
+  border-radius:var(--radius);
+  background:var(--surface);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.railhead{
+  display:flex;align-items:baseline;gap:4px 14px;flex-wrap:wrap;
+  padding:12px 18px;
+  background:var(--surface-2);
+  border-bottom:1px solid var(--rule);
+}
+.railhead .lvl{
+  font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  font-weight:600;color:var(--gold);
+}
+.railhead .unlock{font-size:15px;color:var(--ink-muted);}
+.railhead .unlock b{color:var(--ink);font-weight:600;}
+.railbody{padding:2px 18px 6px;}
+.spendrow{
+  display:grid;
+  grid-template-columns:minmax(108px,auto) minmax(82px,auto) minmax(0,1fr);
+  gap:2px 16px;align-items:baseline;
+  padding:11px 0;
+  border-bottom:1px solid var(--rule);
+}
+.spendrow:last-child{border-bottom:none;}
+.spendrow .sk{font-weight:600;font-size:16.5px;}
+.spendrow .amt{
+  font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:12.5px;color:var(--ink-faint);white-space:nowrap;
+}
+.spendrow .why{font-size:15px;line-height:1.6;color:var(--ink-muted);}
+.spendrow .why b{color:var(--ink);font-weight:600;}
+.spendrow.sink .sk{color:var(--cold);}
+.spendrow.sink .amt{color:var(--cold);font-weight:600;}
+.railjoin{
+  position:relative;
+  margin-left:30px;
+  padding:15px 0 15px 24px;
+  border-left:1px solid var(--rule-strong);
+}
+.railjoin::after{
+  content:"";position:absolute;left:-4px;bottom:-1px;
+  width:7px;height:7px;
+  border-right:1px solid var(--rule-strong);
+  border-bottom:1px solid var(--rule-strong);
+  transform:rotate(45deg);
+}
+.railjoin .joinnote{margin:0;font-size:15px;line-height:1.65;color:var(--ink-muted);max-width:62ch;}
+.railjoin .joinnote b{color:var(--ink);font-weight:600;}
+.railjoin.flag{border-left-color:var(--gold);}
+.railjoin.flag::after{border-right-color:var(--gold);border-bottom-color:var(--gold);}
+.railjoin.flag .joinnote,.railjoin.flag .joinnote b{color:var(--gold);}
+
 /* ---------- footer ---------- */
 footer{
   border-top:1px solid var(--rule);
@@ -664,6 +739,9 @@ footer .wrap{
   th,td{padding:10px 13px;}
   .rwcard,.statcard{padding:16px 18px;}
   .section-head{gap:2px;}
+  .spendrow{grid-template-columns:minmax(0,1fr);gap:3px;}
+  .railbody{padding:2px 14px 6px;}
+  .railhead{padding:11px 14px;}
 }
 
 /* ---------- print: flatten every tab ---------- */
@@ -713,88 +791,175 @@ footer .wrap{
 
   <div class="section">
     <div class="section-head">
-      <h2>Phase 1 &mdash; Normal, levels 2&ndash;29</h2>
-      <span class="section-note">no respec yet</span>
+      <h2>The leveling build &mdash; Normal, to level 35</h2>
+      <span class="section-note">four gates, then it all gets refunded</span>
     </div>
-    <div class="split">
-      <div class="tblwrap">
-        <table>
-          <thead><tr><th>Levels</th><th class="skill">Points go to</th><th class="num">Spent</th><th class="num">Earned</th><th class="num">Bank</th></tr></thead>
-          <tbody>
-            <tr><td>2&ndash;5</td><td class="skill">Fire Bolt &times;3, Warmth &times;1</td><td class="num">4</td><td class="num">5*</td><td class="num">1</td></tr>
-            <tr><td>6</td><td class="skill">Frozen Armor &times;1</td><td class="num">1</td><td class="num">6</td><td class="num">1</td></tr>
-            <tr><td>7&ndash;11</td><td class="skill">Fire Bolt &times;5</td><td class="num">5</td><td class="num">11</td><td class="num">1</td></tr>
-            <tr class="bp-hit"><td>12</td><td class="skill">Fire Ball &times;1, Telekinesis &times;1</td><td class="num">2</td><td class="num">12</td><td class="num">0</td></tr>
-            <tr><td>13&ndash;17</td><td class="skill">Fire Ball &times;5</td><td class="num">5</td><td class="num">17</td><td class="num">0</td></tr>
-            <tr><td>18</td><td class="skill">Teleport &times;1</td><td class="num">1</td><td class="num">18</td><td class="num">0</td></tr>
-            <tr><td>19&ndash;29</td><td class="skill">Fire Ball (to max), overflow&nbsp;&rarr; Fire Bolt</td><td class="num">11</td><td class="num">29</td><td class="num">0</td></tr>
-          </tbody>
-          <tfoot><tr><td colspan="2">End of Phase 1 &mdash; * includes Den of Evil</td><td class="num">29</td><td class="num">29</td><td class="num">0</td></tr></tfoot>
-        </table>
+    <p class="lede">Points go in this order. The only levels that matter are the four where the game actually unlocks something &mdash; everything between them is "keep feeding the same skill," for however long that takes you.</p>
+
+    <div class="railstage">
+      <div class="railhead">
+        <span class="lvl">from level 1</span>
+        <span class="unlock">nothing is gated &mdash; all three are available immediately</span>
       </div>
-      <div class="checkpoint">
-        <span class="mark">reading the ledger</span>
-        <p><b>Earned</b> counts leveling <i>and</i> quest points; <b>Bank</b> is what's sitting unspent. Levels 2&ndash;29 hand out only <b>28</b> points and the plan spends <b>29</b> — it balances because <b>Den of Evil's +1</b> arrives in Act 1, long before it's needed. That spare point is why you'll be holding <b>5 at level 5</b> while the Spent column reads 4. Don't go looking for somewhere to put it: carry it to <b>level 12</b>, where Fire Ball and Telekinesis unlock together and consume it. If <b>Radament's Lair</b> (+1) also lands before 29 — common, since Act 2 usually wraps up around there — add 1 to Earned and Bank on every row below it, and finish Phase 1 with a genuine spare instead of exactly zero.</p>
+      <div class="railbody">
+        <div class="spendrow sink">
+          <span class="sk">Fire Bolt</span>
+          <span class="amt">every point</span>
+          <span class="why">Your only real damage until 12 &mdash; and none of it is wasted later, because it's <b>Fire Ball's synergy at +14% per level</b>.</span>
+        </div>
+        <div class="spendrow">
+          <span class="sk">Warmth</span>
+          <span class="amt">&times;1</span>
+          <span class="why">Mana sustain. One point is all this plan ever wants from it.</span>
+        </div>
+        <div class="spendrow">
+          <span class="sk">Frozen Armor</span>
+          <span class="amt">&times;1</span>
+          <span class="why">Defense, and it freezes melee attackers. Available from <b>level 1</b>, so take it on whatever level you please.</span>
+        </div>
       </div>
+    </div>
+
+    <div class="railjoin flag">
+      <p class="joinnote"><b>Hold your level-11 point.</b> Fire Ball opens at 12, and you want it at 1 the moment it does rather than a level late. This is the only time the plan asks you to sit on a point &mdash; and if a quest point has already landed, you're carrying a spare anyway and there's nothing to hold.</p>
+    </div>
+
+    <div class="railstage">
+      <div class="railhead">
+        <span class="lvl">level 12</span>
+        <span class="unlock"><b>Fire Ball</b> unlocks</span>
+      </div>
+      <div class="railbody">
+        <div class="spendrow sink">
+          <span class="sk">Fire Ball</span>
+          <span class="amt">every point</span>
+          <span class="why">Your clear skill for the rest of Normal. It takes everything from here.</span>
+        </div>
+        <div class="spendrow">
+          <span class="sk">Telekinesis</span>
+          <span class="amt">&times;1</span>
+          <span class="why">A prerequisite tax for Teleport and nothing else. It unlocks at <b>6</b> but isn't needed until <b>18</b> &mdash; so pay it on a level where Fire Ball isn't hurting for the point.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="railjoin"></div>
+
+    <div class="railstage">
+      <div class="railhead">
+        <span class="lvl">level 18</span>
+        <span class="unlock"><b>Teleport</b> unlocks</span>
+      </div>
+      <div class="railbody">
+        <div class="spendrow">
+          <span class="sk">Teleport</span>
+          <span class="amt">&times;1</span>
+          <span class="why">One point, permanently. Further levels only reduce its mana cost, which gear handles.</span>
+        </div>
+        <div class="spendrow sink">
+          <span class="sk">Fire Ball</span>
+          <span class="amt">&rarr; 20</span>
+          <span class="why">Everything else, until it's maxed.</span>
+        </div>
+        <div class="spendrow">
+          <span class="sk">Fire Bolt</span>
+          <span class="amt">overflow</span>
+          <span class="why">Once Fire Ball is at 20, spare points land back here &mdash; it's the synergy, so they keep working. One exception arrives at 30, below.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="railjoin"></div>
+
+    <div class="railstage">
+      <div class="railhead">
+        <span class="lvl">level 30</span>
+        <span class="unlock"><b>Fire Mastery</b> unlocks &mdash; take exactly one point</span>
+      </div>
+      <div class="railbody">
+        <div class="spendrow sink">
+          <span class="sk">Fire Mastery</span>
+          <span class="amt">&times;1</span>
+          <span class="why">Worth <b>+30%</b> fire damage on its own &mdash; and more in practice, because <b>+skills from gear raise Fire Mastery's level but do nothing for Fire Bolt's synergy</b>, which counts hard points only. With the +3 to +6 you'll be carrying by 30, this one point lands nearer <b>+50% to +70%</b>. The second point is worth about <b>+4%</b>. Take one and walk away.</span>
+        </div>
+        <div class="spendrow">
+          <span class="sk">Fire Bolt</span>
+          <span class="amt">overflow</span>
+          <span class="why">Then back to the synergy at <b>+14%</b> a level, which outvalues every Fire Mastery point after the first.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="railjoin">
+      <p class="joinnote">At <b>level 35</b> all of this gets refunded and you start again from the list below &mdash; <i>The real build</i>.</p>
+    </div>
+
+    <div class="checkpoint">
+      <span class="mark">does this add up?</span>
+      <p>This build spends <b>29</b> points by level 29. Levels 2&ndash;29 hand out <b>28</b>, and <b>Den of Evil</b> covers the difference &mdash; it is the point you're holding at 11. Everything beyond that is slack: <b>Radament's Lair</b> and <b>Izual</b> land whenever they land, and each simply moves you down the rail a level sooner. Nothing to recompute, and no schedule to fall behind &mdash; the order is the plan, and the gates are the only levels that constrain it. The rail keeps running past 29 to the respec at 35 &mdash; those last few levels are what Phase 2's <b>38-point</b> count is built on.</p>
     </div>
   </div>
 
   <div class="section">
     <div class="section-head">
-      <h2>Phase 2 &mdash; Nightmare respec, level 30&ndash;35</h2>
-      <span class="section-note">full reset via Akara</span>
+      <h2>The real build &mdash; level 35 to 99</h2>
+      <span class="section-note">one allocation, filled in order</span>
     </div>
-    <div class="split">
-      <div class="tblwrap">
-        <table>
-          <thead><tr><th class="skill">Allocation</th><th class="num">Points</th></tr></thead>
-          <tbody>
-            <tr><td class="skill">Frozen Orb's chain — Ice Bolt, Ice Blast, Frost Nova, Glacial Spike, Blizzard <span class="tag cold">1 pt each</span></td><td class="num">5</td></tr>
-            <tr><td class="skill">Kept utilities — Fire Bolt, Telekinesis, Teleport, Warmth, Frozen Armor</td><td class="num">5</td></tr>
-            <tr><td class="skill">Frozen Orb &times;20 <span class="tag cold">core</span></td><td class="num">20</td></tr>
-            <tr><td class="skill">Cold Mastery &times;1 <span class="tag cold">no prereqs</span></td><td class="num">1</td></tr>
-            <tr><td class="skill">Fire Ball <span class="tag fire">remainder</span></td><td class="num">7*</td></tr>
-          </tbody>
-          <tfoot><tr><td>Total needed for prereqs + Frozen Orb + Cold Mastery</td><td class="num">31</td></tr></tfoot>
-        </table>
-      </div>
-      <div class="checkpoint">
-        <span class="mark">on budget</span>
-        <p>At level 35 you've earned <b>38</b> points (34 from leveling + 4 from Normal's Den of Evil, Radament, and Izual). That covers the 31-point core with <b>7</b> left for Fire Ball — the * above. Respec any earlier and that remainder shrinks fast: at level 30 you're carrying only 33 points, leaving just <b>2</b> for Fire Ball. Nothing goes negative either way, but waiting until 35 is what keeps Fire Ball usable while you rebuild it.</p>
-      </div>
+    <p class="lede">At 35 you wipe everything above and start again. From that moment the target never changes &mdash; what changes is how much of it you can afford. So this is one list, in the order the points go in, and the line across it marks where the respec budget runs out. You'll walk this list more than once: the Monarch respec later resets your skills too, and you simply re-enter it and stop wherever your level leaves you.</p>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th class="num">#</th><th class="skill">Points go to</th><th class="num">Take to</th><th class="num">Points</th></tr></thead>
+        <tbody>
+          <tr><td class="num">1</td><td class="skill">Frozen Orb's chain &mdash; Ice Bolt, Ice Blast, Frost Nova, Glacial Spike, Blizzard <span class="tag cold">prereqs</span></td><td class="num">1 ea</td><td class="num">5</td></tr>
+          <tr><td class="num">2</td><td class="skill">Utilities &mdash; Telekinesis, Teleport, Warmth, Frozen Armor</td><td class="num">1 ea</td><td class="num">4</td></tr>
+          <tr><td class="num">3</td><td class="skill">Fire Bolt <span class="tag fire">Fire Ball prereq</span></td><td class="num">1</td><td class="num">1</td></tr>
+          <tr class="row-mark"><td class="num">4</td><td class="skill">Frozen Orb <span class="tag cold">the core</span></td><td class="num">20</td><td class="num">20</td></tr>
+          <tr><td class="num">5</td><td class="skill">Cold Mastery</td><td class="num">1</td><td class="num">1</td></tr>
+          <tr><td class="num">6</td><td class="skill">Fire Ball <span class="tag fire">as far as it goes</span></td><td class="num">7</td><td class="num">7</td></tr>
+          <tr class="fillbreak"><td colspan="4">38 points &mdash; everything you can afford at the respec</td></tr>
+          <tr><td class="num">7</td><td class="skill">Fire Ball <span class="tag fire">finish it</span></td><td class="num">20</td><td class="num">13</td></tr>
+          <tr class="row-mark"><td class="num">8</td><td class="skill">Fire Mastery <span class="tag fire">one point</span></td><td class="num">1</td><td class="num">1</td></tr>
+          <tr><td class="num">9</td><td class="skill">Static Field</td><td class="num">1</td><td class="num">1</td></tr>
+          <tr><td class="num">10</td><td class="skill">Ice Bolt <span class="tag cold">Frozen Orb synergy</span></td><td class="num">20</td><td class="num">19</td></tr>
+          <tr><td class="num">11</td><td class="skill">Cold Mastery</td><td class="num">10</td><td class="num">9</td></tr>
+          <tr><td class="num">12</td><td class="skill">Fire Bolt <span class="tag fire">Fire Ball synergy</span></td><td class="num">20</td><td class="num">19</td></tr>
+          <tr><td class="num">13</td><td class="skill">Fire Mastery <span class="tag fire">the rest</span></td><td class="num">11</td><td class="num">10</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="3">Everything, at level 99</td><td class="num">110</td></tr></tfoot>
+      </table>
     </div>
     <div class="checkpoint">
-      <span class="mark">how many respecs you actually get</span>
-      <p>Akara resets <b>stats and skills together</b> — there's no way to reset one without the other — and she does it free <b>once per difficulty</b>, so three for the character's life. Phase 2 spends the first. Holding a second for when a Monarch turns up (see <i>Stats &amp; Keys</i>) still leaves one spare, and beyond that a <b>Token of Absolution</b> — cube the four Essences from Hell's act bosses — gives unlimited resets. You are not short on respecs. The coupling is the useful part: the Monarch respec re-opens the whole skill tree at the same time, which makes <i>that</i> the moment to settle Fire Bolt, not now.</p>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-head">
-      <h2>Phase 3 &mdash; endgame priority, level 35&ndash;99</h2>
-      <span class="section-note">final targets</span>
+      <span class="mark">why this order</span>
+      <p>Rows 1&ndash;6 are forced: Frozen Orb can't be bought without its five prerequisites, and it's the skill the whole respec exists for. After that the order is a judgement. <b>Fire Ball finishes first</b> (row 7) because you're mid-fight with it the moment you stand up from Akara. <b>Fire Mastery's single point</b> comes next because it's the largest return on one point anywhere in this build. <b>Ice Bolt before Fire Bolt</b> because Frozen Orb is your opener, mapped to X, and points there compound over every pack you clear from 40 to 70 &mdash; whereas Fire Ball is the answer to cold-immunes specifically, so Fire Bolt needs to be well underway <i>by</i> Hell rather than before it. <b>Cold Mastery lands between them</b> for the same reason: it amplifies the skill you're actually opening with. Fire Mastery's remainder goes dead last on purpose &mdash; at roughly <b>+4%</b> a point those are the weakest points in the plan, and nothing is gated behind them.</p>
     </div>
     <div class="split">
-      <div class="tblwrap">
-        <table>
-          <thead><tr><th class="skill">Skill</th><th class="num">From (post-respec)</th><th class="num">To</th><th class="num">Points needed</th></tr></thead>
-          <tbody>
-            <tr><td class="skill">Fire Ball <span class="tag fire">max</span></td><td class="num">7</td><td class="num">20</td><td class="num">13</td></tr>
-            <tr><td class="skill">Cold Mastery</td><td class="num">1</td><td class="num">10&ndash;15</td><td class="num">9&ndash;14</td></tr>
-            <tr><td class="skill">Ice Bolt <span class="tag cold">synergy</span></td><td class="num">1</td><td class="num">20</td><td class="num">19</td></tr>
-            <tr><td class="skill">Fire Mastery</td><td class="num">0</td><td class="num">20</td><td class="num">20</td></tr>
-          </tbody>
-          <tfoot><tr><td>Phase 3 total</td><td colspan="2"></td><td class="num">61&ndash;66</td></tr></tfoot>
-        </table>
+      <div class="checkpoint">
+        <span class="mark">why 35 and not 30</span>
+        <p>At level 35 you've earned <b>38</b> points (34 from leveling + 4 from Normal's Den of Evil, Radament, and Izual) &mdash; which is exactly where the line above falls, leaving <b>7</b> for Fire Ball. Respec at 30 instead and you're carrying only <b>33</b>: the first five rows still fit, but Fire Ball gets <b>2</b>. Nothing goes negative either way. The five levels are what keep Fire Ball usable while you rebuild everything else.</p>
       </div>
       <div class="checkpoint">
-        <span class="mark">surplus</span>
-        <p><b>38</b> (everything spent by Phase 2) + <b>61&ndash;66</b> (Phase 3) = <b>99&ndash;104</b> points spent by level 99, against <b>110</b> available. You end with a <b>6&ndash;11 point surplus</b> after maxing Fire Ball, Ice Bolt, and Fire Mastery and pushing Cold Mastery to 15 — and Static Field only wants <b>one</b> of them (see below). That leaves 5&ndash;10 points with nowhere obvious to go — the callout below is what they should probably buy.</p>
+        <span class="mark">how many respecs you actually get</span>
+        <p>Akara resets <b>stats and skills together</b> &mdash; there's no way to reset one without the other &mdash; free <b>once per difficulty</b>, so three for the character's life. This spends the first. Holding a second for when a Monarch turns up (see <i>Stats &amp; Keys</i>) still leaves one spare, and beyond that a <b>Token of Absolution</b> &mdash; cube the four Essences from Hell's act bosses &mdash; is unlimited. You are not short on respecs. The coupling is why the list above is written as an order rather than a destination: the Monarch reset re-enters it from the top.</p>
       </div>
     </div>
+    <div class="verdict">
+      <div class="q">Fire Mastery is the obvious multiplier for the fire side. Why does row 13 stop at 11 instead of 20?</div>
+      <div class="a">Because <b>Fire Bolt buys about twice as much per point</b> &mdash; and your gear only ever helps Fire Mastery.</div>
+      <ul class="reasoning">
+        <li><b>Fire Mastery is a separate multiplier, not a synergy.</b> Damage is <span class="mono">base &times; (1 + synergies) &times; (1 + mastery)</span>. Because the two brackets multiply, each one's value depends only on how full <i>it</i> already is &mdash; stacking Fire Bolt never devalues a mastery point, and the reverse holds too.</li>
+        <li><b>Its curve is brutally front-loaded.</b> The first point is worth <b>+30%</b>. Every point after it adds <b>+7%</b>, and because that +7 is measured against an ever-larger multiplier, the real marginal value falls to about <b>+4%</b> almost immediately. That's why row 8 exists separately from row 13.</li>
+        <li><b>+skills raise Fire Mastery and do nothing for Fire Bolt.</b> Synergies count <b>hard points only</b> &mdash; gear, charms and shrines never touch them. Your +5 to +7 from Lore and the Spirits inflates Fire Mastery's level for free, making its <i>first</i> point enormous and every <i>later</i> point worse, since they climb a curve the gear already pushed up.</li>
+        <li><b>So Fire Bolt wins the middle of the budget.</b> A Fire Bolt point is worth <b>+14%</b> of base damage and is untouched by all of the above. It out-earns a second Fire Mastery point until Fire Bolt is around <b>18</b>.</li>
+        <li><b>The difference is not small.</b> For the same points, this order lands near <b>&times;8.1</b> on Fire Ball's damage; taking Fire Mastery to 20 and leaving Fire Bolt at 1 lands near <b>&times;6.0</b>. Roughly <b>35% more damage</b> for an identical spend.</li>
+      </ul>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">rows 11 and 13 are the swing &mdash; and a charm decides them</span>
+      <p>Cold Mastery <b>10</b> and Fire Mastery <b>11</b> is the default, but five points slide between them and the right answer depends on one item. Cold Mastery is <b>linear</b> &mdash; &minus;20% enemy cold resist at level 1, &minus;5% per level after &mdash; with no diminishing returns until it hits the floor. Pushing it <b>10&rarr;15</b> is worth about <b>+15%</b> Frozen Orb damage against a typical resistant monster; the five points it costs are worth about <b>+17%</b> on Fire Ball instead. Genuinely close. The tiebreak: <b>without a Cold Rupture sunder charm, cold-immune packs are Fire Ball's problem alone</b>, so the points belong in Fire Mastery. <b>With one</b>, Frozen Orb handles immunes too and those same Cold Mastery points pay <b>+21%</b> there &mdash; so swap to Cold Mastery 15 / Fire Mastery 6 the day a Cold Rupture drops. You'll be respeccing for the Monarch anyway.</p>
+    </div>
     <div class="checkpoint gap-flag">
-      <span class="mark">gap &mdash; Fire Bolt is Fire Ball's synergy</span>
-      <p>Fire Bolt grants Fire Ball <b>+14% fire damage per level</b>, the single largest multiplier available to your fire side — and the plan leaves it at the 1-point prereq forever. Taking it 1&rarr;20 costs <b>19</b> points and adds roughly <b>+266%</b> to Fire Ball, on top of Fire Mastery. The surplus <b>can't max it</b> — but it buys a lot of it. Hold Cold Mastery at 10 and you have <b>11 points</b>, taking Fire Bolt to 12 for roughly <b>+154%</b>; push Cold Mastery to 15 and you have <b>6</b>, taking it to 7 for about <b>+84%</b>. Either beats the alternatives, since Static Field wants exactly one point and Warmth and Energy Shield want none. Fire Ball is your answer to cold-immune packs in Hell, and it's currently running at a fraction of its ceiling. Nothing has to be decided now — the Monarch respec reopens the tree anyway.</p>
+      <span class="mark">the &minus;100% floor</span>
+      <p>A monster's cold resistance cannot be driven below <b>&minus;100%</b>, and with your <b>+5 to +7</b> skills a hard Cold Mastery of about <b>11</b> already reaches it. Past that point, extra Cold Mastery does <i>nothing</i> against a monster that started at 0% cold resist &mdash; it only helps against ones carrying positive cold resistance to begin with. That's the real reason row 11 stops at 10 rather than being pushed on principle: the headline number keeps climbing long after the damage stops.</p>
     </div>
   </div>
 
@@ -803,7 +968,7 @@ footer .wrap{
       <h2>Static Field</h2>
       <span class="section-note">exactly one point</span>
     </div>
-    <p class="lede">The surplus above kept listing Static Field as somewhere to put spare points. It isn't — it's a one-point skill, and knowing why settles what the surplus is actually competing for. Lightning tree, level 6, <b>no prerequisites</b>, 9 mana flat at every level.</p>
+    <p class="lede">Static Field takes <b>one</b> point in the table above, which looks like a typo. It isn't &mdash; one point is the correct and final answer, and this is why. Lightning tree, level 6, <b>no prerequisites</b>, 9 mana flat at every level.</p>
     <div class="bp-cols">
       <div class="tblwrap">
         <table>
@@ -822,7 +987,7 @@ footer .wrap{
           <tbody>
             <tr><td>Normal</td><td class="num">&mdash;</td><td class="num">&mdash;</td></tr>
             <tr><td>Nightmare</td><td class="num">33%</td><td class="num">4</td></tr>
-            <tr class="bp-hit"><td>Hell</td><td class="num">50%</td><td class="num">3</td></tr>
+            <tr class="row-mark"><td>Hell</td><td class="num">50%</td><td class="num">3</td></tr>
           </tbody>
         </table>
       </div>
@@ -837,22 +1002,6 @@ footer .wrap{
     </div>
   </div>
 
-  <div class="section">
-    <div class="section-head">
-      <h2>Open question: Ice Bolt vs. Fire Mastery order</h2>
-      <span class="section-note">resolved</span>
-    </div>
-    <div class="verdict">
-      <div class="q">Which should you max first after Fire Ball, at level 35+?</div>
-      <div class="a">Take <b class="cold-b">Ice Bolt</b> before <b>Fire Mastery</b>.</div>
-      <ul class="reasoning">
-        <li><b>The surplus still covers both.</b> With 6&ndash;11 spare points by level 99, this isn't "can I afford both" — it's purely about which lands sooner. You max both either way.</li>
-        <li><b>Ice Bolt buffs your primary skill.</b> It's Frozen Orb's synergy, and Frozen Orb is mapped to your opener (X). Fire Mastery only helps Fire Ball, which the note already frames as the cold-immune / single-target backup on Y.</li>
-        <li><b>Earlier Ice Bolt points compound sooner.</b> Every point invested while leveling from 35&rarr;70ish is buffing the skill you're actually opening every pack with, versus a flat multiplier sitting on your secondary skill until you get around to it.</li>
-        <li><b>Nothing is lost by going Ice Bolt first.</b> Since both hit 20/20 by end-game under either order, there's no final-build cost — only a smoother mid-level clear speed curve.</li>
-      </ul>
-    </div>
-  </div>
 
 </section>
 
@@ -864,24 +1013,25 @@ footer .wrap{
       <h2>Farming order</h2>
       <span class="section-note">player &amp; mercenary, together</span>
     </div>
-    <p class="lede">Six runewords total, three of them competing for the same Nightmare-tier runes. This is the order that actually matches how they become available &mdash; level requirement first, rune tier second.</p>
+    <p class="lede">Seven runewords total, four of them drawing on the same Nightmare-tier runes. This is the order that actually matches how they become available &mdash; level requirement first, rune tier second.</p>
     <div class="tblwrap">
       <table>
-        <thead><tr><th class="num">Order</th><th class="skill">Runeword</th><th>Slot</th><th class="num">Level</th><th>Rune tier</th></tr></thead>
+        <thead><tr><th class="num">Order</th><th class="skill">Runeword</th><th>Slot</th><th class="num">Level</th><th>Runes</th><th>Where they drop</th></tr></thead>
         <tbody>
-          <tr><td class="num">1</td><td class="skill">Stealth</td><td>Your armor</td><td class="num">17</td><td>Normal Countess</td></tr>
-          <tr><td class="num">2</td><td class="skill">Leaf</td><td>Your weapon (early)</td><td class="num">19</td><td>Normal Countess</td></tr>
-          <tr class="bp-hit"><td class="num">3</td><td class="skill">Spirit <span class="tag fire">sword</span></td><td>Your weapon (main)</td><td class="num">25</td><td>Nightmare Countess</td></tr>
-          <tr class="bp-hit"><td class="num">4</td><td class="skill">Lore</td><td>Your helm</td><td class="num">27</td><td>Nightmare Countess</td></tr>
-          <tr class="bp-hit"><td class="num">5</td><td class="skill">Insight</td><td>Merc's weapon</td><td class="num">27</td><td>Nightmare Countess</td></tr>
-          <tr class="bp-hit"><td class="num">6</td><td class="skill">Spirit <span class="tag cold">shield</span></td><td>Your off-hand</td><td class="num">25*</td><td>Nightmare Countess</td></tr>
-          <tr><td class="num">7</td><td class="skill">Infinity</td><td>Merc's weapon (replaces Insight)</td><td class="num">63</td><td>Hell Countess + Ber farming</td></tr>
+          <tr><td class="num">1</td><td class="skill">Stealth</td><td>Your armor</td><td class="num">17</td><td class="runes">Tal + Eth</td><td>Normal Countess</td></tr>
+          <tr><td class="num">2</td><td class="skill">Leaf</td><td>Your weapon (early)</td><td class="num">19</td><td class="runes">Tir + Ral</td><td>Normal Countess</td></tr>
+          <tr><td class="num">3</td><td class="skill">Ancients' Pledge</td><td>Your off-hand (through Nightmare)</td><td class="num">21</td><td class="runes">Ral + Ort + Tal</td><td>Normal Countess + one Ort</td></tr>
+          <tr class="row-mark"><td class="num">4</td><td class="skill">Spirit <span class="tag fire">sword</span></td><td>Your weapon (main)</td><td class="num">25</td><td class="runes">Tal + Thul + Ort + Amn</td><td>Nightmare Countess</td></tr>
+          <tr class="row-mark"><td class="num">5</td><td class="skill">Lore</td><td>Your helm</td><td class="num">27</td><td class="runes">Ort + Sol</td><td>Nightmare Countess</td></tr>
+          <tr class="row-mark"><td class="num">6</td><td class="skill">Insight</td><td>Merc's weapon</td><td class="num">27</td><td class="runes">Ral + Tir + Tal + Sol</td><td>Nightmare Countess</td></tr>
+          <tr class="row-mark"><td class="num">7</td><td class="skill">Spirit <span class="tag cold">shield</span></td><td>Your off-hand (replaces Ancients' Pledge)</td><td class="num">25*</td><td class="runes">Tal + Thul + Ort + Amn</td><td>Nightmare Countess</td></tr>
+          <tr><td class="num">8</td><td class="skill">Infinity</td><td>Merc's weapon (replaces Insight)</td><td class="num">63</td><td class="runes">Ber + Mal + Ber + Ist</td><td>Hell Countess + Ber farming</td></tr>
         </tbody>
       </table>
     </div>
     <div class="checkpoint">
       <span class="mark">why this order</span>
-      <p><b>Stealth and Leaf</b> come first because they're the only two you can finish entirely in Normal &mdash; every rune they need clears Normal Countess. The moment you're farming Nightmare Countess for Spirit's Thul and Amn, <b>Lore's Ort/Sol</b> and <b>Insight's Sol</b> are dropping alongside them for free, so grab all three in the same farming stretch rather than treating them as separate trips. <b>Spirit's shield half</b> is marked <b>25*</b> because the runeword itself unlocks at 25, but its base &mdash; a Monarch &mdash; needs level 54 and 156 strength, which realistically puts it in Hell; see <i>Stats &amp; Keys</i> for why that strength shouldn't be paid early. <b>Infinity</b> is last on purpose: Insight covers the merc's mana job perfectly well until then, and the wait is real &mdash; two of its four runes (below) aren't a Countess job at all.</p>
+      <p><b>Stealth and Leaf</b> come first because they're the only two you can finish entirely in Normal &mdash; every rune they need clears Normal Countess. <b>Ancients' Pledge</b> follows immediately behind them, because two of its three runes are Normal drops as well and the odd one out is an <b>Ort</b> &mdash; which arrives with Lore's anyway. The moment you're farming Nightmare Countess for Spirit's Thul and Amn, <b>Lore's Ort/Sol</b> and <b>Insight's Sol</b> are dropping alongside them for free, so grab all three in the same farming stretch rather than treating them as separate trips. <b>Spirit's shield half</b> is marked <b>25*</b> because the runeword itself unlocks at 25, but its base &mdash; a Monarch &mdash; needs level 54 and 156 strength, which realistically puts it in Hell; see <i>Stats &amp; Keys</i> for why that strength shouldn't be paid early. <b>Infinity</b> is last on purpose: Insight covers the merc's mana job perfectly well until then, and the wait is real &mdash; two of its four runes (below) aren't a Countess job at all.</p>
     </div>
     <div class="checkpoint gap-flag">
       <span class="mark">what "Hell farming" actually means for Infinity</span>
@@ -900,7 +1050,7 @@ footer .wrap{
         <table>
           <thead><tr><th>Give Larzuk&hellip;</th><th class="skill">and you get</th></tr></thead>
           <tbody>
-            <tr class="bp-hit"><td>White / gray</td><td class="skill">Maximum the base allows <span class="tag cold">always use these</span></td></tr>
+            <tr class="row-mark"><td>White / gray</td><td class="skill">Maximum the base allows <span class="tag cold">always use these</span></td></tr>
             <tr><td>Magic (blue)</td><td class="skill">1 or 2 sockets, 50/50</td></tr>
             <tr><td>Rare, set, unique</td><td class="skill">Exactly 1, always</td></tr>
           </tbody>
@@ -993,9 +1143,9 @@ footer .wrap{
   <div class="section">
     <div class="section-head">
       <h2>Nightmare &mdash; levels 40&ndash;60</h2>
-      <span class="section-note">goal: Spirit, Lore, Insight &mdash; then resist-all &amp; FCR</span>
+      <span class="section-note">goal: four runewords &mdash; then resist-all &amp; FCR</span>
     </div>
-    <p class="lede">The &minus;40% penalty lands and 115% raw resistance is suddenly the target. Shift your Countess runs here &mdash; Ort, Sol, Thul, and Amn only start dropping in Nightmare, and all three remaining runewords below want them.</p>
+    <p class="lede">The &minus;40% penalty lands and 115% raw resistance is suddenly the target. Shift your Countess runs here &mdash; Ort, Sol, Thul, and Amn only start dropping in Nightmare, and every runeword below wants at least one of them.</p>
     <div class="rwgrid">
       <div class="rwcard">
         <div class="rwhead"><span class="rwname">Spirit</span><span class="rwlvl">req. level 25</span></div>
@@ -1052,6 +1202,40 @@ footer .wrap{
         <div class="rwrow"><b>Why</b><span>Meditation aura &mdash; effectively infinite mana for you, not just the merc. Worth remaking if it lands below level 15 &mdash; the aura range is the roll that matters most here.</span></div>
         <div class="rwrow"><b>Where</b><span>Merc's weapon slot; cube the base rather than spending a Larzuk charge. Full detail in the Mercenary tab.</span></div>
       </div>
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Ancients' Pledge</span><span class="rwlvl">req. level 21</span></div>
+        <div class="rwrunes">Ral + Ort + Tal &middot; 3-socket Shield</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats &mdash; no random rolls, every copy is identical</div>
+          <div class="rwstat"><span>Fire Resist +48%</span></div>
+          <div class="rwstat"><span>Lightning Resist +48%</span></div>
+          <div class="rwstat"><span>Poison Resist +48%</span></div>
+          <div class="rwstat"><span>Cold Resist +43%</span></div>
+          <div class="rwstat"><span>+50% Enhanced Defense</span></div>
+          <div class="rwstat"><span>10% Damage Goes to Mana</span></div>
+        </div>
+        <div class="rwrow"><b>Why</b><span>The off-hand filler, and <b>the largest single source of fire resistance in the entire plan</b> &mdash; the one element nothing else here grants. Holds the slot from level 21 until a Monarch turns up in Hell.</span></div>
+        <div class="rwrow"><b>Where</b><span>A 3-socket <b>Kite Shield</b> shopped from Fara. Ral and Tal drop from Normal Countess; only the Ort needs a Nightmare run, and Lore wants one of those too.</span></div>
+      </div>
+    </div>
+    <div class="verdict">
+      <div class="q">Your main hand is a Spirit sword from level 25. What fills the off-hand until the Monarch shows up, thirty levels later?</div>
+      <div class="a"><b class="cold-b">Ancients' Pledge</b>, in a Kite Shield.</div>
+      <ul class="reasoning">
+        <li><b>It's nearly free in strength.</b> A Kite Shield asks <b>47</b> &mdash; your Spirit sword already needs 48 on a Broad Sword base, so the shield costs you <b>nothing at all</b>, or <b>4 points</b> if you went Crystal at 43. Every other candidate below wants more.</li>
+        <li><b>The runes are already on your list.</b> Ral and Tal are Normal Countess drops, and the single Ort comes home with Lore's. No new farming target.</li>
+        <li><b>It answers the build's actual problem.</b> <b>+48% fire resist</b>, plus 48 lightning, 48 poison, and 43 cold &mdash; arriving exactly when Nightmare's &minus;40% penalty lands and 115% raw becomes the target.</li>
+        <li><b>The alternatives all trade resist for skills.</b> Splendor (+1 skill, +10% FCR), Rhyme (+25 all resist and Cannot Be Frozen), and Lidless Wall (+1 skill, 20% FCR) are the other options in this slot, and none of them beat 48% fire. You aren't short on skills or cast rate here &mdash; Stealth and one Spirit already clear the 37% breakpoint. You're short on resist.</li>
+        <li><b>There is nothing to reroll.</b> Every line is fixed. Unlike Spirit's cast-rate roll, you make this once and never think about it again.</li>
+      </ul>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">shopping the base</span>
+      <p>A Kite Shield <b>caps at 3 sockets</b>, which is exactly what the runeword wants &mdash; so unlike the Crystal Sword there's no way to overshoot and ruin it. <b>Buy it already socketed from Fara</b> in Act 2 Normal, resetting her stock at the waypoint until a white or gray 3-socket one appears; a Large Shield is the fallback if Kite Shields won't roll. What you must <i>not</i> do is spend a Larzuk charge here &mdash; all three are already committed to the Spirit sword and the Monarch. And ignore the shield's block number entirely: block chance is <span class="mono">(blocking &times; (dex &minus; 15)) / (level &times; 2)</span>, which at your base 25 dexterity is roughly <b>3%</b>. Never pay strength for a better-blocking base you can't use.</p>
+    </div>
+    <div class="checkpoint gap-flag">
+      <span class="mark">the Monarch swap is a resist downgrade</span>
+      <p>Worth knowing before you get attached: when the Hell Spirit shield finally replaces this, your resists go <i>down</i>. Spirit's shield half carries cold, lightning, and poison at 35% each and <b>no fire at all</b> &mdash; so the swap costs you <b>48% fire</b>, 13 lightning, 13 poison, and 8 cold, in exchange for +2 skills, cast rate, hit recovery, vitality, and mana. That trade is still right, because the skills and FCR are worth more than any shield's resists by then. But it's the moment the fire gap gets <i>worse</i>, not better, and your rings, amulet, and charms have to be ready to absorb it.</p>
     </div>
     <div class="checkpoint">
       <span class="mark">open slots start mattering now</span>
@@ -1084,7 +1268,7 @@ footer .wrap{
           <div class="rwstat"><span>Attacker Takes Damage of 14</span></div>
         </div>
         <div class="rwrow"><b>Why</b><span>The same +2 skills / FCR / FHR / mana as the sword half, plus <b>Cold, Lightning, and Poison Resist +35% each</b> &mdash; the resists the sword half doesn't carry.</span></div>
-        <div class="rwrow"><b>Where</b><span>A 4-socket <b>Monarch</b> &mdash; 156 strength, level 54. Don't pre-pay that strength: carry only what your sword needs until you actually hold one, then respec into it (see <i>Stats &amp; Keys</i>) and spend your last Larzuk charge here.</span></div>
+        <div class="rwrow"><b>Where</b><span>A 4-socket <b>Monarch</b> &mdash; 156 strength, level 54. Don't pre-pay that strength: carry only what your sword needs until you actually hold one, then respec into it (see <i>Stats &amp; Keys</i>) and spend your last Larzuk charge here. Ancients' Pledge holds the slot until then.</span></div>
       </div>
       <div class="rwcard">
         <div class="rwhead"><span class="rwname">Infinity</span><span class="rwlvl">req. level 63 &middot; merc</span></div>
@@ -1102,9 +1286,13 @@ footer .wrap{
           <div class="rwstat"><span>Level 21 Cyclone Armor (30/30 Charges)</span></div>
           <div class="rwstat roll"><span>+255&ndash;325% Enhanced Damage</span><span class="rolltag">rolled once</span></div>
         </div>
-        <div class="rwrow"><b>Why</b><span>Level 12 Conviction, up to &minus;85% enemy resistance &mdash; what actually makes Hell farmable once cold- or fire-immune packs show up. The aura level and Run/Walk are fixed, so there's nothing to reroll for those; the only stat worth a remake is the enemy-lightning-resist roll, and only if you're relying on lightning to break immunes.</span></div>
+        <div class="rwrow"><b>Why</b><span>Level 12 Conviction, up to &minus;85% enemy resistance &mdash; which is enormous against monsters that aren't immune, and much weaker against ones that are (see below). The aura level and Run/Walk are fixed, so there's nothing to reroll for those; the only stat worth a remake is the enemy-lightning-resist roll, and only if you're relying on lightning to break immunes.</span></div>
         <div class="rwrow"><b>Where</b><span>Replaces Insight on the merc's weapon. Mal and one Ist still come from Hell Countess; the two Ber runes need Lower Kurast chests, Travincal, or Cow Level &mdash; see the farming-order note above. Full detail in the Mercenary tab.</span></div>
       </div>
+    </div>
+    <div class="checkpoint gap-flag">
+      <span class="mark">Infinity does not actually solve immunity</span>
+      <p>The plan leans on Conviction to open cold- and fire-immune packs, and it only half does. Resistance reduction from <i>any</i> source &mdash; Conviction, Lower Resist, Cold Mastery &mdash; applies at <b>one fifth strength against a monster that is already immune</b> (100% or more). So level 12 Conviction's &minus;85% lands as roughly <b>&minus;17%</b>, which breaks immunities up to about <b>116%</b> and nothing above it. A lot of Hell's cold immunes sit higher than that and stay immune with Infinity equipped. <b>Cold Mastery can't help either</b> &mdash; it is explicitly unable to break an immunity, at any level. The actual answer is a <b>Sunder Charm</b> (see <i>Beyond Hell</i>): Cold Rupture forces an immune monster to 95%, after which Cold Mastery starts working on it, still at one fifth. Until you hold one, treat cold-immune packs as Fire Ball's job and nothing else's.</p>
     </div>
     <div class="checkpoint gap-flag">
       <span class="mark">fire resistance is the real gap</span>
@@ -1122,7 +1310,7 @@ footer .wrap{
       <div class="rwcard">
         <div class="rwhead"><span class="rwname">Terror Zones</span><span class="rwlvl">unlocks at Hell Baal</span></div>
         <div class="rwrunes">Hourly rotating buffed zone</div>
-        <div class="rwrow"><b>Why</b><span>Far better XP and drops than normal farming &mdash; monsters scale up to roughly level 96 in Hell. They also drop <b>Sundered Charms</b>, which sunder one specific immunity. A cold-sundering charm opens up packs Frozen Orb currently can't touch, on top of what Infinity's Conviction already breaks.</span></div>
+        <div class="rwrow"><b>Why</b><span>Far better XP and drops than normal farming &mdash; monsters scale up to roughly level 96 in Hell. They also drop <b>Sundered Charms</b>, and for this build that is the real prize. <b>Cold Rupture</b> forces cold-immune monsters down to 95% resistance, which is the only reliable way to make Frozen Orb work on them &mdash; Conviction alone leaves the harder immunes untouched, and Cold Mastery cannot break an immunity at all.</span></div>
         <div class="rwrow"><b>Where</b><span>Enable in game settings, or join a game where the host already has. This is your actual level-99 grinding tool, if you decide to chase it.</span></div>
       </div>
       <div class="rwcard">
@@ -1162,7 +1350,7 @@ footer .wrap{
         <div class="label">Total stat points at level 99</div>
       </div>
     </div>
-    <p class="lede">You start with 10 strength, 25 dexterity, 10 vitality, 35 energy. Everything below is about where the other 505 go — and unlike skill points, there is no surplus here. Vitality wants all of it, and anything strength takes is life you don't get.</p>
+    <p class="lede">You start with 10 strength, 25 dexterity, 10 vitality, 35 energy. Everything below is about where the other 505 go &mdash; and there is no slack in it at all. Vitality wants every one, and anything strength takes is life you don't get.</p>
     <div class="statgrid">
       <div class="statcard">
         <span class="stat-verdict">Gear minimum</span>
@@ -1226,7 +1414,7 @@ footer .wrap{
           <thead><tr><th>Type</th><th>Normal</th><th class="skill">Nightmare</th><th>Hell</th></tr></thead>
           <tbody>
             <tr><td>Defensive</td><td>Defiance</td><td class="skill">Holy Freeze</td><td>Defiance</td></tr>
-            <tr class="bp-hit"><td>Offensive</td><td>Blessed Aim</td><td class="skill">Might</td><td>Blessed Aim</td></tr>
+            <tr class="row-mark"><td>Offensive</td><td>Blessed Aim</td><td class="skill">Might</td><td>Blessed Aim</td></tr>
             <tr><td>Combat</td><td>Prayer</td><td class="skill">Thorns</td><td>Prayer</td></tr>
           </tbody>
         </table>
@@ -1254,7 +1442,7 @@ footer .wrap{
       <div class="rwcard">
         <div class="rwhead"><span class="rwname">Infinity</span><span class="rwlvl">req. level 63</span></div>
         <div class="rwrunes">Ber + Mal + Ber + Ist &middot; 4-socket Polearm</div>
-        <div class="rwrow"><b>Why</b><span>Grants level 12 Conviction — up to &minus;85% enemy resistance. This is what actually makes Hell work: without it, a meaningful slice of Hell monsters are cold- or fire-immune and simply can't be killed by either of your two elements.</span></div>
+        <div class="rwrow"><b>Why</b><span>Grants level 12 Conviction &mdash; up to &minus;85% enemy resistance, which roughly doubles your damage against anything not immune. It also breaks <i>some</i> immunities, but not all: against an already-immune monster the debuff lands at <b>one fifth</b> strength. See the immunity note in the <i>Gear</i> tab (Hell) before counting on it.</span></div>
         <div class="rwrow"><b>Where</b><span>Endgame target, not a leveling item — the runes alone (two Ber, a Mal, an Ist) are a mid-to-late Hell farming goal. Run Insight until you can afford the swap.</span></div>
         <div class="rwrow"><b>Full stats</b><span>See the Infinity card in the <i>Gear</i> tab (Hell section) &mdash; only the enemy-lightning-resist and enhanced-damage lines are randomized, everything else is fixed.</span></div>
       </div>
@@ -1331,7 +1519,7 @@ footer .wrap{
           <tbody>
             <tr><td>Normal</td><td class="num">0%</td><td class="num">75%</td><td class="num">75%</td></tr>
             <tr><td>Nightmare</td><td class="num">&minus;40%</td><td class="num">75%</td><td class="num">115%</td></tr>
-            <tr class="bp-hit"><td>Hell</td><td class="num">&minus;100%</td><td class="num">75%</td><td class="num">175%</td></tr>
+            <tr class="row-mark"><td>Hell</td><td class="num">&minus;100%</td><td class="num">75%</td><td class="num">175%</td></tr>
           </tbody>
         </table>
       </div>
