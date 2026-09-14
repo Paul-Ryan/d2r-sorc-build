@@ -596,8 +596,8 @@ that got built is broader than crafting**, because the real finding was that the
 Cube was load-bearing in six scattered places with nothing tying them together —
 and two of those six were not on the page at all.
 
-The six jobs: upgrade runes, add sockets, upgrade gems, craft an amulet,
-**Token of Absolution**, Hellfire Torch. The middle two were the gaps.
+The seven jobs: upgrade runes, add sockets, upgrade gems, craft an amulet,
+**Token of Absolution**, **upgrade a unique**, Hellfire Torch.
 
 **Crafting is NOT important to this build, and the section says so.** Four
 families: Blood (perfect ruby, physical builds), Hit Power (perfect sapphire,
@@ -626,9 +626,37 @@ fully, **no limit on how many you use**. This materially changes how the Monarch
 respec reads — the "one spare" Akara charge is the last *free* reset, not the
 last one. Cross-referenced from Stats & Keys.
 
-**Walk past the unique upgrade recipes.** Exceptional/elite upgrades buy defense
-(useless to a caster) and raise the strength requirement (unaffordable against
-the Monarch's 146-point debt). Vipermagi upgraded wants 84 str instead of 43.
+#### Upgrading uniques — revised 2026-09-14 (was a blanket "skip it")
+
+Recipes, and they work on set items and rares too:
+**Tal + Shael + perfect diamond** = normal → exceptional;
+**Ko + Lem + perfect diamond** = exceptional → elite.
+Only the base changes; unique mods and sockets carry over. **Required level +7
+per tier.**
+
+**Not for the Sorceress** — the original verdict, and it stands. Buys defense a
+teleporting caster doesn't use; costs strength against the Monarch's 146-point
+debt (Vipermagi 43 → 84). Harlequin Crest and Arachnid Mesh can't be upgraded at
+all, being already on elite bases (Shako, Spiderweb Sash).
+
+**For the merc it's the opposite**, and the first version of this note missed it
+entirely because it only argued the player's case. Defense is a stat he uses.
+**Duriel's Shell → Great Hauberk: 528–732 → ~1,626 defense.** Do it on an
+ethereal base — no degradation on a merc, +50% defense, and the −10 requirement
+partly offsets the upgrade's strength increase.
+
+**THE TRAP — the upgrade rerolls base defense, and helms often come out worse.**
+Counterintuitive and worth protecting. **Vampire Gaze is locked to exactly 252**
+(max Grim Helm roll × its +100% ED). Upgraded, it rerolls across a Bone Visage's
+**100–157** base → **200–314**, so roughly **45% land below where it started** —
+having spent a Ko, a Lem and a perfect diamond to push the requirement to level
+70 and raise the strength on a merc gaining 1.5/level.
+
+Mechanism: elite **helm** bases overlap the exceptional ones instead of clearing
+them. Body armor does not have this problem. **Rule: upgrade his armor, never his
+helm.** Flagged on the Vampire Gaze and Duriel's Shell cards in the Mercenary tab
+as well as in the Cube section, since Vampire Gaze is the item this build most
+likely tempts someone into upgrading.
 
 **Placement:** before *Cubing runes up*, so the overview precedes the two
 existing deep-dive sections rather than trailing them. The crafting checkpoint
