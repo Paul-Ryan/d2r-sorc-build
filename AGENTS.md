@@ -20,10 +20,10 @@ built.
 ## Layout
 
 `index.html` is one file in four parts: `<head>` (meta + Google Fonts link +
-the entire stylesheet inline), the masthead, six tab panels, and a `<script>`
+the entire stylesheet inline), the masthead, seven tab panels, and a `<script>`
 at the bottom holding the theme toggle and the tab controller.
 
-Six tabs. Tab buttons, panels, and the `<!-- === NN NAME === -->` markers are
+Seven tabs. Tab buttons, panels, and the `<!-- === NN NAME === -->` markers are
 all in the same order; keep them that way when adding or moving one.
 
 | Tab | Button id | Panel id | Hash |
@@ -34,6 +34,7 @@ all in the same order; keep them that way when adding or moving one.
 | Mercenary | `tab-merc` | `panel-merc` | `#merc` |
 | Breakpoints & Resists | `tab-numbers` | `panel-numbers` | `#numbers` |
 | Prerequisites | `tab-prereq` | `panel-prereq` | `#prereq` |
+| Endgame | `tab-endgame` | `panel-endgame` | `#endgame` |
 
 Adding a tab means four edits: a `<button class="tab">` with its two-digit
 `<span class="idx">`, a `<section role="tabpanel" hidden>` (the first panel is
@@ -142,7 +143,7 @@ There are no tests. Do this by hand:
 python3 -m http.server 4173   # then open http://localhost:4173
 ```
 
-- Click all six tabs; confirm the hash updates and a direct `#gear` load opens
+- Click all seven tabs; confirm the hash updates and a direct `#gear` load opens
   the right one.
 - Toggle the theme both ways.
 - Narrow the window under 640px.

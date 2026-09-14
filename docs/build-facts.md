@@ -947,6 +947,94 @@ like extras but they are the guide's voice working correctly — it says plainly
 when something popular is a bad fit, and cutting them would leave the reader to
 rediscover each one.
 
+## Endgame tab (added 2026-09-14)
+
+Seventh tab. Paul asked whether endgame content deserved one; unlike the
+crafting question, the answer was yes — and the deciding argument was that
+**Annihilus was already load-bearing in the guide and never explained.**
+*Stats & Keys* counted on it to claw back 20–40 of the Monarch's strength bill
+while the charm appeared nowhere else on the page. Diablo Clone wasn't mentioned
+at all.
+
+Also: it is *activities*, not items, so it never belonged under Gear — and
+moving *Beyond Hell* out relieved the longest tab in the file.
+
+### The two Uber Diablos are different monsters
+
+The confusion is in the name and it's worth keeping straight:
+
+| | Diablo Clone ("Uber Diablo") | Pandemonium Diablo |
+| --- | --- | --- |
+| Where | a normal Hell game, replacing a superunique | inside Uber Tristram |
+| Trigger | **region-wide SoJ sales** | your own keys and organs |
+| Drops | **Annihilus** (nothing else in the game does) | part of the Torch run |
+
+**Diablo Clone:** level 110, high resistances and physical damage reduction,
+kit is **Armageddon / Fire Nova / Red Lightning** — a fire boss, which lands on
+exactly the resistance this guide spent the session closing. **Not immune to
+anything**, so both elements land and Conviction does full-strength work.
+Spawns after a random **75–125** SoJ sales across the region, tracked in **eight
+separate pools** (Classic/Expansion × SC/HC × ladder/non-ladder). Replaces the
+next superunique — Shenk, Eldritch, Thresh Socket are the walkable ones. Never
+trigger him in Chaos Sanctuary; he takes real Diablo's place.
+
+**Annihilus:** small charm, rlvl 70. +1 all skills, +10–20 all attributes,
+all res +10–20, +5–10% experience. **One per inventory.**
+
+### Xbox can't check the spawn — second instance of the no-chat problem
+
+Regional progress is read with the **`/uberdiablo` chat command**, and console
+D2R has no chat (see the Trading section). So this is the *same* constraint that
+pushes trading onto forums, surfacing again. Workaround is also the same shape:
+community trackers publish the progress messages (diablo2.io runs one). Flagged
+in the guide as a gap-flag.
+
+### The Pandemonium Event was understated on the old card
+
+The Gear tab's Hellfire Torch card said "cube a key of each... repeat three
+times for three organs." The real shape:
+
+1. **Nine keys** — 3 Terror (Countess), 3 Hate (Summoner), 3 Destruction
+   (Nihlathak), Hell only
+2. Cube one of each into a red portal, **three separate times**
+3. Kill Lilith / Uber Duriel / Uber Izual for one organ each
+4. Cube the three organs → Uber Tristram
+5. **Uber Mephisto, Uber Diablo and Uber Baal all spawn at once**; kill all three
+
+**The omission that mattered: die and leave before all three are down and the
+portal closes and the organs are consumed.** No retry — nine more keys. Now a
+gap-flag.
+
+**Hellfire Torch** (corrected while writing — the first draft had the proc
+wrong): rlvl 75, large charm. +3 to a *random class's* skills, +10–20 all
+attributes, all res +10–20, **5% CtC level 10 Firestorm on striking**, level 30
+Hydra (10 charges), +8 light radius.
+
+### Verdict: this build almost certainly cannot solo Uber Tristram
+
+Published as a verdict block, because the reasons are structural rather than a
+gear problem:
+
+- **Uber Mephisto's Conviction aura is worth about −125 to your resistances.**
+  Capped at 75% fire you enter his range at −50%.
+- **He is immune to lightning and poison**, which deletes **Static Field** — the
+  tool that trivialises every other boss in this guide.
+- **Uber Baal has high cold resistance**, so Frozen Orb is the weaker half there
+  and Fire Ball carries it.
+- **Pandemonium Diablo summons Pit Lords**, immune to everything but *physical*.
+  A caster has no answer; that's the merc, who won't survive the room.
+- Smiters clear this because physical damage sidesteps all of the above. The
+  realistic routes are a party or a trade — and since the attribute and resist
+  lines land regardless of which class the skills roll, **a cheap wrong-class
+  Torch is a perfectly good purchase.**
+
+### Cross-references repointed
+
+Cube jobs table (Hellfire Torch row), the Infinity immunity flag (sunder
+charms), the Cold Mastery 10-vs-15 checkpoint (sunder charms come from Terror
+Zones), and the *Stats & Keys* Monarch note, which now says where Annihilus
+comes from instead of naming it bare.
+
 ## Quests that must not be skipped
 
 Once Leaf and Stealth are done it's fine to rush the rest of Normal, except:

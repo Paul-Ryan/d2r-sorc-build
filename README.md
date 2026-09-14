@@ -9,7 +9,7 @@ automatically to GitHub Pages on every push to `main`.
 
 ## Layout
 
-Content is split across six tabs, each linkable by hash:
+Content is split across seven tabs, each linkable by hash:
 
 | Tab | Hash | Covers |
 | --- | --- | --- |
@@ -19,6 +19,7 @@ Content is split across six tabs, each linkable by hash:
 | Mercenary | `#merc` | Aura choice, Insight → Infinity, why he dies, merc helm & armor |
 | Breakpoints & Resists | `#numbers` | FCR/FHR tables, the Hell resist penalty |
 | Prerequisites | `#prereq` | Expansion vs Classic, online vs offline, accounts, connection, how to play, trading on Xbox |
+| Endgame | `#endgame` | Terror Zones, Diablo Clone & Annihilus, the Pandemonium Event & the Torch |
 
 Light and dark themes follow the OS by default; the header toggle overrides and
 persists to `localStorage`. Printing flattens every tab onto one page.
