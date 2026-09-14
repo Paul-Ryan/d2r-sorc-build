@@ -20,11 +20,11 @@ built.
 ## Layout
 
 `index.html` is one file in four parts: `<head>` (meta + Google Fonts link +
-the entire stylesheet inline), the masthead, five tab panels, and a `<script>`
+the entire stylesheet inline), the masthead, six tab panels, and a `<script>`
 at the bottom holding the theme toggle and the tab controller.
 
-Five tabs. Tab buttons and panels are in the same order; the README's layout
-table happens to list them in a different one.
+Six tabs. Tab buttons, panels, and the `<!-- === NN NAME === -->` markers are
+all in the same order; keep them that way when adding or moving one.
 
 | Tab | Button id | Panel id | Hash |
 | --- | --- | --- | --- |
@@ -33,6 +33,7 @@ table happens to list them in a different one.
 | Stats & Keys | `tab-stats` | `panel-stats` | `#stats` |
 | Mercenary | `tab-merc` | `panel-merc` | `#merc` |
 | Breakpoints & Resists | `tab-numbers` | `panel-numbers` | `#numbers` |
+| Prerequisites | `tab-prereq` | `panel-prereq` | `#prereq` |
 
 Adding a tab means four edits: a `<button class="tab">` with its two-digit
 `<span class="idx">`, a `<section role="tabpanel" hidden>` (the first panel is
@@ -79,14 +80,18 @@ The old Phase 1 table invented level rows and hid a wrong one (Frozen Armor at
 the verified table.
 
 **Cards and tiles**
-- `.rwgrid` → `.rwcard` — one runeword. `.rwhead` (`.rwname` + `.rwlvl`),
-  `.rwrunes` (the rune string and base), an optional `.rwstats` block, then
-  `.rwrow`s of `<b>Why</b>` / `<b>Where</b>` + `<span>`.
+- `.rwgrid` → `.rwcard` — one runeword *or one unique item*. `.rwhead`
+  (`.rwname` + `.rwlvl`), `.rwrunes` (the rune string and base — for a unique,
+  the base item plus its strength requirement and socket ceiling), an optional
+  `.rwstats` block, then `.rwrow`s of `<b>Why</b>` / `<b>Where</b>` + `<span>`.
+  On a unique, `.rwlvl` reads `unique · req. level NN`.
 - Inside `.rwstats`: `.rwstats-label` header, then one `.rwstat` per line.
   Add `.roll` plus a `<span class="rolltag">rolled once</span>` for stats
   randomized at creation; use `<span class="hittag">per hit</span>` or
   `scales w/ level` for ordinary per-swing variance. The distinction matters —
-  "rolled once" is the guide's signal that remaking the item is the only fix.
+  "rolled once" is the guide's signal that the number is locked to that copy
+  forever. The remedy differs by item type: remake a runeword in a fresh base,
+  but find or trade for another unique. The Gear tab spells that out once.
 - `.tiles` → `.tile` with `.num` + `.label`, optional `.accent-fire` /
   `.accent-cold` top rule. For headline totals.
 - `.statgrid` → `.statcard` (`.skip` variant for stats to ignore).
@@ -94,7 +99,15 @@ the verified table.
 
 **Tables** — always wrap in `.tblwrap`. Cells: `.num` right-aligns,
 `.skill` is the wide descriptive column. `<span class="tag fire">` /
-`<span class="tag cold">` are inline chips. `.mono` for figures in running prose.
+`<span class="tag cold">` / `<span class="tag luck">` are inline chips.
+`.mono` for figures in running prose.
+
+`.tag.luck` is gold, reusing the meaning gold already carries on `.rolltag`:
+**not in your control**. It marks an item you cannot farm into existence — a
+named unique you wait for or trade for — against `.tag.cold` "make" for
+something you can go and get. Only the Gear tab's upgrade table uses the pair,
+and the distinction is the reason that table is separate from the farming
+order above it.
 
 Two row highlights, and the difference matters:
 - `<tr class="row-mark">` — tints the row. Use this for grouping, a
@@ -129,9 +142,24 @@ There are no tests. Do this by hand:
 python3 -m http.server 4173   # then open http://localhost:4173
 ```
 
-- Click all five tabs; confirm the hash updates and a direct `#gear` load opens
+- Click all six tabs; confirm the hash updates and a direct `#gear` load opens
   the right one.
 - Toggle the theme both ways.
 - Narrow the window under 640px.
 - If a number changed, re-check the totals that depend on it — the skill ledger,
   the stat budget, and the resist math all cross-reference each other.
+- **After adding or moving a `.section`, check its nesting depth**, not just that
+  the div count balances. A misplaced closer leaves the file well-formed and the
+  counts even while nesting every later section inside the previous one — which
+  is exactly what happened once and went unnoticed:
+
+  ```
+  python3 - <<'EOF'
+  import re; d=0
+  for i,l in enumerate(open('index.html')):
+      if l.rstrip('\n')=='  <div class="section">' and d: print('bad depth at line',i+1)
+      for t in re.findall(r'<div\b|</div>', l): d += 1 if t!='</div>' else -1
+  EOF
+  ```
+- If you moved a section, re-grep for `above`, `below`, `further down` and `next`
+  — the page cross-references its own sections by direction.

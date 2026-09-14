@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Paul's Diablo II: Resurrected Sorceress build guide — Fire Ball to Frozen Orb hybrid. Skill point ledger, stat allocation, runeword targets, breakpoints, and mercenary plan.">
+<meta name="description" content="How to build a Fire Ball to Frozen Orb hybrid Sorceress in Diablo II: Resurrected &mdash; prerequisites, skill point order, stat allocation, runeword targets, breakpoints, and mercenary plan.">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#0b0e16" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)">
-<title>Paul's Diablo II: Resurrected Sorceress Build Guide</title>
+<title>How to build a Sorceress in Diablo 2: Resurrected</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128293;</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -415,6 +415,9 @@ td.runes{
 }
 .tag.fire{background:var(--fire-bg);color:var(--fire);}
 .tag.cold{background:var(--cold-bg);color:var(--cold);}
+/* gold already means "randomized, not in your control" on .rolltag; .tag.luck
+   carries the same meaning for an item you can't farm into existence */
+.tag.luck{background:var(--gold-bg);color:var(--gold);}
 
 /* row-mark highlights a row worth looking at; bp-hit adds the "reached"
    label, and is only for thresholds the build genuinely lands on */
@@ -453,6 +456,8 @@ tr.bp-hit td:first-child::before{
 .checkpoint p{margin:0;font-size:16px;line-height:1.7;color:var(--ink-muted);max-width:60ch;}
 .checkpoint p b{color:var(--ink);}
 .checkpoint.gap-flag{border-left-color:var(--warn);}
+/* a callout sitting between the tab intro and the first section needs a section's trailing gap */
+.totals-aside + .checkpoint{margin-bottom:clamp(40px,6vw,68px);}
 .checkpoint.gap-flag .mark{color:var(--warn);}
 
 /* ---------- stat allocation cards ---------- */
@@ -759,8 +764,8 @@ footer .wrap{
 <header class="masthead">
   <div class="wrap">
     <div>
-      <div class="eyebrow">Diablo II: Resurrected &middot; Fire Ball &rarr; Frozen Orb</div>
-      <h1>Paul's Sorceress Build Guide</h1>
+      <div class="eyebrow">Fire Ball &rarr; Frozen Orb hybrid</div>
+      <h1>How to build a Sorceress in Diablo&nbsp;2: Resurrected</h1>
       <p class="subtitle">Every skill point from level 2 to 99, the gear that carries it there, and the numbers the build actually has to hit.</p>
     </div>
     <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle light and dark theme" title="Toggle theme">
@@ -778,6 +783,7 @@ footer .wrap{
       <button class="tab" role="tab" id="tab-stats"   aria-controls="panel-stats"   aria-selected="false" tabindex="-1"><span class="idx">03</span>Stats &amp; Keys</button>
       <button class="tab" role="tab" id="tab-merc"    aria-controls="panel-merc"    aria-selected="false" tabindex="-1"><span class="idx">04</span>Mercenary</button>
       <button class="tab" role="tab" id="tab-numbers" aria-controls="panel-numbers" aria-selected="false" tabindex="-1"><span class="idx">05</span>Breakpoints &amp; Resists</button>
+      <button class="tab" role="tab" id="tab-prereq"  aria-controls="panel-prereq"  aria-selected="false" tabindex="-1"><span class="idx">06</span>Prerequisites</button>
     </div>
   </div>
 </div>
@@ -787,7 +793,11 @@ footer .wrap{
 <!-- =================== 01 SKILL POINTS =================== -->
 <section role="tabpanel" id="panel-points" aria-labelledby="tab-points" tabindex="-1">
 
-  <p class="totals-aside"><b class="mono">110</b> skill points total by level 99 &mdash; <span class="mono">98</span> from leveling, <span class="mono">12</span> from quest rewards (Den of Evil, Radament's Lair, The Fallen Angel/Izual &mdash; once per difficulty each, all low-risk quests almost every character finishes anyway). Assumed throughout below.</p>
+  <p class="totals-aside"><b class="mono">110</b> skill points total by level 99 &mdash; <span class="mono">98</span> from leveling and <span class="mono">12</span> from quests. Three quests grant them, once per difficulty each: <b>Den of Evil</b> (+1, Act 1), <b>Radament's Lair</b> (+1, Act 2) and <b>The Fallen Angel</b> / Izual (+2, Act 4). That's four a difficulty, twelve across all three, and all of them are low-risk quests almost every character finishes anyway. Assumed throughout below.</p>
+  <div class="checkpoint gap-flag">
+    <span class="mark">Radament's point is an item you have to use</span>
+    <p>Den of Evil and Izual credit their points the moment the quest completes. <b>Radament does not</b> &mdash; he drops a <b>Book of Skill</b> on the ground, and the point only exists once you pick it up and use it from your inventory. It is entirely possible to kill him, walk away, and never get the point, which is easy to do because Act 2's sewers aren't on the way to anything. Three difficulties means <b>three books</b>. If your total ever reads one short of the plan, this is why.</p>
+  </div>
 
   <div class="section">
     <div class="section-head">
@@ -994,11 +1004,11 @@ footer .wrap{
     </div>
     <div class="checkpoint">
       <span class="mark">one point, and let gear grow it</span>
-      <p>Damage is <b>25% of a monster's current life at every skill level</b> — points buy radius and nothing else, at about 0.67 yards each. Meanwhile the plan already carries <b>+5 to skills</b> from Lore and two Spirits, and a +2 Sorceress amulet makes it +7, which runs a single-point Static Field at around <b>8 yards</b> for free. That's the whole case: one point, and the gear you were buying anyway does the rest. In Hell it takes roughly <b>three casts and 27 mana</b> to walk a boss down to the 50% floor, and then Frozen Orb or Fire Ball finishes the job.</p>
+      <p>Damage is <b>25% of a monster's current life at every skill level</b> &mdash; points buy radius and nothing else, at about 0.67 yards each. Meanwhile the plan already carries <b>+5 to skills</b> from Lore and two Spirits, and a +2 Sorceress amulet makes it +7, which runs a single-point Static Field at around <b>8 yards</b> for free. That's the whole case: one point, and the gear you were buying anyway does the rest. In Hell it takes roughly <b>three casts and 27 mana</b> to walk a boss down to the 50% floor, and then Frozen Orb or Fire Ball finishes the job.</p>
     </div>
     <div class="checkpoint gap-flag">
       <span class="mark">caveat &mdash; Infinity does not fix this one</span>
-      <p>Static Field is <b>lightning damage</b>, scaled by the target's lightning resistance, so it does less than 25% against resistant monsters and <b>nothing at all against lightning immunes</b>. The part that catches people: <b>Conviction from Infinity does not help</b> — resistance debuffs are ignored for Static Field's calculation, so the item carrying your whole Hell plan can't open this door. Treat Static as a tool for bosses and tough uniques that happen not to be lightning immune, not as a universal opener.</p>
+      <p>Static Field is <b>lightning damage</b>, scaled by the target's lightning resistance, so it does less than 25% against resistant monsters and <b>nothing at all against lightning immunes</b>. The part that catches people: <b>Conviction from Infinity does not help</b> &mdash; resistance debuffs are ignored for Static Field's calculation, so the item carrying your whole Hell plan can't open this door. Treat Static as a tool for bosses and tough uniques that happen not to be lightning immune, not as a universal opener.</p>
     </div>
   </div>
 
@@ -1011,16 +1021,16 @@ footer .wrap{
   <div class="section">
     <div class="section-head">
       <h2>Farming order</h2>
-      <span class="section-note">player &amp; mercenary, together</span>
+      <span class="section-note">two lists &mdash; the plan, then the upgrades</span>
     </div>
-    <p class="lede">Seven runewords total, four of them drawing on the same Nightmare-tier runes. This is the order that actually matches how they become available &mdash; level requirement first, rune tier second.</p>
+    <p class="lede">Seven runewords in the core plan, four of them drawing on the same Nightmare-tier runes. This is the order that actually matches how they become available &mdash; level requirement first, rune tier second. It is also a list you can <i>finish</i>: every rune in it is reachable by deciding to go and get it. The second table below is not like that, and the difference between them is worth keeping straight.</p>
     <div class="tblwrap">
       <table>
         <thead><tr><th class="num">Order</th><th class="skill">Runeword</th><th>Slot</th><th class="num">Level</th><th>Runes</th><th>Where they drop</th></tr></thead>
         <tbody>
           <tr><td class="num">1</td><td class="skill">Stealth</td><td>Your armor</td><td class="num">17</td><td class="runes">Tal + Eth</td><td>Normal Countess</td></tr>
           <tr><td class="num">2</td><td class="skill">Leaf</td><td>Your weapon (early)</td><td class="num">19</td><td class="runes">Tir + Ral</td><td>Normal Countess</td></tr>
-          <tr><td class="num">3</td><td class="skill">Ancients' Pledge</td><td>Your off-hand (through Nightmare)</td><td class="num">21</td><td class="runes">Ral + Ort + Tal</td><td>Normal Countess + one Ort</td></tr>
+          <tr><td class="num">3</td><td class="skill">Ancients' Pledge</td><td>Your off-hand (through Nightmare)</td><td class="num">21</td><td class="runes">Ral + Ort + Tal</td><td>Normal Countess (cube the Ort)</td></tr>
           <tr class="row-mark"><td class="num">4</td><td class="skill">Spirit <span class="tag fire">sword</span></td><td>Your weapon (main)</td><td class="num">25</td><td class="runes">Tal + Thul + Ort + Amn</td><td>Nightmare Countess</td></tr>
           <tr class="row-mark"><td class="num">5</td><td class="skill">Lore</td><td>Your helm</td><td class="num">27</td><td class="runes">Ort + Sol</td><td>Nightmare Countess</td></tr>
           <tr class="row-mark"><td class="num">6</td><td class="skill">Insight</td><td>Merc's weapon</td><td class="num">27</td><td class="runes">Ral + Tir + Tal + Sol</td><td>Nightmare Countess</td></tr>
@@ -1031,18 +1041,142 @@ footer .wrap{
     </div>
     <div class="checkpoint">
       <span class="mark">why this order</span>
-      <p><b>Stealth and Leaf</b> come first because they're the only two you can finish entirely in Normal &mdash; every rune they need clears Normal Countess. <b>Ancients' Pledge</b> follows immediately behind them, because two of its three runes are Normal drops as well and the odd one out is an <b>Ort</b> &mdash; which arrives with Lore's anyway. The moment you're farming Nightmare Countess for Spirit's Thul and Amn, <b>Lore's Ort/Sol</b> and <b>Insight's Sol</b> are dropping alongside them for free, so grab all three in the same farming stretch rather than treating them as separate trips. <b>Spirit's shield half</b> is marked <b>25*</b> because the runeword itself unlocks at 25, but its base &mdash; a Monarch &mdash; needs level 54 and 156 strength, which realistically puts it in Hell; see <i>Stats &amp; Keys</i> for why that strength shouldn't be paid early. <b>Infinity</b> is last on purpose: Insight covers the merc's mana job perfectly well until then, and the wait is real &mdash; two of its four runes (below) aren't a Countess job at all.</p>
+      <p><b>Stealth and Leaf</b> come first because they're the only two you can finish entirely in Normal &mdash; every rune they need clears Normal Countess. <b>Ancients' Pledge</b> joins them, because its odd rune out &mdash; an <b>Ort</b> &mdash; is only <b>three Rals</b> in the Cube, so it never needs a Nightmare trip at all. The moment you're farming Nightmare Countess for Spirit's Thul and Amn, <b>Lore's Ort/Sol</b> and <b>Insight's Sol</b> are dropping alongside them for free, so grab all three in the same farming stretch rather than treating them as separate trips. <b>Spirit's shield half</b> is marked <b>25*</b> because the runeword itself unlocks at 25, but its base &mdash; a Monarch &mdash; needs level 54 and 156 strength, which realistically puts it in Hell; see <i>Stats &amp; Keys</i> for why that strength shouldn't be paid early. <b>Infinity</b> is last on purpose: Insight covers the merc's mana job perfectly well until then, and the wait is real &mdash; two of its four runes (below) aren't a Countess job at all.</p>
     </div>
     <div class="checkpoint gap-flag">
       <span class="mark">what "Hell farming" actually means for Infinity</span>
-      <p>Hell Countess tops out at <b>Ist</b>, so her bonus drop still covers Infinity's <b>Mal</b> and one <b>Ist</b> &mdash; keep running her. The two <b>Ber</b> runes are the real bottleneck: Countess can't drop them at any difficulty, and there's no single boss that reliably does either. The realistic spots are <b>Lower Kurast super chests</b> (fast per attempt, no fighting required), <b>Travincal</b> (Council Members have a shot at high runes), and the <b>Secret Cow Level</b> (several hundred monsters per run, so volume compensates for low odds) &mdash; plus whatever Terror Zones you're running once you're geared enough for those. Expect this to take a while; a lot of players trade for Ber runes rather than farm them out directly.</p>
+      <p>Hell Countess tops out at <b>Ist</b>, so her bonus drop still covers Infinity's <b>Mal</b> and one <b>Ist</b> &mdash; keep running her. The two <b>Ber</b> runes are the real bottleneck: Countess can't drop them at any difficulty, and there's no single boss that reliably does either. The realistic spots are <b>Lower Kurast super chests</b> (fast per attempt, no fighting required), <b>Travincal</b> (Council Members have a shot at high runes), and the <b>Secret Cow Level</b> (several hundred monsters per run, so volume compensates for low odds) &mdash; plus whatever Terror Zones you're running once you're geared enough for those. Expect this to take a while; a lot of players trade for Ber runes rather than farm them out directly. And note the number may be <b>three, not two</b> &mdash; Chains of Honor, the armor this plan eventually wants, costs a Ber of its own. See <i>The armor slot</i>.</p>
+    </div>
+    <p class="lede">Past Stealth and Lore the runeword list runs out, and the armor and helm slots carry on without it. These are what replace them &mdash; between them the largest corrections available to the resist gap, and the first part of this plan that depends on luck. <b>Ordered by level, not by priority.</b> Full stat blocks and the reasoning are in <i>The armor slot</i> and <i>The helm slot</i> further down. Two of the rows aren't armor or helm at all &mdash; <b>Magefist</b> and <b>Aldur's Advance</b> earn their place because they close the cast-rate and fire-resist problems outright; the rest of the small slots have their own section further down still.</p>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th class="num">Level</th><th class="skill">Item</th><th>Slot</th><th>What it takes</th><th>Where it comes from</th></tr></thead>
+        <tbody>
+          <tr class="row-mark"><td class="num">23</td><td class="skill">Magefist <span class="tag luck">find</span></td><td>Your gloves</td><td>45 strength</td><td>Nightmare onward &mdash; cheap, and 20% of the cast rate you need</td></tr>
+          <tr class="row-mark"><td class="num">29</td><td class="skill">Skin of the Vipermagi <span class="tag luck">find</span></td><td>Your armor</td><td>43 strength</td><td>Nightmare onward &mdash; one of the cheapest uniques to trade for</td></tr>
+          <tr class="row-mark"><td class="num">37</td><td class="skill">Smoke <span class="tag cold">make</span></td><td>Your armor</td><td class="runes">Nef + Lum</td><td>Normal Countess, plus three Ios in the Cube</td></tr>
+          <tr class="row-mark"><td class="num">45</td><td class="skill">Aldur's Advance <span class="tag luck">find</span></td><td>Your boots</td><td>95 strength</td><td>Hell drops &mdash; the item that caps your fire resist</td></tr>
+          <tr class="row-mark"><td class="num">62</td><td class="skill">Harlequin Crest <span class="tag luck">find</span></td><td>Your helm</td><td>50 strength, 1 socket</td><td>Hell drops; commonly traded</td></tr>
+          <tr class="row-mark"><td class="num">63</td><td class="skill">Chains of Honor <span class="tag cold">make</span></td><td>Your armor</td><td class="runes">Dol + Um + Ber + Ist</td><td>Hell Countess &mdash; plus a <b>third</b> Ber</td></tr>
+          <tr><td class="num">65</td><td class="skill">Enigma <span class="tag cold">make</span></td><td>Your armor</td><td class="runes">Jah + Ith + Ber</td><td>Trade &mdash; a Jah <i>and</i> a Ber, dearer than the row above</td></tr>
+          <tr><td class="num">67</td><td class="skill">Nightwing's Veil <span class="tag luck">find</span></td><td>Your helm</td><td>96 strength, no sockets</td><td>Hell drops</td></tr>
+          <tr><td class="num">75</td><td class="skill">Ormus' Robes <span class="tag luck">find</span></td><td>Your armor</td><td>77 strength</td><td>Hell drops</td></tr>
+          <tr class="row-mark"><td class="num">77</td><td class="skill">Kira's Guardian <span class="tag luck">find</span></td><td>Your helm</td><td>negligible strength</td><td>Hell drops &mdash; hold out for a 65+ resist roll</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">how to read the second list</span>
+      <p>Three things it's saying that the first one isn't. <b>None of it is on the critical path</b> &mdash; the build as planned works without a single row of it; these are corrections, not requirements, which is why they sit in their own table. <b>The gold "find" tag is a real distinction, not a decoration</b>: you cannot farm a named unique into existence the way you can farm a rune, so those rows are things to recognize when they turn up or to trade for, never a target to grind toward. Only the three "make" rows behave like the first table. And <b>the tinted rows are the ones worth planning around</b> &mdash; Vipermagi and Smoke through Nightmare, then Harlequin Crest and Chains of Honor as the endgame pair, and Kira's Guardian if fire resistance is still what ends your runs. The three untinted rows are real items with real arguments behind them, but Enigma answers the strength budget rather than the resist gap, and Nightwing's and Ormus' only pay the cold half of a build that has two halves.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>What the Cube is actually for</h2>
+      <span class="section-note">six jobs, one of them a crafting bench</span>
+    </div>
+    <p class="lede">The Horadric Cube turns up in six separate places in this plan and it's easy to think of it as one feature. It isn't &mdash; these are six unrelated jobs that happen to share a box, and two of them aren't mentioned anywhere else on this page. You get it from <b>The Horadric Staff</b> in Act 2, which is why that quest is on the do-not-skip list.</p>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th class="skill">The job</th><th>What it does</th><th>Covered in</th></tr></thead>
+        <tbody>
+          <tr><td class="skill">Upgrade runes</td><td>3-to-1 up to Pul, 2-to-1 above it</td><td><i>Cubing runes up</i>, next</td></tr>
+          <tr><td class="skill">Add sockets</td><td>White and gray bases only, random count</td><td><i>Socket mechanics</i>, below</td></tr>
+          <tr><td class="skill">Upgrade gems</td><td>Three of a grade make one of the next</td><td><i>Cubing runes up</i>, next</td></tr>
+          <tr class="row-mark"><td class="skill">Craft an amulet</td><td>The one craft this build wants</td><td>Right here</td></tr>
+          <tr class="row-mark"><td class="skill">Token of Absolution</td><td>Your fourth respec, and every one after</td><td>Right here</td></tr>
+          <tr><td class="skill">Hellfire Torch</td><td>Keys &rarr; organs &rarr; the Uber portal</td><td><i>Beyond Hell</i>, last section</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">crafting: four families, and three are for other people</span>
+      <p>Every craft is a <b>magic</b> base plus a jewel, a perfect gem, and one rune, and the gem picks the family. <b>Blood</b> (perfect ruby) gives life steal and crushing blow, for physical builds. <b>Hit Power</b> (perfect sapphire) gives stun and knockback, for melee. <b>Safety</b> (perfect emerald) gives defense and damage reduction, which sounds relevant until you remember the armor, helm and boots have already capped your resists by the time you could make one. <b>Caster</b> (perfect amethyst) is the one, and even inside it only half the recipes earn their runes.</p>
+    </div>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th class="skill">Caster craft</th><th>Magic base</th><th>Rune</th><th>What it always gets</th><th>Worth making?</th></tr></thead>
+        <tbody>
+          <tr class="row-mark"><td class="skill">Amulet</td><td>Any amulet</td><td class="runes">Ral</td><td>Mana regen, +10&ndash;20 mana, <b>5&ndash;10% faster cast rate</b></td><td><b>Yes</b> &mdash; the best amulet in the game for you</td></tr>
+          <tr class="row-mark"><td class="skill">Belt</td><td>Light Belt</td><td class="runes">Ith</td><td>Mana regen, +10&ndash;20 mana, <b>5&ndash;10% faster cast rate</b></td><td>Yes, unless you hold an Arachnid Mesh</td></tr>
+          <tr><td class="skill">Ring</td><td>Any ring</td><td class="runes">Amn</td><td>Mana regen, +10&ndash;20 mana, +1&ndash;5 energy</td><td>No &mdash; <b>no cast rate</b>; a rare beats it</td></tr>
+          <tr><td class="skill">Gloves</td><td>Leather Gloves</td><td class="runes">Ort</td><td>Mana regen, +10&ndash;20 mana, +1&ndash;3 mana per kill</td><td>No &mdash; <b>no cast rate</b>; Magefist beats it</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">the only line that matters: cast rate is guaranteed, skills are not</span>
+      <p>The amulet and belt are the only two caster recipes that hand you <b>faster cast rate on every single craft</b> &mdash; rings and gloves never roll it from the recipe at all, which is the whole reason those two rows say no. On an amulet, that preset stacks with an <i>of the Apprentice</i> suffix (a common <b>+10%</b>) for <b>up to 20%, more than any rare or unique amulet in the game can carry</b>. That part works at any level, and it is what makes this worth doing: <b>it's the only item in the entire plan you can manufacture instead of wait for.</b></p>
+    </div>
+    <div class="checkpoint gap-flag">
+      <span class="mark">but the +2 skills version needs level 93</span>
+      <p>This is the trap, and it's the reason to read the recipe before grinding it. The famous caster amulet &mdash; <b>+2 Sorceress skills and 20% cast rate</b> &mdash; needs the <b>+2 class skills</b> affix, which sits at <b>affix level 90</b>. A craft's item level is <span class="mono">half your character level + half the base's</span>, so you need to be around <b>character level 93</b> before it can appear at all. Below that it is not unlikely, it is <i>impossible</i>, and every amulet you make will come out with cast rate, mana, and no skills. Craft below 93 for the cast rate alone and <b>wear Mara's Kaleidoscope for the skills</b> until you get there.</p>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">Token of Absolution &mdash; your respecs aren't actually finite</span>
+      <p>Not mentioned anywhere else on this page, and it changes how nervous you should be about the Monarch. Akara's free reset is <b>once per difficulty</b>, three for the character's life, and <i>Stats &amp; Keys</i> already spends two of them. The fourth and every one after comes out of the Cube: collect the four <b>Essences</b> that Hell's act bosses drop &mdash; <b>Twisted Essence of Suffering</b> (Andariel and Duriel), <b>Charged Essence of Hatred</b> (Mephisto), <b>Burning Essence of Terror</b> (Diablo), <b>Festering Essence of Destruction</b> (Baal) &mdash; and cube all four into a <b>Token of Absolution</b>. Right-click it and your skills and stats reset completely. <b>There is no limit on how many you can use</b>, so no build decision on this page is permanently unrecoverable. The spare Akara charge isn't your last chance; it's just the last <i>free</i> one.</p>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">and one recipe to walk past</span>
+      <p><b>Upgrading a unique or set item</b> to its exceptional or elite version is the tempting one, because it works on several items already on this page. Skip it here. What it buys is <b>defense</b>, which a character who never gets hit on purpose has no use for, and what it costs is a <b>higher strength requirement</b> on a build that is already 146 points in debt to a Monarch. Vipermagi upgraded wants 84 strength instead of 43, and returns nothing you'd notice.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>Cubing runes up</h2>
+      <span class="section-note">when the Countess won't cooperate</span>
+    </div>
+    <p class="lede">The Cube turns a stack of low runes into one of the next rune up. It's the answer to "she keeps dropping the wrong thing" &mdash; but the ratio compounds, so it's a tool for closing a one- or two-tier gap, never a ladder you climb from the bottom.</p>
+    <div class="split">
+      <div class="tblwrap">
+        <table>
+          <thead><tr><th>Making&hellip;</th><th class="num">Runes in</th><th>Plus</th></tr></thead>
+          <tbody>
+            <tr><td>El &rarr; Thul</td><td class="num">3</td><td>nothing</td></tr>
+            <tr class="row-mark"><td>Amn &rarr; Pul</td><td class="num">3</td><td>a chipped gem, then flawed from Lum</td></tr>
+            <tr><td>Um &rarr; Lo</td><td class="num">2</td><td>a flawed gem, then standard from Mal</td></tr>
+            <tr><td>Sur &rarr; Zod</td><td class="num">2</td><td>a flawless gem</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="checkpoint">
+        <span class="mark">the gems are never the problem</span>
+        <p>Chipped gems drop constantly and vendors sell them, and gems upgrade in the Cube on the same <b>3-to-1</b> rule if you need a better one. Every recipe below Um wants a chipped or flawed gem, which is to say it wants nothing you'd notice spending. The runes are the whole cost.</p>
+      </div>
+    </div>
+    <div class="split">
+      <div class="tblwrap">
+        <table>
+          <thead><tr><th class="skill">Rune you're short of</th><th class="num">Costs, in Ral</th><th>Verdict</th></tr></thead>
+          <tbody>
+            <tr class="row-mark"><td class="skill">Ort <span class="tag cold">Ancients' Pledge, Lore</span></td><td class="num">3</td><td>Cube it &mdash; it's almost free</td></tr>
+            <tr><td class="skill">Thul <span class="tag cold">Spirit</span></td><td class="num">9</td><td>Worth it if you're one short</td></tr>
+            <tr><td class="skill">Amn <span class="tag cold">Spirit</span></td><td class="num">27</td><td>Farm Nightmare instead</td></tr>
+            <tr><td class="skill">Sol <span class="tag cold">Lore, Insight</span></td><td class="num">81</td><td>Farm Nightmare instead</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="checkpoint">
+        <span class="mark">reading this table</span>
+        <p><b>Normal Countess tops out at Ral</b>, so Ral is the currency every number above is priced in. Each tier costs <b>three</b> of the one below, which is why the column explodes: Ort is three Rals and Sol is eighty-one. The practical line falls somewhere around <b>Thul</b> &mdash; below it, cubing beats waiting; above it, you'll finish a Nightmare Countess run faster than you'll finish the stack.</p>
+      </div>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">the one that genuinely changes the plan</span>
+      <p><b>Ancients' Pledge needs Ral + Ort + Tal, and Ort is its only rune above Normal Countess's ceiling.</b> At three Rals, you can cube it &mdash; which makes the whole runeword farmable <i>in Normal</i>, at its level-21 requirement, instead of waiting on a Nightmare trip. That matters more than it sounds: Ancients' Pledge is your resist answer for the entire Nightmare stretch, and this is what lets you walk in already wearing it.</p>
+    </div>
+    <div class="checkpoint gap-flag">
+      <span class="mark">this does not solve Ber</span>
+      <p>Above Pul the recipes drop to <b>2-to-1</b>, which sounds better and isn't &mdash; you're just doubling from a far more expensive base. <b>Hell Countess tops out at Ist</b>, and climbing Ist &rarr; Gul &rarr; Vex &rarr; Ohm &rarr; Lo &rarr; Sur &rarr; Ber costs <b>64 Ist runes</b> for a single Ber. Infinity wants two, so <b>128 Ists</b>, plus a flawless gem at each of the last steps. That is not a farming plan. Cubing is why people quote Ber prices in Ist &mdash; it sets the exchange rate &mdash; but for actually obtaining one, trading remains the answer.</p>
     </div>
   </div>
 
   <div class="section">
     <div class="section-head">
       <h2>Socket mechanics</h2>
-      <span class="section-note">Larzuk, vendors, the Cube — reference</span>
+      <span class="section-note">Larzuk, vendors, the Cube &mdash; reference</span>
     </div>
     <p class="lede">Runes are the easy half. Every runeword also needs a base with exactly the right number of sockets. The first three below you can buy outright from vendors; the 4-socket bases are the real bottleneck, and this is general mechanics you'll want to know before you hit it, not something tied to one difficulty.</p>
     <div class="split">
@@ -1092,7 +1226,7 @@ footer .wrap{
     <p class="lede">Runewords only, and nothing else. The resist penalty is 0% here, so spend nothing chasing it &mdash; every rune the Countess drops and every spare gold piece goes toward these two.</p>
     <div class="checkpoint">
       <span class="mark">reading the stat blocks below</span>
-      <p>Every runeword's full stats are listed under its card. Most lines are <b>fixed</b> &mdash; every copy of that runeword rolls identically, so there's nothing to chase. A few lines are <b>highlighted gold and tagged "rolled once"</b> &mdash; those are randomized <i>when the runeword is created</i> and then locked to that specific item forever. The only way to change one is to break the item down (or start over in a fresh base) and remake the runeword, hoping for a better roll. Plain min&ndash;max damage lines (tagged "per hit") aren't part of this &mdash; that's normal per-swing variance every weapon has, not something remaking changes.</p>
+      <p>Every runeword's full stats are listed under its card. Most lines are <b>fixed</b> &mdash; every copy of that runeword rolls identically, so there's nothing to chase. A few lines are <b>highlighted gold and tagged "rolled once"</b> &mdash; those are randomized <i>when the runeword is created</i> and then locked to that specific item forever. The only way to change one is to break the item down (or start over in a fresh base) and remake the runeword, hoping for a better roll. Plain min&ndash;max damage lines (tagged "per hit") aren't part of this &mdash; that's normal per-swing variance every weapon has, not something remaking changes. The same tag turns up later on <b>unique items</b>, where it means the same thing but has a different remedy: you can't remake a unique, so a bad roll is fixed only by finding or trading for another one.</p>
     </div>
     <div class="rwgrid">
       <div class="rwcard">
@@ -1109,7 +1243,7 @@ footer .wrap{
           <div class="rwstat"><span>Cold Resist +33%</span></div>
           <div class="rwstat"><span>+2 to Mana after each Kill</span></div>
         </div>
-        <div class="rwrow"><b>Why</b><span>+3 to Fire Skills — turns early Fire Ball into a nuke, breaks Normal wide open. Also carries Cold Resist +33%.</span></div>
+        <div class="rwrow"><b>Why</b><span>+3 to Fire Skills &mdash; turns early Fire Ball into a nuke, breaks Normal wide open. Also carries Cold Resist +33%.</span></div>
         <div class="rwrow"><b>Where</b><span>2-socket short staff from Akara. Must be gray/white base, not "Magic".</span></div>
       </div>
       <div class="rwcard">
@@ -1136,7 +1270,7 @@ footer .wrap{
     </div>
     <div class="checkpoint">
       <span class="mark">it's fine to rush the rest of Normal</span>
-      <p>Once Leaf and Stealth are done, there's nothing else in Normal or the start of Nightmare this plan is waiting on &mdash; run through the rest of the story as fast as you want. Just don't skip three quests on the way: <b>the Horadric Cube</b> (Act 2, "The Horadric Staff") &mdash; every socket recipe and rune upgrade on this page needs it; <b>Larzuk / "Siege on Harrogath"</b> (early Act 5, kill Shenk the Overseer) &mdash; this is what actually grants the socket charges the plan above is counting on, and it's easy to blow past without noticing; and <b>The Golden Bird</b> (Act 2) &mdash; a permanent <b>+20 maximum life</b> for very little effort, once per difficulty. Rescuing <b>Deckard Cain</b> ("The Search for Cain," Act 1) isn't build-critical but is worth the two minutes &mdash; free identifies for the rest of the game. Everything else, including Charsi's Imbue, is safe to walk past.</p>
+      <p>Once Leaf and Stealth are done, there's nothing else in Normal or the start of Nightmare this plan is waiting on &mdash; run through the rest of the story as fast as you want. What you can't skip is the quests that hand out permanent rewards, and there are more of them than people remember. <b>The three skill-point quests</b> &mdash; Den of Evil (Act 1), Radament's Lair (Act 2) and The Fallen Angel / Izual (Act 4) &mdash; are load-bearing: the skill plan is built on all twelve points, and <b>Radament's arrives as a Book of Skill you have to actually use</b>. Then <b>the Horadric Cube</b> (Act 2, "The Horadric Staff"), because every socket recipe and rune upgrade on this page needs it; <b>Larzuk / "Siege on Harrogath"</b> (early Act 5, kill Shenk the Overseer), which grants the socket charges the plan above counts on and is easy to blow past; <b>Lam Esen's Tome</b> (Act 3) for +5 stat points; and <b>The Golden Bird</b> (Act 3) for a permanent <b>+20 maximum life</b>. All of them are once per difficulty. Rescuing <b>Deckard Cain</b> ("The Search for Cain," Act 1) isn't build-critical but is worth the two minutes for free identifies. Everything else, including Charsi's Imbue, is safe to walk past.</p>
     </div>
   </div>
 
@@ -1215,7 +1349,7 @@ footer .wrap{
           <div class="rwstat"><span>10% Damage Goes to Mana</span></div>
         </div>
         <div class="rwrow"><b>Why</b><span>The off-hand filler, and <b>the largest single source of fire resistance in the entire plan</b> &mdash; the one element nothing else here grants. Holds the slot from level 21 until a Monarch turns up in Hell.</span></div>
-        <div class="rwrow"><b>Where</b><span>A 3-socket <b>Kite Shield</b> shopped from Fara. Ral and Tal drop from Normal Countess; only the Ort needs a Nightmare run, and Lore wants one of those too.</span></div>
+        <div class="rwrow"><b>Where</b><span>A 3-socket <b>Kite Shield</b> shopped from Fara. Ral and Tal drop from Normal Countess, and the Ort is <b>3 Rals in the Cube</b> &mdash; so the whole thing is buildable in Normal, at its level-21 requirement. See <i>Cubing runes up</i>.</span></div>
       </div>
     </div>
     <div class="verdict">
@@ -1231,7 +1365,7 @@ footer .wrap{
     </div>
     <div class="checkpoint">
       <span class="mark">shopping the base</span>
-      <p>A Kite Shield <b>caps at 3 sockets</b>, which is exactly what the runeword wants &mdash; so unlike the Crystal Sword there's no way to overshoot and ruin it. <b>Buy it already socketed from Fara</b> in Act 2 Normal, resetting her stock at the waypoint until a white or gray 3-socket one appears; a Large Shield is the fallback if Kite Shields won't roll. What you must <i>not</i> do is spend a Larzuk charge here &mdash; all three are already committed to the Spirit sword and the Monarch. And ignore the shield's block number entirely: block chance is <span class="mono">(blocking &times; (dex &minus; 15)) / (level &times; 2)</span>, which at your base 25 dexterity is roughly <b>3%</b>. Never pay strength for a better-blocking base you can't use.</p>
+      <p>A Kite Shield <b>caps at 3 sockets</b>, which is exactly what the runeword wants &mdash; so unlike the Crystal Sword there's no way to overshoot and ruin it. <b>Buy it already socketed from Fara</b> in Act 2 Normal, resetting her stock at the waypoint until a white or gray 3-socket one appears; a Large Shield is the fallback if Kite Shields won't roll. What you must <i>not</i> do is spend a Larzuk charge here &mdash; two are committed to the Spirit sword and the Monarch, and the third is the reserve for a polearm the Cube won't cooperate on (or, if it does, for a Harlequin Crest later). And ignore the shield's block number entirely: block chance is <span class="mono">(blocking &times; (dex &minus; 15)) / (level &times; 2)</span>, which at your base 25 dexterity is roughly <b>3%</b>. Never pay strength for a better-blocking base you can't use.</p>
     </div>
     <div class="checkpoint gap-flag">
       <span class="mark">the Monarch swap is a resist downgrade</span>
@@ -1239,9 +1373,10 @@ footer .wrap{
     </div>
     <div class="checkpoint">
       <span class="mark">open slots start mattering now</span>
-      <p>Once the three runewords above are moving, the six open slots &mdash; <b>amulet, two rings, gloves, belt, boots</b> &mdash; are where every remaining number comes from: the FCR you're short of, and all of your resistance. They're carrying two jobs competing for the same affixes, and <b>resist all wins</b> &mdash; an uncapped resist in Hell kills you, a missed cast breakpoint just makes you slower. Take Malah's Prison of Ice scroll the moment it's available, and hire your Act 2 Offensive merc from <b>Nightmare</b>, not Normal &mdash; his aura level locks in at the difficulty you hire him from.</p>
+      <p>Once the three runewords above are moving, the six open slots &mdash; <b>amulet, two rings, gloves, belt, boots</b> &mdash; are where the cast rate you're short of comes from, plus whatever resistance the big slots haven't already covered. Each of the six is carrying two jobs competing for the same affixes, and <b>resist all wins</b> &mdash; an uncapped resist in Hell kills you, a missed cast breakpoint just makes you slower. They aren't the only place left, though &mdash; <i>The armor slot</i>, <i>The helm slot</i> and <i>The six small slots</i> below cover all eight in detail, and the first two are worth more resistance than all six of these put together. Take Malah's Prison of Ice scroll the moment it's available, and hire your Act 2 Offensive merc from <b>Nightmare</b>, not Normal &mdash; his aura level locks in at the difficulty you hire him from.</p>
     </div>
   </div>
+
 
   <div class="section">
     <div class="section-head">
@@ -1296,7 +1431,331 @@ footer .wrap{
     </div>
     <div class="checkpoint gap-flag">
       <span class="mark">fire resistance is the real gap</span>
-      <p>Running Lore + Stealth + both Spirits and all three Scrolls of Resistance lands you around <b>fire 30%, cold 65%, lightning 95%, poison 95%</b> raw &mdash; against the 175% Hell needs for a capped 75%. Every element is short, but fire is the hole: rings, amulet, and charms have to close roughly a 145% fire gap. <b>Charms are where the last stretch of resist comes from</b> once your six equipment slots are picked. Only once resists are capped should you spend anything chasing the <b>105% FCR</b> breakpoint &mdash; see <i>Breakpoints &amp; Resists</i> for both tables in full.</p>
+      <p>On the runewords alone you arrive here at roughly <b>fire 30%</b> against the 175% Hell wants, and the two runewords still in your armor and helm slots contribute none of it. <b>That is the moment to stop wearing Lore and Stealth</b> &mdash; the three sections that follow work through what replaces them, and between them they close the gap entirely. Order of operations doesn't change, though: <b>cap resists first, chase the 105% cast-rate breakpoint second.</b> An uncapped resist in Hell kills you; a missed breakpoint just makes you slower.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>The armor slot &mdash; after Stealth</h2>
+      <span class="section-note">levels 29&ndash;65</span>
+    </div>
+    <p class="lede">Stealth is where the runeword list leaves this slot, and it's a level-17 item you're meant to outgrow. The reason to care is narrower than "more stats": <b>Stealth grants no fire resistance, and nearly every replacement does.</b> This slot and the helm are the two biggest levers left on the gap <i>Breakpoints &amp; Resists</i> documents.</p>
+    <div class="checkpoint">
+      <span class="mark">where that "fire 30%" actually comes from</span>
+      <p>Worth seeing the arithmetic before comparing anything, because it's what makes this slot matter. In Hell, running Lore + Stealth + both Spirits, your resists break down as <b>Lore</b> 30 lightning, <b>Stealth</b> 30 poison, <b>the Spirit shield</b> 35 each of cold, lightning and poison, and <b>three Scrolls of Resistance</b> 30 to everything. Add them up and fire is carried by the scrolls <i>alone</i> &mdash; <b>30% against the 175%</b> Hell asks for. Nothing else in the plan contributes a point. So price an armor here by its resist line first and its skills second.</p>
+    </div>
+    <div class="rwgrid">
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Skin of the Vipermagi</span><span class="rwlvl">unique &middot; req. level 29</span></div>
+        <div class="rwrunes">Serpentskin Armor &middot; 43 strength</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats</div>
+          <div class="rwstat"><span>+1 to All Skills</span></div>
+          <div class="rwstat"><span>+30% Faster Cast Rate</span></div>
+          <div class="rwstat roll"><span>All Resistances +20&ndash;35</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat roll"><span>Magic Damage Reduced by 9&ndash;13</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat"><span>+120% Enhanced Defense</span></div>
+        </div>
+        <div class="rwrow"><b>Why</b><span>The cheapest strict upgrade over Stealth. <b>More cast rate than Stealth</b>, a skill Stealth doesn't have, and the first fire resist the build has ever carried &mdash; at a strength number your sword already pays.</span></div>
+        <div class="rwrow"><b>Where</b><span>Drops from Nightmare onward and is one of the least expensive uniques in the game to trade for. No socket needed, no base to shop.</span></div>
+      </div>
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Smoke</span><span class="rwlvl">req. level 37</span></div>
+        <div class="rwrunes">Nef + Lum &middot; 2-socket Body Armor</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats &mdash; no random rolls, every copy is identical</div>
+          <div class="rwstat"><span>All Resistances +50</span></div>
+          <div class="rwstat"><span>+20% Faster Hit Recovery</span></div>
+          <div class="rwstat"><span>+75% Enhanced Defense</span></div>
+          <div class="rwstat"><span>+280 Defense vs. Missiles</span></div>
+          <div class="rwstat"><span>+10 to Energy</span></div>
+          <div class="rwstat"><span>Level 6 Weaken (18 Charges)</span></div>
+          <div class="rwstat"><span>&minus;1 to Light Radius</span></div>
+        </div>
+        <div class="rwrow"><b>Why</b><span><b>All Resistances +50</b> &mdash; more fire than Ancients' Pledge's 48, in the one slot that has never had any. And it's the only armor on this page you can <i>schedule</i> rather than hope for.</span></div>
+        <div class="rwrow"><b>Where</b><span>Same 2-socket base as Stealth. <b>Nef is a Normal Countess rune</b>, and <b>Lum is three Ios in the Cube</b> &mdash; Nightmare Countess tops out at Io, so it falls out of the Spirit/Lore/Insight farming stretch with no extra trip.</span></div>
+      </div>
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Chains of Honor</span><span class="rwlvl">req. level 63</span></div>
+        <div class="rwrunes">Dol + Um + Ber + Ist &middot; 4-socket Body Armor</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats &mdash; no random rolls, every copy is identical</div>
+          <div class="rwstat"><span>+2 to All Skills</span></div>
+          <div class="rwstat"><span>All Resistances +65</span></div>
+          <div class="rwstat"><span>+20 to Strength</span></div>
+          <div class="rwstat"><span>Damage Reduced by 8%</span></div>
+          <div class="rwstat"><span>+70% Enhanced Defense</span></div>
+          <div class="rwstat"><span>+200% Damage to Demons</span></div>
+          <div class="rwstat"><span>+100% Damage to Undead</span></div>
+          <div class="rwstat"><span>8% Life Stolen per Hit</span></div>
+          <div class="rwstat"><span>Replenish Life +7</span></div>
+          <div class="rwstat"><span>25% Better Chance of Getting Magic Items</span></div>
+        </div>
+        <div class="rwrow"><b>Why</b><span><b>+2 skills and +65 all resist in one slot</b> &mdash; the single largest correction to the fire gap anywhere in this plan, and it matches a second Spirit for skills while doing it.</span></div>
+        <div class="rwrow"><b>Where</b><span>A 4-socket body armor, cubed &mdash; the Larzuk charges are spoken for. <b>It needs a Ber</b>, so planning for it moves your trading target from two Bers to three. Dol, Um and Ist are all reachable below that.</span></div>
+      </div>
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Enigma</span><span class="rwlvl">req. level 65</span></div>
+        <div class="rwrunes">Jah + Ith + Ber &middot; 3-socket Body Armor</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats</div>
+          <div class="rwstat"><span>+2 to All Skills</span></div>
+          <div class="rwstat"><span>+1 to Teleport</span></div>
+          <div class="rwstat"><span>+0.75 to Strength per character level</span><span class="hittag">scales w/ level</span></div>
+          <div class="rwstat"><span>+45% Faster Run/Walk</span></div>
+          <div class="rwstat roll"><span>+750&ndash;775 Defense</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat"><span>Increase Maximum Life 5%</span></div>
+          <div class="rwstat"><span>Damage Reduced by 8%</span></div>
+          <div class="rwstat"><span>+14 Life after each Kill</span></div>
+          <div class="rwstat"><span>15% Damage Taken Goes to Mana</span></div>
+          <div class="rwstat"><span>+1% Better Chance of Getting Magic Items per character level</span><span class="hittag">scales w/ level</span></div>
+        </div>
+        <div class="rwrow"><b>Why</b><span>Not for resist &mdash; it has none. It's the only item in the game that meaningfully answers the <b>Monarch's 156 strength</b>; see the note below the verdict.</span></div>
+        <div class="rwrow"><b>Where</b><span>Cubed 3-socket armor. <b>Jah and Ber</b> &mdash; dearer than Chains of Honor, for a build that still can't cap fire afterwards.</span></div>
+      </div>
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Ormus' Robes</span><span class="rwlvl">unique &middot; req. level 75</span></div>
+        <div class="rwrunes">Dusk Shroud &middot; 77 strength</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats</div>
+          <div class="rwstat roll"><span>+3 to a random Sorceress skill</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat"><span>+20% Faster Cast Rate</span></div>
+          <div class="rwstat roll"><span>+10&ndash;15% to Fire Skill Damage</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat roll"><span>+10&ndash;15% to Cold Skill Damage</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat roll"><span>+10&ndash;15% to Lightning Skill Damage</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat roll"><span>Regenerate Mana 10&ndash;15%</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat"><span>+10&ndash;20 Defense</span></div>
+        </div>
+        <div class="rwrow"><b>Why</b><span>The only armor in the game that feeds <i>both</i> halves of this build at once &mdash; but the two halves are not paid equally, and it carries <b>no resistance whatsoever</b>. See the note below.</span></div>
+        <div class="rwrow"><b>Where</b><span>Drops in Hell. The <b>+3 skill roll can land on Fire Ball</b>, but never on <b>Frozen Orb, Fire Mastery, Cold Mastery, Hydra or Lightning Mastery</b> &mdash; those five are excluded from the roll table.</span></div>
+      </div>
+    </div>
+    <div class="verdict">
+      <div class="q">Stealth holds this slot from level 17. What replaces it, and in what order?</div>
+      <div class="a"><b class="cold-b">Vipermagi</b> the moment one turns up, <b class="cold-b">Smoke</b> if resists are what's killing you, and <b>Chains of Honor</b> at the end.</div>
+      <ul class="reasoning">
+        <li><b>Vipermagi costs nothing to wear.</b> It asks <b>43 strength</b> &mdash; exactly what a Crystal Sword already needs, so on that base it is free. It beats Stealth on cast rate (<b>30% against 25%</b>), adds a skill Stealth doesn't have, and brings the first fire resistance the character has ever carried.</li>
+        <li><b>The hit-recovery loss is one frame, and it expires.</b> Stealth + Spirit is 80% FHR (8 frames); Vipermagi + Spirit is 55%, which still clears the 42% breakpoint at 9 frames. Once the second Spirit lands you're at <b>110%</b> either way, past the final 86% breakpoint, and the difference is gone entirely.</li>
+        <li><b>Smoke is the one you can plan.</b> Every other item here waits on a drop or a trade. Smoke waits on nothing &mdash; Nef is Normal Countess and Lum is three Ios in the Cube, and you're already running Nightmare Countess for Spirit, Lore and Insight. <b>+50 all resist</b> is more fire than Ancients' Pledge gives.</li>
+        <li><b>Smoke's price is the 37% breakpoint.</b> It carries no cast rate at all, so Smoke plus one Spirit is <b>25&ndash;35%</b> &mdash; back to 21 frames from 20, until the second Spirit arrives. That's the honest trade: take it when uncapped resists are ending runs, not before.</li>
+        <li><b>Chains of Honor is the finish, and its price is a third Ber.</b> +2 skills and +65 all resist is the largest single correction available to the fire gap. The plan already commits to trading for two Bers for Infinity; this makes it three, and that belongs in the plan rather than as a surprise.</li>
+      </ul>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">Enigma is a stat-budget item, not a resist item</span>
+      <p>On the terms above it loses to Chains of Honor outright &mdash; it grants no resistance at all and costs more. Read it against a different page instead: <b>+0.75 strength per character level</b> is <b>+63 at level 85</b> and <b>+74 at 99</b>, against the Monarch's 156. That cuts the 146-point bill <i>Stats &amp; Keys</i> calls "the whole stat problem" down to roughly <b>83 at level 85</b> and <b>72 at 99</b>, and its +1 to Teleport refunds the Telekinesis and Teleport points on top. Be realistic about what the returned points buy, though: the Sorceress gets <b>2 life per Vitality point</b>, so 63 points back is about <b>126 life</b> &mdash; welcome, not transformative. The real draw is Teleport in the armor slot and not having to respec around a shield. Chase it second, if at all.</p>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">Ormus' pays the two elements differently</span>
+      <p>Its three skill-damage lines look symmetrical and aren't, because of the model in <i>Skill Points</i>. <b>Gear fire damage adds into the Fire Mastery bucket rather than multiplying against it</b> &mdash; at Fire Mastery 11 with +6 skills that bucket is already around <b>+142%</b>, so a +15% line moves real damage by roughly <b>+6%</b>. Cold has no damage-mastery bucket at all (Cold Mastery cuts <i>enemy</i> resistance, it doesn't raise your damage), so <b>+15% cold skill damage is a clean +15% on Frozen Orb</b>. Ormus' is a Frozen Orb item that happens to mention fire. Weigh it against giving up 20&ndash;65 points of resistance in the same slot.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>The helm slot &mdash; after Lore</h2>
+      <span class="section-note">levels 62&ndash;77</span>
+    </div>
+    <p class="lede">Lore is two cheap runes for +1 skill and it stays useful a long time &mdash; there is nothing to replace it with until the low sixties. When something does, it's one of three, and they answer three different questions.</p>
+    <div class="rwgrid">
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Harlequin Crest</span><span class="rwlvl">unique &middot; req. level 62</span></div>
+        <div class="rwrunes">Shako &middot; 50 strength &middot; max 1 socket</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats &mdash; no random rolls, every copy is identical</div>
+          <div class="rwstat"><span>+2 to All Skills</span></div>
+          <div class="rwstat"><span>+1.5 to Life per character level</span><span class="hittag">scales w/ level</span></div>
+          <div class="rwstat"><span>+1.5 to Mana per character level</span><span class="hittag">scales w/ level</span></div>
+          <div class="rwstat"><span>Damage Reduced by 10%</span></div>
+          <div class="rwstat"><span>+2 to All Attributes</span></div>
+          <div class="rwstat"><span>50% Better Chance of Getting Magic Items</span></div>
+        </div>
+        <div class="rwrow"><b>Why</b><span>Doubles Lore's skill bonus and adds roughly <b>148 life and 148 mana</b> at level 99, plus flat <b>Damage Reduced by 10%</b> &mdash; a stat this build has no other source of. <b>50 strength</b> is two points over a Broad Sword, and free once the Monarch respec has happened.</span></div>
+        <div class="rwrow"><b>Where</b><span>Drops in Hell; commonly traded. It holds <b>one</b> socket, and getting it takes a Larzuk charge &mdash; the Cube's socket recipes only work on white and gray items. An <b>Um</b> there is +15 all resist; a 30% fire-res jewel is the greedier answer.</span></div>
+      </div>
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Nightwing's Veil</span><span class="rwlvl">unique &middot; req. level 67</span></div>
+        <div class="rwrunes">Spired Helm &middot; 96 strength &middot; no sockets</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats</div>
+          <div class="rwstat"><span>+2 to All Skills</span></div>
+          <div class="rwstat roll"><span>+8&ndash;15% to Cold Skill Damage</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat roll"><span>+10&ndash;20 to Dexterity</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat roll"><span>+5&ndash;9 Cold Absorb</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat roll"><span>+90&ndash;120% Enhanced Defense</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat"><span>Half Freeze Duration</span></div>
+          <div class="rwstat"><span>Requirements &minus;50%</span></div>
+        </div>
+        <div class="rwrow"><b>Why</b><span>The cold-damage helm. Worth correcting a common belief first: it does <b>not</b> carry &minus;enemy cold resistance. Its offensive line is <b>+8&ndash;15% cold skill damage</b> and that is all &mdash; a clean multiplier on Frozen Orb, but nothing for Fire Ball.</span></div>
+        <div class="rwrow"><b>Where</b><span>Hell drops. The <b>96 strength</b> is the elite Spired Helm's native 192 halved by the helm's own Requirements &minus;50% &mdash; steep before the Monarch respec, free after it.</span></div>
+      </div>
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Kira's Guardian</span><span class="rwlvl">unique &middot; req. level 77</span></div>
+        <div class="rwrunes">Tiara &middot; negligible strength</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats</div>
+          <div class="rwstat roll"><span>All Resistances +50&ndash;70</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat"><span>+20% Faster Hit Recovery</span></div>
+          <div class="rwstat"><span>Cannot Be Frozen</span></div>
+          <div class="rwstat roll"><span>+50&ndash;120 Defense</span><span class="rolltag">rolled once</span></div>
+        </div>
+        <div class="rwrow"><b>Why</b><span>No skills at all, and it may still be the right helm. <b>All Resistances +50&ndash;70</b> on a Tiara base costs you essentially no strength, and paired with Chains of Honor it very nearly closes the fire gap outright &mdash; see below.</span></div>
+        <div class="rwrow"><b>Where</b><span>Hell drops. <b>The resist roll is the whole item</b>, and it spans 50 to 70; a low one is worth passing on and waiting for another.</span></div>
+      </div>
+    </div>
+    <div class="verdict">
+      <div class="q">Two of these give +2 skills and one gives none. Which actually goes on your head?</div>
+      <div class="a"><b>Harlequin Crest</b> by default &mdash; and <b class="cold-b">Kira's Guardian</b> if fire resistance is still what ends your runs.</div>
+      <ul class="reasoning">
+        <li><b>Shako wins the skills comparison on everything else.</b> Against Nightwing's it matches the +2, then adds ~148 life, ~148 mana, 10% flat damage reduction, and a socket &mdash; for <b>50 strength instead of 96</b>. The Sorceress has no defensive skill and no minion of her own, so flat damage reduction is rare and load-bearing.</li>
+        <li><b>Nightwing's only pays half the build.</b> Its cold damage line is a genuine clean multiplier on Frozen Orb, but Fire Ball is what you switch to for cold immunes &mdash; exactly the fights where the helm contributes nothing. It also has <b>no sockets</b> and no resistance, in a build short on both.</li>
+        <li><b>Kira's plus Chains of Honor nearly solves the problem.</b> Dropping Lore and Stealth for that pair, with the Spirit shield and three scrolls, lands you around <b>fire 145&ndash;165</b> and everything else comfortably over the 175 cap &mdash; against fire 30 today. You give up Lore's +1 skill and gain Chains' +2, so you come out <b>a skill ahead</b> while doing it.</li>
+        <li><b>Shako doesn't close it, and it's worth knowing by how much.</b> Shako with an Um plus Chains of Honor puts fire at about <b>110</b> &mdash; still <b>65 short</b>. The premium pairing does not cap fire on its own; rings, amulet and charms are carrying that stretch either way.</li>
+        <li><b>You may not have to choose.</b> The Shako's socket is the swing vote &mdash; a 30% fire-res jewel narrows the gap between the two answers to <b>20&ndash;40 points of fire</b>, depending on how Kira's rolled &mdash; and at that distance Shako's life and damage reduction win comfortably.</li>
+      </ul>
+    </div>
+    <div class="checkpoint gap-flag">
+      <span class="mark">the trap in this slot &mdash; Andariel's Visage</span>
+      <p>It reads like it was built for the job: <b>+2 to All Skills</b>, +25&ndash;30 strength, 8&ndash;10% life steal, +70% poison resist. It also carries <b>Fire Resist &minus;30%</b>, and this build is <b>145% short on fire</b> before it equips anything. The usual fix is to socket a 30% fire-res jewel, which merely breaks even &mdash; and doing so costs a Larzuk charge, since the Cube recipes won't socket a unique. Skip it here. It remains an excellent <i>mercenary</i> helm, where the fire penalty lands on someone whose resists you aren't trying to cap.</p>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">about that third Larzuk charge</span>
+      <p>The socket plan spends two charges &mdash; the <b>Spirit sword</b> and the <b>Monarch</b> &mdash; and cubes the merc's polearms, which leaves the third nominally in reserve for a polearm that won't roll. If the Cube cooperates on those, the <b>Harlequin Crest is the strongest claim on the spare charge</b>, because it's the one item here that can't be socketed any other way.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>The six small slots</h2>
+      <span class="section-note">amulet, two rings, gloves, belt, boots</span>
+    </div>
+    <p class="lede">No runeword goes in any of these, which is why they've been easy to leave vague &mdash; and they're carrying the two numbers the rest of the page keeps deferring to them. Here is what each one can actually roll, so you know what you're looking at when something drops.</p>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th class="skill">Slot</th><th class="num">Most cast rate it can hold</th><th>What else it's for</th><th>The item to want</th></tr></thead>
+        <tbody>
+          <tr class="row-mark"><td class="skill">Amulet</td><td class="num">20%</td><td>+2 Sorceress skills, resist, life</td><td>A crafted caster amulet &mdash; or Mara's</td></tr>
+          <tr><td class="skill">Ring <span class="tag cold">&times;2</span></td><td class="num">10% each</td><td>Resist, life, mana</td><td>A rare with cast rate <i>and</i> resist</td></tr>
+          <tr class="row-mark"><td class="skill">Gloves</td><td class="num">20%</td><td>+1 Fire Skills</td><td>Magefist</td></tr>
+          <tr><td class="skill">Belt</td><td class="num">20%</td><td>+1 all skills, resist, potion rows</td><td>Arachnid Mesh &mdash; crafted is 5&ndash;10%</td></tr>
+          <tr class="row-mark"><td class="skill">Boots</td><td class="num">none</td><td><b>Fire resist</b>, run speed, life</td><td>Aldur's Advance</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">this is how you actually reach 105% cast rate</span>
+      <p><i>Breakpoints &amp; Resists</i> calls 105% "a later target", and these slots are what makes it a near one. Two Spirits are <b>50&ndash;70%</b> between them, roll-dependent, and where you go from there depends on what you put in the two big slots. With <b>Vipermagi</b> you're carrying 30% more, so a full-rolled pair of Spirits already puts you at <b>100%</b> and <i>one</i> 10% ring finishes it. With <b>Chains of Honor and Kira's Guardian</b> &mdash; neither of which carries a point of cast rate &mdash; you start at 50&ndash;70 and need 35 to 55 more. <b>Magefist is 20 of it</b>, two rings are another 20, and a crafted caster amulet is up to 20; any two of those three clear the breakpoint. Gloves are the cheapest twenty points on the board, since 20% is the most any glove in the game gives and Magefist is neither rare nor expensive.</p>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">and this is where the fire gap finally closes</span>
+      <p>The problem this guide has been carrying since the <i>Nightmare</i> section resolves in the <b>boots</b> slot, of all places. Running <b>Chains of Honor</b> (+65) and <b>Kira's Guardian</b> (+50&ndash;70) with three Scrolls of Resistance puts fire at <b>145&ndash;165</b> against the 175 Hell wants &mdash; close, but still uncapped. <b>Aldur's Advance carries Fire Resist +40&ndash;50%</b>, which takes it to <b>185&ndash;215</b>: capped, with room to spare. Cold, lightning and poison are already at 180&ndash;200 on that same set, because the Spirit shield covers all three at 35 each. <b>Three items cap every resist in the game</b>, and that frees the amulet, both rings, the gloves and the belt to do nothing but chase cast rate. Be honest about the alternative, though: take a <b>Harlequin Crest</b> instead of Kira's and fire lands near <b>160</b> even with the boots, so that build is still asking a ring or the amulet for the last stretch.</p>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">craft, don't only hope</span>
+      <p>Every named item below is a drop you wait for. The Cube is the part you control: <b>four of these six slots have a "caster" recipe</b>, and the <b>amulet and belt are the only two that guarantee faster cast rate</b> &mdash; rings and gloves never roll it from the recipe, which is why a plain rare ring and Magefist beat their crafted versions outright. A crafted caster amulet can reach <b>20% cast rate, more than any rare or unique amulet in the game</b>, and it is the only item in this whole plan you can manufacture instead of wait for. Full recipes, and the level requirement that decides whether the famous +2-skills version is even possible, are in <i>What the Cube is actually for</i> near the top of this tab.</p>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">one practical thing about belts</span>
+      <p>The belt slot decides how many potions you carry, and the tiers are <b>Sash and Light Belt 8, Belt and Heavy Belt 12, Plated Belt 16</b>. Easy to forget until you're rationing rejuvenations in Hell. It stops mattering the moment you're in real gear, though: <b>every exceptional and elite belt has all 16</b> regardless of which base it is, so Arachnid Mesh and any crafted belt on an exceptional base are maxed automatically. Only the low normal bases short you.</p>
+    </div>
+    <p class="lede">Six items worth knowing by name. Two are on the critical path for the numbers above; the rest are good items this particular build has less use for than their reputations suggest.</p>
+    <div class="rwgrid">
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Magefist</span><span class="rwlvl">unique &middot; req. level 23</span></div>
+        <div class="rwrunes">Light Gauntlets &middot; 45 strength</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats</div>
+          <div class="rwstat"><span>+1 to Fire Skills</span></div>
+          <div class="rwstat"><span>+20% Faster Cast Rate</span></div>
+          <div class="rwstat"><span>Regenerate Mana 25%</span></div>
+          <div class="rwstat"><span>Adds 1&ndash;6 Fire Damage</span><span class="hittag">per hit</span></div>
+          <div class="rwstat roll"><span>+20&ndash;30% Enhanced Defense</span><span class="rolltag">rolled once</span></div>
+        </div>
+        <div class="rwrow"><b>Why</b><span>Tied for <b>the most cast rate any glove carries</b>, and the <b>+1 to Fire Skills</b> is worth more here than it reads &mdash; per the model in <i>Skill Points</i>, <span class="mono">+skills</span> raise Fire Mastery's level, and Fire Mastery is a multiplier on everything Fire Ball does.</span></div>
+        <div class="rwrow"><b>Where</b><span>Drops from Nightmare onward and is cheap. At <b>level 23</b> it's wearable almost immediately &mdash; there is no reason to be without these.</span></div>
+      </div>
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Aldur's Advance</span><span class="rwlvl">set &middot; req. level 45</span></div>
+        <div class="rwrunes">Battle Boots &middot; 95 strength</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats</div>
+          <div class="rwstat roll"><span>Fire Resist +40&ndash;50%</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat"><span>+40% Faster Run/Walk</span></div>
+          <div class="rwstat"><span>+50 to Life</span></div>
+          <div class="rwstat"><span>+180 Maximum Stamina</span></div>
+          <div class="rwstat"><span>10% Damage Taken Goes to Mana</span></div>
+          <div class="rwstat"><span>Indestructible</span></div>
+        </div>
+        <div class="rwrow"><b>Why</b><span><b>The largest fire resistance in any slot on this page</b>, and the item that actually closes the gap. It also happens to carry the highest run speed boots can roll and 50 life, neither of which you'd turn down.</span></div>
+        <div class="rwrow"><b>Where</b><span>A set piece; works alone, no set bonus needed. <b>95 strength</b> is the catch &mdash; steep before the Monarch respec, and free the moment you've paid for the Monarch's 156.</span></div>
+      </div>
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Arachnid Mesh</span><span class="rwlvl">unique &middot; req. level 80</span></div>
+        <div class="rwrunes">Spiderweb Sash &middot; 50 strength</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats &mdash; no random rolls, every copy is identical</div>
+          <div class="rwstat"><span>+1 to All Skills</span></div>
+          <div class="rwstat"><span>+20% Faster Cast Rate</span></div>
+          <div class="rwstat"><span>Slows Target by 10%</span></div>
+          <div class="rwstat"><span>+5% to Maximum Mana</span></div>
+          <div class="rwstat"><span>Level 3 Venom (11 Charges)</span></div>
+        </div>
+        <div class="rwrow"><b>Why</b><span><b>The only belt in the game with +all skills</b>, and the most cast rate a belt can carry. If both land in this slot it's 20 of your missing 35 in one piece.</span></div>
+        <div class="rwrow"><b>Where</b><span>Hell only, and genuinely rare &mdash; it can't drop from anything below monster level 87, which rules out several of the usual farming targets. Treat it as a trade, and a crafted caster belt as the version you can actually make.</span></div>
+      </div>
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Mara's Kaleidoscope</span><span class="rwlvl">unique &middot; req. level 67</span></div>
+        <div class="rwrunes">Amulet &middot; no strength</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats</div>
+          <div class="rwstat"><span>+2 to All Skills</span></div>
+          <div class="rwstat roll"><span>All Resistances +20&ndash;30</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat"><span>+5 to All Attributes</span></div>
+        </div>
+        <div class="rwrow"><b>Why</b><span>+2 skills and up to +30 all resist, for no strength at all. The obvious amulet &mdash; but read the verdict below, because once the resist problem is solved by three other items, its resist line is doing nothing and its lack of cast rate starts to cost.</span></div>
+        <div class="rwrow"><b>Note</b><span>The crafted amulet only beats this outright <b>at character level 93 and up</b>. <b>+2 class skills is an affix-level-90 roll</b>, and a craft's item level is half your character level plus half the base's &mdash; below 93 it effectively cannot appear, so what you get is the cast rate and the mana without the skills. Mara's is the better amulet for most of the game and the craft overtakes it only at the very end.</span></div>
+        <div class="rwrow"><b>Where</b><span>Hell drops, expensive. The crafted caster amulet is the rival, and on this build it is the better item more often than not.</span></div>
+      </div>
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">The Stone of Jordan</span><span class="rwlvl">unique &middot; req. level 29</span></div>
+        <div class="rwrunes">Ring &middot; no strength</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats &mdash; no random rolls, every copy is identical</div>
+          <div class="rwstat"><span>+1 to All Skills</span></div>
+          <div class="rwstat"><span>+25% to Maximum Mana</span></div>
+          <div class="rwstat"><span>+20 to Mana</span></div>
+          <div class="rwstat"><span>Adds 1&ndash;12 Lightning Damage</span><span class="hittag">per hit</span></div>
+        </div>
+        <div class="rwrow"><b>Why</b><span>One of only two rings in the game with +all skills, and the most famous item in D2. For this build it is a <b>luxury, not a fix</b> &mdash; it carries no resistance and no cast rate, which are the two things these slots exist to supply.</span></div>
+        <div class="rwrow"><b>Where</b><span>Nightmare Andariel is the best single target. Wear it once the other ring has cleared your breakpoint, not before.</span></div>
+      </div>
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Raven Frost</span><span class="rwlvl">unique &middot; req. level 45</span></div>
+        <div class="rwrunes">Ring &middot; no strength</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats</div>
+          <div class="rwstat"><span>Cannot Be Frozen</span></div>
+          <div class="rwstat roll"><span>+15&ndash;20 to Dexterity</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat"><span>Cold Absorb 20%</span></div>
+          <div class="rwstat"><span>+40 to Mana</span></div>
+          <div class="rwstat roll"><span>+150&ndash;250 to Attack Rating</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat"><span>Adds 15&ndash;45 Cold Damage (4 sec)</span><span class="hittag">per hit</span></div>
+        </div>
+        <div class="rwrow"><b>Why</b><span>The only ring with <b>Cannot Be Frozen</b>, which matters more than it sounds &mdash; being chilled slows your casting, not just your feet. Worth knowing that <b>Kira's Guardian already grants it</b>, so the two overlap and you'd only want one.</span></div>
+        <div class="rwrow"><b>Where</b><span>Common enough to be cheap. A reasonable second ring <i>unless</i> you're wearing Kira's, in which case a rare with cast rate and resist beats it outright.</span></div>
+      </div>
+    </div>
+    <div class="verdict">
+      <div class="q">Five slots, no runewords, and every famous item here is famous for something this build doesn't need. What do you actually equip?</div>
+      <div class="a"><b class="cold-b">Magefist</b> and <b class="cold-b">Aldur's Advance</b> are the two that aren't optional. The other three chase cast rate.</div>
+      <ul class="reasoning">
+        <li><b>Magefist and Aldur's are load-bearing, and both are cheap.</b> One is 20 of the cast rate you're short of plus a fire-skills point that multiplies through Fire Mastery; the other is the item that finally caps fire resistance. Neither is rare, neither is expensive, and between them they close the two problems the whole page has been deferring.</li>
+        <li><b>Rings want rares, not uniques.</b> A rare ring with <b>10% cast rate and a resist line</b> beats every unique ring in this list for what you need, because Stone of Jordan has no cast rate and no resist, and Raven Frost duplicates a mod Kira's already gives you. Take the named ones when they're free; buy the boring rare on purpose.</li>
+        <li><b>The amulet is Mara's until level 93, then the crafted one.</b> Mara's +20&ndash;30 all resist is superb right up until the armor, helm and boots have already capped you, at which point it's dead weight in your best skills slot. The craft that beats it &mdash; <b>20% cast rate with +2 Sorceress skills</b> &mdash; needs <b>character level 93</b>, because +2 class skills is an affix-level-90 roll and a craft's item level is half yours plus half the base's. Below that, craft for the cast rate alone and wear Mara's for the skills.</li>
+        <li><b>The belt is where you accept the cheap version.</b> Arachnid Mesh is the correct answer and is also one of the harder items in the game to obtain. A crafted caster belt gives 5&ndash;10% cast rate for a magic Light Belt and an Ith rune, which you can make this afternoon. The gap between them is ten percent and one skill.</li>
+        <li><b>Order of operations hasn't changed.</b> Cap resists, then chase 105%. What <i>has</i> changed is that the first half now finishes in the armor, helm and boots &mdash; so these five slots end up being a cast-rate problem in practice, which is a much easier problem than the one the <i>Nightmare</i> section warned about.</li>
+      </ul>
     </div>
   </div>
 
@@ -1355,12 +1814,12 @@ footer .wrap{
       <div class="statcard">
         <span class="stat-verdict">Gear minimum</span>
         <div class="stat-name">Strength</div>
-        <p>Only what your gear requires, and no more. Stealth plus a Spirit sword needs <b>48</b> on a Broad Sword base or <b>43</b> on a Crystal Sword — cheap either way. The Hell off-hand Spirit is the exception, and it's a big one; see below.</p>
+        <p>Only what your gear requires, and no more. Stealth plus a Spirit sword needs <b>48</b> on a Broad Sword base or <b>43</b> on a Crystal Sword &mdash; cheap either way. The Hell off-hand Spirit is the exception, and it's a big one; see below.</p>
       </div>
       <div class="statcard skip">
         <span class="stat-verdict">Skip</span>
         <div class="stat-name">Dexterity</div>
-        <p>Base only. Blocking isn't worth the investment on a caster — let Vitality do the survivability work instead.</p>
+        <p>Base only. Blocking isn't worth the investment on a caster &mdash; let Vitality do the survivability work instead.</p>
       </div>
       <div class="statcard">
         <span class="stat-verdict">Everything else</span>
@@ -1375,7 +1834,7 @@ footer .wrap{
     </div>
     <div class="checkpoint">
       <span class="mark">the Monarch decision, deferred</span>
-      <p>The Hell off-hand Spirit goes in a <b>Monarch: 156 strength</b>, and that is not a rounding error — <b>146 points</b> over your base 10, roughly <b>29% of the lifetime stat budget</b>, permanent from the moment you equip it. Don't pre-pay it. Carry only what your sword asks for (43&ndash;48), put everything else in Vitality, and <b>respec into the Monarch once you actually hold one</b> — you get a free reset per difficulty and the plan only spends one. Charms and +all-stat gear (Annihilus, Hellfire Torch) claw back 20&ndash;40 of the cost. And Monarch is the floor here, not a preference: it's the lowest-strength 4-socket non-class shield in the game, so there's no cheaper base to find.</p>
+      <p>The Hell off-hand Spirit goes in a <b>Monarch: 156 strength</b>, and that is not a rounding error &mdash; <b>146 points</b> over your base 10, roughly <b>29% of the lifetime stat budget</b>, permanent from the moment you equip it. Don't pre-pay it. Carry only what your sword asks for (43&ndash;48), put everything else in Vitality, and <b>respec into the Monarch once you actually hold one</b> &mdash; you get a free reset per difficulty and the plan only spends one. And if you run out, resets aren't finite: a <b>Token of Absolution</b> is four Hell act-boss essences in the Cube and there's no limit on how many you use, so nothing about this decision is permanent in the way it looks (see <i>Gear</i>). Charms and +all-stat gear (Annihilus, Hellfire Torch) claw back 20&ndash;40 of the cost. And Monarch is the floor here, not a preference: it's the lowest-strength 4-socket non-class shield in the game, so there's no cheaper base to find.</p>
     </div>
   </div>
 
@@ -1384,15 +1843,15 @@ footer .wrap{
       <h2>Controller layout</h2>
       <span class="section-note">Xbox</span>
     </div>
-    <p class="lede">Main skills on face buttons, utilities on triggers, emergency escapes always reachable. <b>Warmth, Fire Mastery, and Cold Mastery are passives</b> — the game won't offer them in the skill selector and there'd be no point binding them if it did. They run constantly once you've spent the points, so they're absent below by design, not by oversight.</p>
+    <p class="lede">Main skills on face buttons, utilities on triggers, emergency escapes always reachable. <b>Warmth, Fire Mastery, and Cold Mastery are passives</b> &mdash; the game won't offer them in the skill selector and there'd be no point binding them if it did. They run constantly once you've spent the points, so they're absent below by design, not by oversight.</p>
     <div class="padgrid">
-      <div class="padkey off"><div class="btn">A</div><div><div class="skillname">Unmapped</div><div class="skilldesc">Interact / Throw — don't bind an active spell here or you'll cast it constantly while looting.</div></div></div>
+      <div class="padkey off"><div class="btn">A</div><div><div class="skillname">Unmapped</div><div class="skilldesc">Interact / Throw &mdash; don't bind an active spell here or you'll cast it constantly while looting.</div></div></div>
       <div class="padkey"><div class="btn">X</div><div><div class="skillname">Frozen Orb</div><div class="skilldesc">Primary AoE opener.</div></div></div>
       <div class="padkey"><div class="btn">Y</div><div><div class="skillname">Fire Ball</div><div class="skilldesc">Spammable single-target / cold-immune killer.</div></div></div>
       <div class="padkey"><div class="btn">B</div><div><div class="skillname">Glacial Spike / Ice Blast</div><div class="skilldesc">Freeze a charging enemy in place.</div></div></div>
       <div class="padkey util"><div class="btn">RT</div><div><div class="skillname">Teleport</div><div class="skilldesc">Hold for continuous map traversal.</div></div></div>
       <div class="padkey util"><div class="btn">LT+A</div><div><div class="skillname">Frozen Armor</div><div class="skilldesc">Recast every few minutes.</div></div></div>
-      <div class="padkey util"><div class="btn">LT+B</div><div><div class="skillname">Static Field</div><div class="skilldesc">Boss opener — three casts drops a Hell boss to 50%. Useless on lightning immunes.</div></div></div>
+      <div class="padkey util"><div class="btn">LT+B</div><div><div class="skillname">Static Field</div><div class="skilldesc">Boss opener &mdash; three casts drops a Hell boss to 50%. Useless on lightning immunes.</div></div></div>
       <div class="padkey util"><div class="btn">RS</div><div><div class="skillname">Town Portal</div><div class="skilldesc">Quick emergency exit.</div></div></div>
     </div>
   </div>
@@ -1407,7 +1866,7 @@ footer .wrap{
       <h2>Mercenary plan</h2>
       <span class="section-note">not in the original note</span>
     </div>
-    <p class="lede">Sorceresses have no minion or defensive skill of their own, so the merc isn't a convenience — it's the build's only source of physical damage and melee aggro. Hire from Act 2 <b>Nightmare</b>, not Normal: a merc's aura level and stats lock in at whatever difficulty you hired them from, and a Nightmare hire scales through Hell fine, while a Normal one doesn't.</p>
+    <p class="lede">Sorceresses have no minion or defensive skill of their own, so the merc isn't a convenience &mdash; it's the build's only source of physical damage and melee aggro. Hire from Act 2 <b>Nightmare</b>, not Normal: a merc's aura level and stats lock in at whatever difficulty you hired them from, and a Nightmare hire scales through Hell fine, while a Normal one doesn't.</p>
     <div class="split">
       <div class="tblwrap">
         <table>
@@ -1421,7 +1880,7 @@ footer .wrap{
       </div>
       <div class="checkpoint">
         <span class="mark">pick offensive / might</span>
-        <p>An item's granted aura (from a runeword like Infinity, below) runs <i>alongside</i> the merc's own class aura, not instead of it — so the Offensive merc's <b>Might</b> (physical damage boost) stacks with whatever aura his weapon grants. That's the whole reason to hire Offensive over Holy Freeze or Prayer.</p>
+        <p>An item's granted aura (from a runeword like Infinity, below) runs <i>alongside</i> the merc's own class aura, not instead of it &mdash; so the Offensive merc's <b>Might</b> (physical damage boost) stacks with whatever aura his weapon grants. That's the whole reason to hire Offensive over Holy Freeze or Prayer.</p>
       </div>
     </div>
   </div>
@@ -1435,21 +1894,226 @@ footer .wrap{
       <div class="rwcard">
         <div class="rwhead"><span class="rwname">Insight</span><span class="rwlvl">req. level 27</span></div>
         <div class="rwrunes">Ral + Tir + Tal + Sol &middot; 4-socket Polearm</div>
-        <div class="rwrow"><b>Why</b><span>Grants a Meditation aura — effectively infinite mana regen for you, not just the merc. The budget/early answer to a caster's mana problem.</span></div>
-        <div class="rwrow"><b>Where</b><span>Hand-me-down from your own Fire Ball leveling gear search, or a cheap trade buy — components are common.</span></div>
+        <div class="rwrow"><b>Why</b><span>Grants a Meditation aura &mdash; effectively infinite mana regen for you, not just the merc. The budget/early answer to a caster's mana problem.</span></div>
+        <div class="rwrow"><b>Where</b><span>Hand-me-down from your own Fire Ball leveling gear search, or a cheap trade buy &mdash; components are common.</span></div>
         <div class="rwrow"><b>Full stats</b><span>See the Insight card in the <i>Gear</i> tab (Nightmare section) &mdash; aura level, attack rating bonus, crit, and enhanced damage all roll as ranges worth remaking for.</span></div>
       </div>
       <div class="rwcard">
         <div class="rwhead"><span class="rwname">Infinity</span><span class="rwlvl">req. level 63</span></div>
         <div class="rwrunes">Ber + Mal + Ber + Ist &middot; 4-socket Polearm</div>
         <div class="rwrow"><b>Why</b><span>Grants level 12 Conviction &mdash; up to &minus;85% enemy resistance, which roughly doubles your damage against anything not immune. It also breaks <i>some</i> immunities, but not all: against an already-immune monster the debuff lands at <b>one fifth</b> strength. See the immunity note in the <i>Gear</i> tab (Hell) before counting on it.</span></div>
-        <div class="rwrow"><b>Where</b><span>Endgame target, not a leveling item — the runes alone (two Ber, a Mal, an Ist) are a mid-to-late Hell farming goal. Run Insight until you can afford the swap.</span></div>
+        <div class="rwrow"><b>Where</b><span>Endgame target, not a leveling item &mdash; the runes alone (two Ber, a Mal, an Ist) are a mid-to-late Hell farming goal. Run Insight until you can afford the swap.</span></div>
         <div class="rwrow"><b>Full stats</b><span>See the Infinity card in the <i>Gear</i> tab (Hell section) &mdash; only the enemy-lightning-resist and enhanced-damage lines are randomized, everything else is fixed.</span></div>
       </div>
     </div>
+    <div class="checkpoint">
+      <span class="mark">the weapon is only a third of the job</span>
+      <p>A geared merc tanks hits your Sorceress can't afford to take; a naked one dies on repeat in Hell and stops contributing Might or Conviction exactly when you need them. And <b>neither weapon above does anything for his survival</b> &mdash; check their stat lists. His other two slots are their own line item, not something that falls out of your gear farming, and the three sections below are that item.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>Why he dies</h2>
+      <span class="section-note">the mechanic the weapon list hides</span>
+    </div>
+    <p class="lede">A merc in Hell dies for one specific reason, and it isn't that his gear is merely weak. Read this before picking a helm, because it decides which stat matters.</p>
     <div class="checkpoint gap-flag">
-      <span class="mark">gap</span>
-      <p>Merc survivability isn't covered anywhere else in this plan. A geared merc tanks hits your Sorceress can't afford to take; a naked one dies on repeat in Hell and stops contributing Might or Conviction when you need it most. Budget for a helm (Vampire Gaze is the classic cheap-ish pick) and a defensive armor (Duriel's Shell or a Treachery runeword) alongside the weapon progression — treat this as its own line item, not something that falls out of your own gear farming.</p>
+      <span class="mark">neither weapon leeches &mdash; at any point in the plan</span>
+      <p>Go back over the two cards above and check the stat lists: <b>Insight has no life steal, and neither does Infinity.</b> The Act 2 merc has none of his own either. So across the entire weapon progression &mdash; from level 27 to the end of the game &mdash; the merc has <b>no way to heal in combat at all</b> unless you put it on his head. That's why he dies. It isn't a gear-quality problem, it's a missing stat, and the helm slot is the only place this build can put it.</p>
+    </div>
+    <div class="split">
+      <div class="tblwrap">
+        <table>
+          <thead><tr><th>When</th><th>Weapon</th><th class="skill">Helm</th><th class="skill">Armor</th></tr></thead>
+          <tbody>
+            <tr><td>Nightmare, ~40</td><td>Insight</td><td class="skill">Vampire Gaze <span class="tag cold">41</span></td><td class="skill">Smoke <span class="tag cold">37</span></td></tr>
+            <tr class="row-mark"><td>Hell, 43+</td><td>Insight</td><td class="skill">Vampire Gaze</td><td class="skill">Treachery <span class="tag cold">43</span></td></tr>
+            <tr><td>Endgame</td><td>Infinity <span class="tag fire">63</span></td><td class="skill">Vampire Gaze, or Andariel's</td><td class="skill">Treachery, or Fortitude</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="checkpoint">
+        <span class="mark">he eats the Hell penalty too</span>
+        <p>The <b>&minus;100% to all resistances</b> on the <i>Breakpoints &amp; Resists</i> tab is not a player-only rule &mdash; the merc takes the identical penalty, and he has no scrolls, no charms, and four fewer gear slots to fix it with. Two items have to carry his entire resist total, which is why the armor recommendation below is a resist item rather than a damage one.</p>
+      </div>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">leech is a percentage of damage <i>dealt</i></span>
+      <p>Which makes his offensive stats defensive ones. 8% life steal on a merc hitting for 400 heals 32 a swing; the same 8% on a merc hitting for 1,200 heals 96. Attack speed compounds it the same way, since leech is per hit rather than per second. That's the argument for <b>Treachery's +45% increased attack speed</b> below, and it's why a damage armor like Fortitude is a survivability item too &mdash; not in spite of being a damage item, but because of it.</p>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">always build merc gear in an ethereal base</span>
+      <p>Worth knowing before you make anything here. <b>Ethereal items do not lose durability when a mercenary wears them</b> &mdash; the drawback that makes them a trap for your own character simply doesn't apply to him. So you get the ethereal bonus for free: <b>+50% defense</b>, and <b>strength and dexterity requirements reduced by 10</b>, permanently. If you have the choice between a white base and an ethereal one for any merc item on this page, take the ethereal one every time.</p>
+    </div>
+    <div class="checkpoint gap-flag">
+      <span class="mark">he still has to meet the requirements</span>
+      <p>Mercs are not exempt from strength and level requirements the way people assume &mdash; he has to meet both, and an Act 2 merc only gains about <b>1.5 strength per level</b>. In practice this bites on the heavy helms: <b>Crown of Thieves wants 103</b> and <b>Andariel's Visage 102</b>, against Vampire Gaze's 58 and Tal Rasha's 55. Check his character sheet before you trade for something he can't put on, and remember the ethereal discount takes 10 off.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>Mercenary helm</h2>
+      <span class="section-note">this is the life-steal slot</span>
+    </div>
+    <p class="lede">Every candidate below leeches, because that is the slot's entire job. What separates them is what comes with it.</p>
+    <div class="rwgrid">
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Vampire Gaze</span><span class="rwlvl">unique &middot; req. level 41</span></div>
+        <div class="rwrunes">Grim Helm &middot; 58 strength</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats</div>
+          <div class="rwstat roll"><span>6&ndash;8% Life Stolen per Hit</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat roll"><span>6&ndash;8% Mana Stolen per Hit</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat roll"><span>Damage Reduced by 15&ndash;20%</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat roll"><span>Magic Damage Reduced by 10&ndash;15</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat"><span>+100% Enhanced Defense</span></div>
+          <div class="rwstat"><span>Adds 6&ndash;22 Cold Damage (4 sec)</span><span class="hittag">per hit</span></div>
+          <div class="rwstat"><span>15% Slower Stamina Drain</span></div>
+        </div>
+        <div class="rwrow"><b>Why</b><span>Leech <i>and</i> <b>15&ndash;20% flat physical damage reduction</b> &mdash; the only one of these four that carries it. Physical hits are what actually kill a merc, and this is the only item in the plan that blunts them.</span></div>
+        <div class="rwrow"><b>Where</b><span>Nightmare drops onward; cheap to trade for. At <b>58 strength and level 41</b> it's also the earliest of the four he can actually wear.</span></div>
+      </div>
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Crown of Thieves</span><span class="rwlvl">unique &middot; req. level 49</span></div>
+        <div class="rwrunes">Grand Crown &middot; 103 strength</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats</div>
+          <div class="rwstat roll"><span>9&ndash;12% Life Stolen per Hit</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat"><span>Fire Resist +33%</span></div>
+          <div class="rwstat"><span>+50 to Life</span></div>
+          <div class="rwstat"><span>+25 to Dexterity</span></div>
+          <div class="rwstat"><span>+35 to Mana</span></div>
+          <div class="rwstat roll"><span>+160&ndash;200% Enhanced Defense</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat roll"><span>80&ndash;100% Extra Gold from Monsters</span><span class="rolltag">rolled once</span></div>
+        </div>
+        <div class="rwrow"><b>Why</b><span>The most leech of the four, and the only helm here with real <b>fire resist</b>. No damage reduction at all, though, and <b>103 strength</b> is a long wait for a merc gaining 1.5 a level.</span></div>
+        <div class="rwrow"><b>Where</b><span>Nightmare drops. A reasonable stopgap if it lands before a Vampire Gaze does &mdash; not something to hunt.</span></div>
+      </div>
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Tal Rasha's Horadric Crest</span><span class="rwlvl">set &middot; req. level 66</span></div>
+        <div class="rwrunes">Death Mask &middot; 55 strength</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats &mdash; no random rolls, every copy is identical</div>
+          <div class="rwstat"><span>10% Life Stolen per Hit</span></div>
+          <div class="rwstat"><span>10% Mana Stolen per Hit</span></div>
+          <div class="rwstat"><span>All Resistances +15</span></div>
+          <div class="rwstat"><span>+60 to Life</span></div>
+          <div class="rwstat"><span>+30 to Mana</span></div>
+          <div class="rwstat"><span>+45 Defense</span></div>
+        </div>
+        <div class="rwrow"><b>Why</b><span>More leech than Vampire Gaze, plus resist and life, at the <b>lowest strength of the four</b>. Fixed stats, so there's nothing to reroll. What it lacks is damage reduction.</span></div>
+        <div class="rwrow"><b>Where</b><span>A set piece, and the one the Tal's set is famous for nobody wanting &mdash; useless on a Sorceress, excellent on a merc, therefore cheap. <b>Level 66</b> is the catch.</span></div>
+      </div>
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Andariel's Visage</span><span class="rwlvl">unique &middot; req. level 83</span></div>
+        <div class="rwrunes">Demonhead &middot; 102 strength &middot; max 1 socket</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats</div>
+          <div class="rwstat"><span>+2 to All Skills</span></div>
+          <div class="rwstat"><span>+20% Increased Attack Speed</span></div>
+          <div class="rwstat roll"><span>8&ndash;10% Life Stolen per Hit</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat roll"><span>+25&ndash;30 to Strength</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat"><span>Poison Resist +70%</span></div>
+          <div class="rwstat"><span>+10% to Maximum Poison Resist</span></div>
+          <div class="rwstat"><span>Fire Resist &minus;30%</span></div>
+          <div class="rwstat"><span>15% Chance to cast level 15 Poison Nova when Struck</span></div>
+          <div class="rwstat roll"><span>+100&ndash;150% Enhanced Defense</span><span class="rolltag">rolled once</span></div>
+        </div>
+        <div class="rwrow"><b>Why</b><span>The endgame version of this slot: leech, <b>20% attack speed</b> (which multiplies the leech), <b>+25&ndash;30 strength</b> that pays for his armor, and <b>+2 skills</b> that raises his Might aura. The <b>&minus;30% fire resist</b> is the price, and its socket is how you pay it.</span></div>
+        <div class="rwrow"><b>Where</b><span>Hell only, <b>level 83 and 102 strength</b> &mdash; a genuinely late item. Put a <b>30% fire-res jewel</b> in the socket and the penalty is cancelled outright. Note this is the opposite of the verdict on your <i>own</i> head, in <i>Gear</i>: he can afford the fire hit because a jewel erases it, and you can't because your Larzuk charges are spent.</span></div>
+      </div>
+    </div>
+    <div class="verdict">
+      <div class="q">Four helms, all of them leech. Which one goes on him?</div>
+      <div class="a"><b class="cold-b">Vampire Gaze</b> at level 41, and you can stop there.</div>
+      <ul class="reasoning">
+        <li><b>Damage reduction is the stat that isn't replaceable.</b> Three of these four leech about the same &mdash; 8% against 10% against 9&ndash;12% is not the difference between living and dying. <b>15&ndash;20% off every physical hit</b> is, and Vampire Gaze is the only one that has it. Nothing else in the merc's two slots reduces physical damage except Treachery's Fade, and those stack.</li>
+        <li><b>It arrives first, by a lot.</b> Level 41 and 58 strength against Crown of Thieves' 103 strength, Tal's level 66, and Andariel's level 83. The merc needs this at the <i>start</i> of Hell, not the end of it.</li>
+        <li><b>Tal Rasha's Horadric Crest is the sidegrade worth taking if it's free.</b> More leech, +15 all resist and +60 life for the lowest strength of the four, and it's cheap precisely because it's the piece Sorceresses throw away. Swap if you're dying to elemental damage rather than physical; otherwise the damage reduction wins.</li>
+        <li><b>Andariel's is the only real upgrade, and it's a level-83 one.</b> Take it if it turns up and you have a 30% fire-res jewel to cancel the penalty &mdash; the attack speed and the +25&ndash;30 strength are worth more to him than they look, since one multiplies his leech and the other pays for his body armor.</li>
+        <li><b>Crown of Thieves is a stopgap, not a target.</b> 103 strength for a merc gaining 1.5 a level is a long wait for an item with no damage reduction, and by the time he can wear it the better options are in range.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>Mercenary armor</h2>
+      <span class="section-note">resist first, damage second</span>
+    </div>
+    <p class="lede">He has two slots and the helm is spending itself on life steal, so almost all of his resistance has to come from here. That rules the field down fast.</p>
+    <div class="rwgrid">
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Smoke</span><span class="rwlvl">req. level 37</span></div>
+        <div class="rwrunes">Nef + Lum &middot; 2-socket Body Armor</div>
+        <div class="rwrow"><b>Why</b><span>The same runeword the <i>Gear</i> tab recommends for you, and it does the same job here: <b>+50 all resist</b> against his &minus;100% penalty, six levels before anything else is available.</span></div>
+        <div class="rwrow"><b>Full stats</b><span>See the Smoke card in the <i>Gear</i> tab (<i>The armor slot</i>) &mdash; nothing rolls, so both copies are identical.</span></div>
+        <div class="rwrow"><b>Where</b><span>Two sockets, so no Larzuk charge and no cube gamble. Nef is Normal Countess and Lum is three Ios &mdash; <b>make two while you're at it</b>, one for each of you.</span></div>
+      </div>
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Treachery</span><span class="rwlvl">req. level 43</span></div>
+        <div class="rwrunes">Shael + Thul + Lem &middot; 3-socket Body Armor</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats &mdash; no random rolls, every copy is identical</div>
+          <div class="rwstat"><span>5% Chance to cast level 15 Fade when Struck</span></div>
+          <div class="rwstat"><span>25% Chance to cast level 15 Venom on Striking</span></div>
+          <div class="rwstat"><span>+45% Increased Attack Speed</span></div>
+          <div class="rwstat"><span>+20% Faster Hit Recovery</span></div>
+          <div class="rwstat"><span>+2 to Assassin Skill Levels</span></div>
+          <div class="rwstat"><span>Cold Resist +30%</span></div>
+          <div class="rwstat"><span>50% Extra Gold from Monsters</span></div>
+        </div>
+        <div class="rwrow"><b>Why</b><span><b>Fade is the whole item.</b> At level 15 it gives <b>+60% to all resistances and 15% physical damage reduction, for 288 seconds</b> &mdash; nearly five minutes from a single trigger. A merc whose job is standing in front of things gets struck constantly, so in practice it is up permanently. That beats Smoke's flat +50 <i>and</i> adds the second source of physical mitigation in his kit.</span></div>
+        <div class="rwrow"><b>Where</b><span>Three sockets, so cube it. Shael and Thul are <b>Nightmare</b> Countess; <b>Lem is inside Hell Countess's range</b>, which tops out at Ist. No new farming route &mdash; it's the same Countess you're already running.</span></div>
+      </div>
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Duriel's Shell</span><span class="rwlvl">unique &middot; req. level 41</span></div>
+        <div class="rwrunes">Cuirass &middot; 65 strength</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats</div>
+          <div class="rwstat"><span>Cold Resist +50%</span></div>
+          <div class="rwstat"><span>Fire Resist +20%</span></div>
+          <div class="rwstat"><span>Lightning Resist +20%</span></div>
+          <div class="rwstat"><span>Poison Resist +20%</span></div>
+          <div class="rwstat"><span>Cannot Be Frozen</span></div>
+          <div class="rwstat"><span>+15 to Strength</span></div>
+          <div class="rwstat"><span>+1 to Life per character level</span><span class="hittag">scales w/ level</span></div>
+          <div class="rwstat roll"><span>+160&ndash;200% Enhanced Defense</span><span class="rolltag">rolled once</span></div>
+        </div>
+        <div class="rwrow"><b>Why</b><span>A drop-in alternative to Smoke at the same level if one turns up &mdash; less total resist, but big defense, <b>+15 strength</b> toward the heavier helms, and life that scales with his level.</span></div>
+        <div class="rwrow"><b>Where</b><span>Nightmare drops. Nothing to make, nothing to socket. Purely opportunistic.</span></div>
+      </div>
+      <div class="rwcard">
+        <div class="rwhead"><span class="rwname">Fortitude</span><span class="rwlvl">req. level 59</span></div>
+        <div class="rwrunes">El + Sol + Dol + Lo &middot; 4-socket Body Armor</div>
+        <div class="rwstats">
+          <div class="rwstats-label">Full stats</div>
+          <div class="rwstat"><span>+300% Enhanced Damage</span></div>
+          <div class="rwstat"><span>+200% Enhanced Defense</span></div>
+          <div class="rwstat roll"><span>All Resistances +25&ndash;30</span><span class="rolltag">rolled once</span></div>
+          <div class="rwstat"><span>+5% to Maximum Lightning Resist</span></div>
+          <div class="rwstat"><span>20% Chance to cast level 15 Chilling Armor when Struck</span></div>
+          <div class="rwstat"><span>+(1&ndash;1.5 per character level) to Life</span><span class="hittag">scales w/ level</span></div>
+          <div class="rwstat"><span>Replenish Life +7</span></div>
+          <div class="rwstat"><span>Damage Reduced by 7</span></div>
+          <div class="rwstat"><span>+25% Faster Cast Rate</span></div>
+        </div>
+        <div class="rwrow"><b>Why</b><span>The damage answer, and by the logic above that makes it a survivability answer too: <b>+300% enhanced damage</b> roughly triples what every leech proc returns. It's the standard endgame merc armor everywhere, and it isn't wrong.</span></div>
+        <div class="rwrow"><b>Where</b><span>Four sockets, so cube it &mdash; but the real cost is the <b>Lo rune</b>, which sits above Hell Countess's Ist ceiling and is therefore a trade, in the same tier as your Bers. That's the reason it loses below.</span></div>
+      </div>
+    </div>
+    <div class="verdict">
+      <div class="q">Fortitude is the armor everyone puts on a merc. Is it right here?</div>
+      <div class="a">No &mdash; <b class="cold-b">Smoke</b> at 37, then <b class="cold-b">Treachery</b> at 43, and stop.</div>
+      <ul class="reasoning">
+        <li><b>Fade does more for him than +300% damage does.</b> <b>+60% all resistance and 15% physical damage reduction</b> is simply a larger survivability number than Fortitude's +25&ndash;30 resist, and it arrives sixteen levels earlier. A merc who is alive at 30% of Fortitude's damage contributes more Might and Conviction than one who is dead at 100% of it.</li>
+        <li><b>The runes decide it.</b> Treachery is <b>Shael + Thul + Lem</b> &mdash; Nightmare Countess and Hell Countess, both already on your route. Fortitude needs a <b>Lo</b>, which is above Hell Countess's ceiling and therefore a trade, competing directly with the three Bers this plan already owes. Spending trade value on the merc's armor instead of Infinity or Chains of Honor is the wrong order.</li>
+        <li><b>The two slots are built to work together.</b> Treachery's <b>+45% attack speed</b> multiplies whatever leech the helm supplies, and its Fade stacks with Vampire Gaze's damage reduction. Helm heals him, armor stops him needing to; neither is doing the other's job.</li>
+        <li><b>Smoke first because it's free and immediate.</b> You are already making one for yourself, the runes are Normal Countess plus a cube step, and it holds the slot for the six levels before Treachery unlocks &mdash; which is exactly the stretch where Nightmare's &minus;40% starts hurting him.</li>
+        <li><b>Fortitude is still the right call later, if a Lo ever turns up.</b> This isn't an argument that it's a bad armor. It's an argument about what to buy first with a finite amount of trading, and the merc's armor is behind his weapon and behind both of yours.</li>
+      </ul>
     </div>
   </div>
 
@@ -1463,7 +2127,7 @@ footer .wrap{
       <h2>Cast rate &amp; hit recovery breakpoints</h2>
       <span class="section-note">Sorceress-specific</span>
     </div>
-    <p class="lede">FCR and FHR don't scale smoothly — every percent between breakpoints is wasted until you cross the next threshold. These are the Sorceress's actual frame counts, not the generic class-average tables.</p>
+    <p class="lede">FCR and FHR don't scale smoothly &mdash; every percent between breakpoints is wasted until you cross the next threshold. These are the Sorceress's actual frame counts, not the generic class-average tables.</p>
     <div class="bp-cols">
       <div class="tblwrap">
         <table>
@@ -1498,11 +2162,11 @@ footer .wrap{
     </div>
     <div class="checkpoint">
       <span class="mark">where your gear lands</span>
-      <p>Stealth (25%) plus one Spirit sword (25&ndash;35%, roll-dependent) totals <b>50&ndash;60% FCR</b> — comfortably past the <b>37%</b> breakpoint (20 frames), a real jump from the 23-frame base, but short of <b>63%</b> (19 frames) on its own. A second Spirit in the shield slot (Hell) brings the total to <b>75&ndash;95%</b>, clearing 63% reliably. The top breakpoint, 105% (18 frames), needs dedicated FCR gear beyond the runeword list — 10% from each ring, 10&ndash;20% from the amulet, 20% from gloves — so treat it as a later target rather than something to plan around now.</p>
+      <p>Stealth (25%) plus one Spirit sword (25&ndash;35%, roll-dependent) totals <b>50&ndash;60% FCR</b> &mdash; comfortably past the <b>37%</b> breakpoint (20 frames), a real jump from the 23-frame base, but short of <b>63%</b> (19 frames) on its own. A second Spirit in the shield slot (Hell) brings the total to <b>75&ndash;95%</b>, clearing 63% reliably. The top breakpoint, <b>105%</b> (18 frames), needs dedicated gear beyond the runeword list, and the <i>Gear</i> tab now prices it exactly: <b>20% from Magefist</b>, 10% from each ring, and up to 20% from a crafted caster amulet. Any two of those three clear it from a 70% base, and <b>Vipermagi plus two well-rolled Spirits gets there on a single ring</b>. It's a plan now, not a wish.</p>
     </div>
     <div class="checkpoint">
       <span class="mark">FHR is already solved</span>
-      <p>Stealth carries <b>25% FHR</b> and Spirit carries <b>55%</b> — together <b>80%</b>, which clears the <b>60%</b> breakpoint and drops you to <b>8 frames</b> from a 15-frame base. Add the second Spirit in Hell and you're at <b>135%</b>, past the final <b>86%</b> breakpoint at <b>7 frames</b>, the fastest the Sorceress can recover. Don't spend a gear slot chasing FHR — the runeword plan maxes it for free. Note this cuts the other way too: <b>drop Spirit for a non-runeword weapon and you lose 55% FHR</b> along with the skills and cast rate.</p>
+      <p>Stealth carries <b>25% FHR</b> and Spirit carries <b>55%</b> &mdash; together <b>80%</b>, which clears the <b>60%</b> breakpoint and drops you to <b>8 frames</b> from a 15-frame base. Add the second Spirit in Hell and you're at <b>135%</b>, past the final <b>86%</b> breakpoint at <b>7 frames</b>, the fastest the Sorceress can recover. Don't spend a gear slot chasing FHR &mdash; the runeword plan maxes it for free. Note this cuts the other way too: <b>drop Spirit for a non-runeword weapon and you lose 55% FHR</b> along with the skills and cast rate.</p>
     </div>
   </div>
 
@@ -1511,7 +2175,7 @@ footer .wrap{
       <h2>Resistances &amp; the Hell penalty</h2>
       <span class="section-note">per resist type</span>
     </div>
-    <p class="lede">Each difficulty applies a flat penalty to all four resistances (fire, cold, lightning, poison), subtracted from whatever your gear and quest rewards actually total. The 75% cap doesn't move — what moves is how much raw resistance you need to reach it.</p>
+    <p class="lede">Each difficulty applies a flat penalty to all four resistances (fire, cold, lightning, poison), subtracted from whatever your gear and quest rewards actually total. The 75% cap doesn't move &mdash; what moves is how much raw resistance you need to reach it.</p>
     <div class="split">
       <div class="tblwrap">
         <table>
@@ -1525,12 +2189,166 @@ footer .wrap{
       </div>
       <div class="checkpoint">
         <span class="mark">built-in help</span>
-        <p>Malah's <b>Prison of Ice</b> quest (Act 5) hands you a scroll worth <b>+10% to all resistances</b> — permanent, once per difficulty. Clear it in Normal, Nightmare, and Hell and you're carrying <b>+30%</b> baked in before gear even enters the picture, cutting the Hell requirement from 175% down to roughly 145% from skills and items.</p>
+        <p>Malah's <b>Prison of Ice</b> quest (Act 5) hands you a scroll worth <b>+10% to all resistances</b> &mdash; permanent, once per difficulty. Clear it in Normal, Nightmare, and Hell and you're carrying <b>+30%</b> baked in before gear even enters the picture, cutting the Hell requirement from 175% down to roughly 145% from skills and items.</p>
       </div>
     </div>
     <div class="checkpoint gap-flag">
       <span class="mark">gap &mdash; fire resistance specifically</span>
-      <p>The Sorceress has no defensive resist skill of her own — Cold Mastery and Fire Mastery lower <i>enemy</i> resistance, they don't raise yours. The runewords do contribute, but unevenly. Running Lore + Stealth + both Spirits in Hell, and counting three Scrolls of Resistance, you land at roughly <b>fire 30%</b>, cold 65%, lightning 95%, poison 95% raw — against the <b>175%</b> Hell needs for a capped 75%. Every element is short, but <b>fire is the hole</b>: not one item in the plan grants a point of it. Rings, amulet, and charms have to close a ~145% fire gap and ~110% cold gap, and that's worth pricing out before Hell rather than after.</p>
+      <p>The Sorceress has no defensive resist skill of her own &mdash; Cold Mastery and Fire Mastery lower <i>enemy</i> resistance, they don't raise yours. The runewords do contribute, but unevenly. Running Lore + Stealth + both Spirits in Hell, and counting three Scrolls of Resistance, you land at roughly <b>fire 30%</b>, cold 65%, lightning 95%, poison 95% raw &mdash; against the <b>175%</b> Hell needs for a capped 75%. Every element is short, but <b>fire is the hole</b>: not one item in the runeword plan grants a point of it. That is a gap of roughly <b>145% fire</b> and <b>110% cold</b> against the runeword list alone, and it's worth pricing out before Hell rather than after. <b>It is closable, and in three items</b> &mdash; a resist armor, a resist helm and a pair of boots, worked through on the <i>Gear</i> tab. Rings, amulet and charms are then free to do nothing but cast rate.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- =================== 06 PREREQUISITES =================== -->
+<section role="tabpanel" id="panel-prereq" aria-labelledby="tab-prereq" tabindex="-1" hidden>
+
+  <p class="totals-aside">Everything on this page assumes an <b>Expansion</b> character, played <b>online</b>, on the <b>current ladder season</b>, in <b>solo games</b>. Two of those four are chosen once at character creation and can never be changed. This tab is what to settle before you roll anything.</p>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>The two choices you can't undo</h2>
+      <span class="section-note">decided at character creation</span>
+    </div>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th class="skill">The prompt</th><th>Pick</th><th>Because</th></tr></thead>
+        <tbody>
+          <tr class="row-mark"><td class="skill">Classic or <b>Expansion</b></td><td>Expansion</td><td><b>Runewords do not exist in Classic.</b> Every item on the Gear tab is a runeword.</td></tr>
+          <tr class="row-mark"><td class="skill">Offline or <b>Online</b></td><td>Online</td><td>Trading, ladder, and a server-side backup. An offline character has none of them.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="checkpoint gap-flag">
+      <span class="mark">Classic has no runewords at all</span>
+      <p>This is the one that quietly ruins a character. Runewords arrived with <i>Lord of Destruction</i>, and a Classic character simply cannot make them &mdash; no Stealth, no Spirit, no Insight, no Infinity. D2R bundles the expansion, so the content is installed either way; you just have to pick <b>Expansion</b> at the prompt. Classic also has no Act 5, which is where Larzuk and his socket quest live. There is no converting a Classic character later.</p>
+    </div>
+    <div class="checkpoint gap-flag">
+      <span class="mark">offline and online characters never meet</span>
+      <p>They're stored in different places and <b>cannot be transferred in either direction</b>, so this is a permanent fork. Offline characters live on your console's storage: no ladder, no trading, no cross-progression, and <b>no backup</b> &mdash; lose the storage and you lose the character. Online characters live on Battle.net's servers instead. For this build the decisive one is <b>trading</b>: the plan needs two <b>Ber</b> runes for Infinity &mdash; three, if you want Chains of Honor in the armor slot &mdash; and the Gear tab's own math shows farming or cubing them is not realistic. Offline, there is no one to trade with. How that actually works on an Xbox is its own section below.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>Accounts and what they cost</h2>
+      <span class="section-note">console</span>
+    </div>
+    <div class="split">
+      <div class="tblwrap">
+        <table>
+          <thead><tr><th class="skill">What</th><th>Needed for</th><th>Cost</th></tr></thead>
+          <tbody>
+            <tr><td class="skill">The game</td><td>Everything</td><td>One-off purchase</td></tr>
+            <tr><td class="skill">Battle.net account</td><td>Any online character</td><td><b>Free</b></td></tr>
+            <tr class="row-mark"><td class="skill">Xbox Game&nbsp;Pass <span class="tag fire">Essential, Premium or Ultimate</span></td><td>Online multiplayer on Xbox</td><td>Subscription</td></tr>
+            <tr><td class="skill">Reign of the Warlock</td><td>Nothing here</td><td>Skip it</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="checkpoint">
+        <span class="mark">the Battle.net part is free</span>
+        <p>A Battle.net account costs nothing &mdash; it's an account, not a subscription. You create one and link it to your console profile the first time you go online. The subscription you <i>do</i> need on Xbox is the console's own online tier, which Microsoft now sells as <b>Game Pass Essential, Premium or Ultimate</b> (it replaced Xbox Live Gold). PlayStation's equivalent is PS Plus. That's the one recurring cost.</p>
+      </div>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">you do not need the expansion DLC</span>
+      <p><b>Reign of the Warlock</b> adds a new class and some new zones. Nothing this guide depends on is inside it &mdash; Terror Zones and Sunder Charms, which the endgame leans on, both came in base D2R patches and are available without it. Buy it if you want to play a Warlock; don't buy it for this.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>Your connection</h2>
+      <span class="section-note">wire it</span>
+    </div>
+    <p class="lede">This is worth more than it sounds for a Sorceress specifically.</p>
+    <div class="checkpoint gap-flag">
+      <span class="mark">use a wired connection</span>
+      <p>Run an ethernet cable to the console if you possibly can. Online characters are <b>server-side</b>, which means every action round-trips, and this build <b>teleports constantly</b> &mdash; the single most latency-sensitive thing a character can do. On wifi you get rubber-banding, teleports that don't land, and the specific horror of dying to a monster you'd already teleported away from. A dropped connection also ends the game instantly: anything on the ground is gone, and any boss you were most of the way through is reset. None of this is fatal on softcore, but it is the difference between the build feeling crisp and feeling broken.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>How to actually play it</h2>
+      <span class="section-note">season, and who's in your game</span>
+    </div>
+    <div class="split">
+      <div class="tblwrap">
+        <table>
+          <thead><tr><th class="skill">Setting</th><th>Go with</th></tr></thead>
+          <tbody>
+            <tr class="row-mark"><td class="skill">Ladder</td><td><b>Current season</b></td></tr>
+            <tr class="row-mark"><td class="skill">Game size</td><td><b>Solo games</b>, at least at first</td></tr>
+            <tr><td class="skill">Difficulty mode</td><td>Softcore</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="checkpoint">
+        <span class="mark">play the current season</span>
+        <p>A fresh ladder season restarts the economy: everyone is poor at the same time, runes actually circulate, and the trades this build needs are far easier to make than in the non-ladder pool where the people holding Bers have held them for years. Characters roll over to non-ladder when the season ends &mdash; nothing is lost, you just stop being in the fresh economy.</p>
+      </div>
+    </div>
+    <div class="checkpoint gap-flag">
+      <span class="mark">"single player" means something else &mdash; make solo <i>online</i> games</span>
+      <p>Careful with the wording here, because the menu uses it the other way round. <b>Single Player on the main menu means offline</b>, which is the fork you just ruled out. What you actually want is an <b>online character in a private, empty game</b> &mdash; online for trading and backup, alone for the play itself. Monster life scales with the number of players, so a solo game is the easiest version of every fight, every drop is yours, and nobody is racing you to the Countess. Open your game to other people only when you specifically want to trade &mdash; and make it a <b>password game</b> rather than a public one, for reasons covered in <i>How trading works on Xbox</i> below. Make your own private game for everything else.</p>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">softcore, and this guide assumes it</span>
+      <p>Hardcore deletes the character permanently on death. The plan here has you learning a two-element hybrid through Hell with an uncapped fire resistance for a good stretch of it, and it openly relies on dying occasionally being survivable. Play hardcore if that's the game you want, but read the resist tables on <i>Breakpoints &amp; Resists</i> as hard requirements rather than targets if you do.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>How trading works on Xbox</h2>
+      <span class="section-note">half of it happens outside the game</span>
+    </div>
+    <p class="lede">This earns its own section because the Gear tab leans on it harder than anything else here: the plan wants <b>three Ber runes</b> and several uniques that cannot be farmed to order. And on console, trading isn't one feature &mdash; it's a handoff inside the game bolted onto a negotiation that happens somewhere else entirely.</p>
+    <div class="checkpoint gap-flag">
+      <span class="mark">Xbox trades with Xbox, and only Xbox</span>
+      <p>D2R has <b>cross-progression but not crossplay</b>, and the two get confused constantly. Cross-progression means your Battle.net character is the same character on every platform you own the game on. Crossplay &mdash; being in a game <i>with</i> someone on another platform &mdash; does not exist here, so <b>you can only trade with other Xbox players</b>. That pool is smaller and slower-moving than PC's, which is the main reason to start the Ber hunt early rather than treat it as an endgame errand.</p>
+    </div>
+    <div class="split">
+      <div class="tblwrap">
+        <table>
+          <thead><tr><th class="skill">On the Play menu</th><th>What it's for</th></tr></thead>
+          <tbody>
+            <tr><td class="skill">Private</td><td>Invite-only, never appears in the Game List. This is your ordinary solo game.</td></tr>
+            <tr class="row-mark"><td class="skill">Game Creator <span class="tag cold">custom name + password</span></td><td>A public game with a name you choose, optionally behind a <b>password</b>. This is how you meet a trade partner.</td></tr>
+            <tr><td class="skill">Game List</td><td>Browse up to 40 public games, filter by difficulty and ping, and <b>search by game name</b>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="checkpoint">
+        <span class="mark">there is no chat</span>
+        <p>That's the whole problem in one sentence. <b>Console D2R has no text chat</b>, so nothing can be negotiated inside the game &mdash; not a price, not a swap, not "do you have the other one as well". The lobby gets two people into the same room. Everything that makes a trade <i>a trade</i> has to be settled before either of you gets there.</p>
+      </div>
+    </div>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th class="num">Step</th><th class="skill">What you do</th><th>Where</th></tr></thead>
+        <tbody>
+          <tr><td class="num">1</td><td class="skill">Post what you want, or answer someone else's ad</td><td>A trading board &mdash; see below</td></tr>
+          <tr><td class="num">2</td><td class="skill">Agree the price <b>in writing</b>, both directions</td><td>The same thread</td></tr>
+          <tr><td class="num">3</td><td class="skill">Swap gamertags, party up, open voice chat</td><td>Xbox, not Diablo</td></tr>
+          <tr class="row-mark"><td class="num">4</td><td class="skill">One of you makes a <b>password game</b> and reads out the name and password</td><td>Game Creator &rarr; party chat</td></tr>
+          <tr><td class="num">5</td><td class="skill">Meet in town, press <b>A</b>, both sides fill the window, both sides accept</td><td>In game</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">where Xbox players actually post</span>
+      <p><b>diablo2.io</b> &mdash; the same site most of this guide's item data comes from &mdash; runs a trade browser with an <b>Xbox platform filter</b>, which makes it the easiest place to start. <b>d2jsp</b> has a dedicated <i>D2:R Xbox Ladder Trading</i> forum and is where most serious high-rune trading happens. <b>D2R Marketplace</b> and the Xbox-specific trading subreddit cover lower-key trades, and there are trading Discords with a channel per console and per game mode. Whichever you use, put <b>Xbox, ladder, softcore, Expansion</b> in the post itself &mdash; the character receiving the item has to match on every one of those, and saying so up front saves both sides a wasted meetup.</p>
+    </div>
+    <div class="checkpoint gap-flag">
+      <span class="mark">two ways a console trade goes wrong</span>
+      <p><b>The window has a bug.</b> If the other player closes the trade window while you are mid-drag, <b>the item drops on the ground</b>, where anyone else in the game can pick it up. Place items, let go, and only then talk. <b>And read the window again immediately before you accept</b> &mdash; the standard scam everywhere in D2 is swapping in a worthless lookalike at the last second, which is exactly how people lose trades over fake Tal Rasha's armor. A password game with one stranger in it is far safer than a public one with five.</p>
+    </div>
+    <div class="checkpoint">
+      <span class="mark">the PC escape hatch</span>
+      <p>If you ever own D2R on PC as well, cross-progression means the <b>same character</b> logs in over there &mdash; so you can trade into the far larger PC pool and the items come home with you to the Xbox. It costs a second copy of the game and nothing else. For the Ber hunt specifically that's the single biggest lever available, and it's worth knowing about <i>before</i> you spend a season running Lower Kurast.</p>
     </div>
   </div>
 
@@ -1540,7 +2358,7 @@ footer .wrap{
 
 <footer>
   <div class="wrap">
-    Source: Diablo II: Resurrected — Sorceress Build (Apple Notes)<br>
+    Source: Diablo II: Resurrected &mdash; Sorceress Build (Apple Notes)<br>
     Totals per current live-game skill-point mechanics.
   </div>
 </footer>

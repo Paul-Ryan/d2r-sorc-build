@@ -1,4 +1,4 @@
-# Paul's Diablo II: Resurrected Sorceress Build Guide
+# How to build a Sorceress in Diablo 2: Resurrected
 
 Fire Ball → Frozen Orb hybrid Sorceress build reference for Diablo II: Resurrected.
 
@@ -9,15 +9,16 @@ automatically to GitHub Pages on every push to `main`.
 
 ## Layout
 
-Content is split across five tabs, each linkable by hash:
+Content is split across six tabs, each linkable by hash:
 
 | Tab | Hash | Covers |
 | --- | --- | --- |
-| Skill Point Ledger | `#points` | Quest math, Phases 1–3, Static Field, the Ice Bolt verdict |
+| Skill Points | `#points` | Quest points, the leveling rail, the real build's fill order, Static Field |
+| Gear | `#gear` | Farming order, the Cube & crafting, sockets, runewords by difficulty, then gear by slot |
 | Stats & Keys | `#stats` | Stat budget and allocation, controller layout |
-| Gear | `#gear` | Runewords, getting sockets, gear by slot, shopping order by difficulty |
+| Mercenary | `#merc` | Aura choice, Insight → Infinity, why he dies, merc helm & armor |
 | Breakpoints & Resists | `#numbers` | FCR/FHR tables, the Hell resist penalty |
-| Mercenary | `#merc` | Aura choice, Insight → Infinity, merc gear |
+| Prerequisites | `#prereq` | Expansion vs Classic, online vs offline, accounts, connection, how to play, trading on Xbox |
 
 Light and dark themes follow the OS by default; the header toggle overrides and
 persists to `localStorage`. Printing flattens every tab onto one page.
