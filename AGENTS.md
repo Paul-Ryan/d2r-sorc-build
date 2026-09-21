@@ -17,29 +17,51 @@ CSS and the tab script are done and rarely need touching.
 Both are for the guide's *content*. The rest of this file is how the page is
 built.
 
+## The look
+
+The page follows the [Stripe docs](https://docs.stripe.com) model: white
+content, hairline rules instead of shadows, a 4px radius, system sans
+throughout, and one accent colour for chrome. Match it when adding anything.
+Fire, cold and gold survive that palette because on this page they carry
+meaning — they are not decoration, and nothing else may borrow them.
+
 ## Layout
 
-`index.html` is one file in four parts: `<head>` (meta + Google Fonts link +
-the entire stylesheet inline), the masthead, seven tab panels, and a `<script>`
-at the bottom holding the theme toggle and the tab controller.
+`index.html` is one file in five parts: `<head>` (meta + a Google Fonts link
+for JetBrains Mono + the entire stylesheet inline), the top bar, the three-
+column `.shell`, the footer, and a `<script>` at the bottom holding the theme
+toggle, the tab controller and the "on this page" rail.
+
+`.shell` is a grid of three columns: `aside.sidenav` (the tab list), the
+`main.content` column, and `aside.toc`. It drops the rail under 1180px and
+turns the sidebar into a horizontal scrolling strip under 900px.
 
 Seven tabs. Tab buttons, panels, and the `<!-- === NN NAME === -->` markers are
-all in the same order; keep them that way when adding or moving one.
+all in the same order; keep them that way when adding or moving one. The
+sidebar splits them under two `.navgroup` labels.
 
-| Tab | Button id | Panel id | Hash |
-| --- | --- | --- | --- |
-| Skill Points | `tab-points` | `panel-points` | `#points` |
-| Gear | `tab-gear` | `panel-gear` | `#gear` |
-| Stats & Keys | `tab-stats` | `panel-stats` | `#stats` |
-| Mercenary | `tab-merc` | `panel-merc` | `#merc` |
-| Breakpoints & Resists | `tab-numbers` | `panel-numbers` | `#numbers` |
-| Prerequisites | `tab-prereq` | `panel-prereq` | `#prereq` |
-| Endgame | `tab-endgame` | `panel-endgame` | `#endgame` |
+| Tab | Group | Button id | Panel id | Hash |
+| --- | --- | --- | --- | --- |
+| Skill Points | The build | `tab-points` | `panel-points` | `#points` |
+| Gear | The build | `tab-gear` | `panel-gear` | `#gear` |
+| Stats & Keys | The build | `tab-stats` | `panel-stats` | `#stats` |
+| Mercenary | The build | `tab-merc` | `panel-merc` | `#merc` |
+| Breakpoints & Resists | Reference | `tab-numbers` | `panel-numbers` | `#numbers` |
+| Prerequisites | Reference | `tab-prereq` | `panel-prereq` | `#prereq` |
+| Endgame | Reference | `tab-endgame` | `panel-endgame` | `#endgame` |
 
-Adding a tab means four edits: a `<button class="tab">` with its two-digit
-`<span class="idx">`, a `<section role="tabpanel" hidden>` (the first panel is
-the only one without `hidden`), the README's layout table, and this one. The
-script wires everything by `aria-controls`, so no JS change is needed.
+Adding a tab means four edits: a `<button class="tab">` under the right
+`.navgroup`, a `<section role="tabpanel" hidden>` opening with a `.page-head`
+(the first panel is the only one without `hidden`), the README's layout table,
+and this one. The script wires everything by `aria-controls`, so no JS change
+is needed.
+
+**Section ids are generated, not written.** On load the script slugifies every
+`.section`'s `<h2>` into an id, so the rail can link to it and so a pasted
+`#socket-mechanics` link opens the tab that holds it. Two sections with the
+same heading get `-2` appended. Rewording an `<h2>` silently changes its
+permalink — which is fine inside this page, but worth knowing before you link
+to one from outside it.
 
 ## Component vocabulary
 
@@ -47,16 +69,24 @@ Reuse these rather than inventing markup — the page reads as one system becaus
 every section is built from the same dozen pieces.
 
 **Structure**
+- `.page-head` — opens every panel: an `<h1>` naming the tab and a `.page-sub`
+  line saying what it covers, over a rule. One per panel, always first.
 - `.section` → `.section-head` (an `<h2>` plus a `<span class="section-note">`
-  right-aligned label) → content. One topic per `.section`.
+  right-aligned note) → content. One topic per `.section`.
 - `.lede` — a muted intro paragraph under the head.
-- `.split` — two columns above 940px: wide content left, a `.checkpoint` right.
-  Below that it stacks.
+- `.split` — wide content left, a `.checkpoint` right, **once the content
+  column is at least 820px** — a `@container` query, not a media query, because
+  the sidebar and the rail take their cut of the viewport first. Below that it
+  stacks. Give the left column the room: it carries the four- and five-column
+  tables.
 - `.bp-cols` — equal-width auto-fit columns, for two tables side by side.
 
 **Prose callouts**
-- `.checkpoint` — bordered aside with a small caps `<span class="mark">` label
-  and one `<p>`. This is where the guide's reasoning lives.
+- `.checkpoint` — a `<span class="mark">` label and one `<p>`. This is where
+  the guide's reasoning lives. It has two shapes and the CSS picks between
+  them: on its own in the flow it is a bare left bar, and as a direct child of
+  a `.split` it becomes a bordered box in the right column. Both are Stripe
+  patterns; don't hand-pick, just put it where it belongs.
 - `.checkpoint.gap-flag` — the same, in warning red. Reserved for genuine holes
   in the plan and traps (an unrecoverable quest charge, a resist the build
   never covers). Don't spend it on ordinary emphasis.
@@ -124,7 +154,22 @@ Two row highlights, and the difference matters:
 - **HTML entities, not literal characters.** The file uses `&mdash;`, `&ndash;`,
   `&times;`, `&rarr;`, `&minus;`, `&hellip;` throughout. Match it.
 - **Elements are color-coded.** Fire is `var(--fire)`, cold is `var(--cold)`,
-  gold is for randomized rolls and UI accents. Never hardcode a hex.
+  gold is for randomized rolls. UI chrome — links, the selected tab, the active
+  rail item — is `var(--accent)` and never borrows an element colour. Never
+  hardcode a hex.
+- **Uppercase is for labels, never for sentences.** `th`, `.navgroup`,
+  `.toc-head`, `.rwlvl`, `.stat-verdict`, `.railhead .lvl`, `.tag` and the
+  `WHY` / `WHERE` labels in `.rwrow > b` are short noun phrases, so they are
+  uppercased together in one rule near the top of the stylesheet. Anything
+  that reads as a sentence — `.section-note`, `.verdict .q`, `.checkpoint
+  .mark` — stays sentence case, because a whole sentence in small uppercase is
+  the one thing this redesign was meant to stop doing.
+- **Two fonts, and mono means data.** Everything is the system sans stack.
+  JetBrains Mono is reserved for figures and rune strings — `.mono`, `td.num`,
+  `.tile .num`, `.rwrunes`, `td.runes`, `.spendrow .amt`, `.padkey .btn`. If
+  it isn't a number or a rune, it isn't mono.
+- **No shadows.** Cards are a 1px `var(--rule)` border and a 4px radius. Hover
+  raises the border to `--rule-strong` and tints the background instead.
 - **The dark palette is defined twice** — once under
   `@media (prefers-color-scheme: dark)` and once under `:root[data-theme=dark]`,
   with identical values. Change a token and you change both blocks.
@@ -145,8 +190,13 @@ python3 -m http.server 4173   # then open http://localhost:4173
 
 - Click all seven tabs; confirm the hash updates and a direct `#gear` load opens
   the right one.
+- Confirm the "on this page" rail rebuilt for the tab you're on, and that its
+  highlight follows you as you scroll.
+- Load a section link directly — `#socket-mechanics` should open the Gear tab
+  and land on that section.
 - Toggle the theme both ways.
-- Narrow the window under 640px.
+- Narrow the window to 1024px (the rail goes, the `.split` stacks) and again
+  under 640px (the sidebar becomes a horizontal strip).
 - If a number changed, re-check the totals that depend on it — the skill ledger,
   the stat budget, and the resist math all cross-reference each other.
 - **After adding or moving a `.section`, check its nesting depth**, not just that
@@ -154,12 +204,18 @@ python3 -m http.server 4173   # then open http://localhost:4173
   counts even while nesting every later section inside the previous one — which
   is exactly what happened once and went unnoticed:
 
+  A `.section` sits inside `main.content` inside `div.shell`, and only `.shell`
+  is a `<div>` — so the running div count at every `.section` must be exactly
+  1, and 0 at the end of the file.
+
   ```
   python3 - <<'EOF'
   import re; d=0
   for i,l in enumerate(open('index.html')):
-      if l.rstrip('\n')=='  <div class="section">' and d: print('bad depth at line',i+1)
+      if l.rstrip('\n')=='  <div class="section">' and d!=1:
+          print('bad depth',d,'at line',i+1)
       for t in re.findall(r'<div\b|</div>', l): d += 1 if t!='</div>' else -1
+  print('final depth', d)   # must be 0
   EOF
   ```
 - If you moved a section, re-grep for `above`, `below`, `further down` and `next`

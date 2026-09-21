@@ -9,20 +9,29 @@ automatically to GitHub Pages on every push to `main`.
 
 ## Layout
 
-Content is split across seven tabs, each linkable by hash:
+A docs-style three-column page: a sidebar listing the seven tabs, the content
+column, and an "on this page" rail that tracks the sections of whichever tab is
+open. Every tab is linkable by hash, and so is every section within one —
+`#socket-mechanics` opens the Gear tab and scrolls to it.
 
-| Tab | Hash | Covers |
-| --- | --- | --- |
-| Skill Points | `#points` | Quest points, the leveling rail, the real build's fill order, Static Field |
-| Gear | `#gear` | Farming order, the Cube & crafting, sockets, runewords by difficulty, then gear by slot |
-| Stats & Keys | `#stats` | Stat budget and allocation, controller layout |
-| Mercenary | `#merc` | Aura choice, Insight → Infinity, why he dies, merc helm & armor |
-| Breakpoints & Resists | `#numbers` | FCR/FHR tables, the Hell resist penalty |
-| Prerequisites | `#prereq` | Expansion vs Classic, online vs offline, accounts, connection, how to play, trading on Xbox |
-| Endgame | `#endgame` | Terror Zones, Diablo Clone & Annihilus, the Pandemonium Event & the Torch |
+| Tab | Group | Hash | Covers |
+| --- | --- | --- | --- |
+| Skill Points | The build | `#points` | Quest points, the leveling rail, the real build's fill order, Static Field |
+| Gear | The build | `#gear` | Farming order, the Cube & crafting, sockets, runewords by difficulty, then gear by slot |
+| Stats & Keys | The build | `#stats` | Stat budget and allocation, controller layout |
+| Mercenary | The build | `#merc` | Aura choice, Insight → Infinity, why he dies, merc helm & armor |
+| Breakpoints & Resists | Reference | `#numbers` | FCR/FHR tables, the Hell resist penalty |
+| Prerequisites | Reference | `#prereq` | Expansion vs Classic, online vs offline, accounts, connection, how to play, trading on Xbox |
+| Endgame | Reference | `#endgame` | Terror Zones, Diablo Clone & Annihilus, the Pandemonium Event & the Torch |
 
-Light and dark themes follow the OS by default; the header toggle overrides and
-persists to `localStorage`. Printing flattens every tab onto one page.
+The rail drops below 1180px and the sidebar becomes a horizontal strip below
+900px. Light and dark themes follow the OS by default; the header toggle
+overrides and persists to `localStorage`. Printing flattens every tab onto one
+page.
+
+The visual language follows [Stripe's docs](https://docs.stripe.com) — light
+surfaces, hairline rules, no shadows, system sans — with fire, cold and gold
+kept because on this page they carry meaning rather than decoration.
 
 ## Docs
 
